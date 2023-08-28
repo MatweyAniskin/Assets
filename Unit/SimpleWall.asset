@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2533adb2469e0a4798078d7f7fc9165, type: 3}
+  m_Name: SimpleWall
+  m_EditorClassIdentifier: 
+  rotation: 0
+  material: {fileID: 0}
+  collider:
+    upBreak: 0
+    rightBreak: 0
+    downBreak: 1
+    leftBreak: 0
+  mesh: {fileID: 2792912720771108603, guid: c10b66cf5a696ff4085c4e1340bbf510, type: 3}
+  outsideUv: {x: 2, y: 0}
+  insideUv: {x: 1, y: 0}
+  insideUvValue: 10000000110000001200000013000000
+  outsideUvValue: 0c0000000d0000000e0000000f000000
