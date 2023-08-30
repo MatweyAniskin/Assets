@@ -118,7 +118,7 @@ public class InventoryWindow : Window
             vertical = Input.GetAxis("Vertical");
             if (horizontal != 0 || vertical != 0)
             {
-                Vector2 dir = new Vector2(horizontal, vertical);                
+                Vector2 dir = new Vector2(horizontal, -vertical);                
                 if (SelectedItem != null)
                     SelectedItem = GetNear(SelectedItem, dir);
                 else

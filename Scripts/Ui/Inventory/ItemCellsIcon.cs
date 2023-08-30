@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class ItemCellsIcon : IconWithShadow
 {
     [SerializeField] float selectAnimationSpeed = 4;
-    [SerializeField] Vector3 standartScale = Vector3.one;
-    [SerializeField] Vector3 selectedScale = new Vector3(1.25f, 1.25f, 1.25f);
+    [SerializeField] GameObject selectRamp;
     
     InventoryItem item;
 
@@ -27,22 +26,10 @@ public class ItemCellsIcon : IconWithShadow
     }
     public void OnSelected()
     {
-        StartCoroutine(SelectAnimation(true));
+        selectRamp.SetActive(true);
     }
     public void OnUnSelected()
     {
-        StartCoroutine(SelectAnimation(false));
-    }
-    IEnumerator SelectAnimation(bool isSelect)
-    {
-        float index = 0;
-        Vector3 to = isSelect ? selectedScale : standartScale;
-        Vector3 from = isSelect ? standartScale : selectedScale;
-        while (index < 1)
-        {
-            index += Time.deltaTime * selectAnimationSpeed;            
-            transform.localScale = Vector3.Lerp(from, to,index);
-            yield return null;
-        }
-    }
+        selectRamp.SetActive(false);
+    }    
 }

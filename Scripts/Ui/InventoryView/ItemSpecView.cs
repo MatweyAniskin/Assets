@@ -23,12 +23,13 @@ public class ItemSpecView : MonoBehaviour
         InventoryWindow.OnInventoryCellSelect -= SetItem;
     }
     void SetItem(ItemCellsIcon itemCellsIcon)
-    {
+    {        
         if(itemCellsIcon is null)
         {
             DelItem();
             return;
         }
+        Debug.Log(itemCellsIcon);
         SetItem(itemCellsIcon.GlobalPosition,itemCellsIcon.Item);
     }
     void SetItem(Vector2 pos, Item item)
@@ -55,14 +56,14 @@ public class ItemSpecView : MonoBehaviour
     {
         while (!(curItem is null))
         {
-            group.transform.position = Input.mousePosition + offset;
+         //   group.transform.position = Input.mousePosition + offset;
             yield return null;
         }
     }
     IEnumerator Active()
     {
         float index = 0;
-        while (index < 1 && !(curItem is null))
+        while (index < 1)
         {
             index += Time.deltaTime * fadeSpeed;
             group.alpha = index;
