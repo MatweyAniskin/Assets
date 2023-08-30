@@ -39,6 +39,7 @@ public abstract class Window : MonoBehaviour
     IEnumerator OpenAnimation()
     {
         StopCoroutine(CloseAnimation());
+        isOpen = true;
         group.gameObject.SetActive(true);
         group.alpha = 0;
         foreach (MovingUiElement i in movingUiElements)
@@ -48,8 +49,8 @@ public abstract class Window : MonoBehaviour
             group.alpha += Time.unscaledDeltaTime * windowSpeed;
             yield return null;
         }
-        isOpen = true;        
-        WindowController.IsOpened = true;
+             
+        WindowController.IsOpened = isOpen;
     }
     IEnumerator CloseAnimation()
     {
@@ -57,7 +58,7 @@ public abstract class Window : MonoBehaviour
         ViewPoint = null;
         group.alpha = 1;
         isOpen = false;
-        WindowController.IsOpened = false;
+        WindowController.IsOpened = isOpen;
         foreach (MovingUiElement i in movingUiElements)
             i.EndAnimation(this);
         while (group.alpha != 0)

@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventoryWindow : Window
@@ -10,11 +12,30 @@ public class InventoryWindow : Window
 
     List<ItemCellsIcon> itemCellsIcons = new List<ItemCellsIcon>();
     Inventory inventory;
+
+    public delegate void InventoryCellDelegate(ItemCellsIcon item);
+    public static event InventoryCellDelegate OnInventoryCellSelect;   
+    ItemCellsIcon selectedItem = null;
+    ItemCellsIcon SelectedItem
+    {
+        get { return selectedItem; }
+        set
+        {
+            if (value == selectedItem)
+                return;
+            if (selectedItem != null)
+                selectedItem.OnUnSelected();
+            selectedItem = value;
+            OnInventoryCellSelect?.Invoke(selectedItem);
+            if (selectedItem != null)
+                selectedItem.OnSelected();
+        }
+    }
     private void Start()
     {
         inventory = PlayerObject.GetComponent<Inventory>();
         cells = new InventoryCell[inventory.Width, inventory.Height];
-        float cellSize = cell.Size;        
+        float cellSize = cell.Size;
         cellField.sizeDelta = new Vector2(cellSize * inventory.Width, cellSize * inventory.Height);
         for (int x = 0; x < inventory.Width; x++)
             for (int y = 0; y < inventory.Height; y++)
@@ -26,7 +47,7 @@ public class InventoryWindow : Window
             }
         UpdateBlockedCells();
     }
-    void Update()
+    void Update() //unit
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -44,6 +65,18 @@ public class InventoryWindow : Window
     protected override void OnOpen()
     {
         DrawItems();
+
+        StartCoroutine(InputWithKey());
+    }
+    protected override void OnClose()
+    {
+        SelectedItem = null;
+        for (int i = 0; i < itemCellsIcons.Count; i++)
+        {
+            itemCellsIcons[i].Destroy();
+        }
+        itemCellsIcons.Clear();
+        ClearBlockedCells();
     }
     void DrawItems()
     {
@@ -54,7 +87,7 @@ public class InventoryWindow : Window
             temp.SetItem(i, cell.Size);
             itemCellsIcons.Add(temp);
             UpdateBlockedCells(i);
-        }        
+        }
     }
     void UpdateBlockedCells(InventoryItem inventoryItem)
     {
@@ -66,7 +99,7 @@ public class InventoryWindow : Window
     {
         for (int x = 0; x < inventory.Width; x++)
             for (int y = 0; y < inventory.Height; y++)
-                cells[x, y].SetBlock(inventory.GetBlock(x,y));
+                cells[x, y].SetBlock(inventory.GetBlock(x, y));
     }
     void ClearBlockedCells()
     {
@@ -74,13 +107,47 @@ public class InventoryWindow : Window
             for (int y = 0; y < inventory.Height; y++)
                 cells[x, y].SetBlock(false);
     }
-    protected override void OnClose()
+    IEnumerator InputWithKey() //to new input
     {
-        for (int i = 0; i < itemCellsIcons.Count; i++)
+        float horizontal;
+        float vertical;
+        while (isOpen && itemCellsIcons.Count != 0)
         {
-            itemCellsIcons[i].Destroy();
+            yield return null;
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+            if (horizontal != 0 || vertical != 0)
+            {
+                Vector2 dir = new Vector2(horizontal, vertical);                
+                if (SelectedItem != null)
+                    SelectedItem = GetNear(SelectedItem, dir);
+                else
+                    SelectedItem = GetNear(0, 0, dir);
+                yield return new WaitForSeconds(0.25f);
+            }
         }
-        itemCellsIcons.Clear();
-        ClearBlockedCells();
+    }
+    ItemCellsIcon GetNear(ItemCellsIcon itemCellsIcon, Vector2 dir) => GetNear(itemCellsIcon.PosX, itemCellsIcon.PosY, dir);
+    ItemCellsIcon GetNear(int curX, int curY, Vector2 dir)
+    {
+        if (itemCellsIcons.Count == 1)
+            return itemCellsIcons.FirstOrDefault();
+        ItemCellsIcon near = null;
+        dir.x += curX;
+        dir.y += curY;
+        float distance = 0;
+        float minDistance = 0;
+        foreach (var icon in itemCellsIcons)
+        {
+            if (icon == SelectedItem)
+                continue;
+            distance = Vector2.Distance(icon.Pos, dir);
+            if (distance < minDistance || near is null)
+            {
+                minDistance = distance;
+                near = icon;
+            }
+        }
+        return near;
     }
 }

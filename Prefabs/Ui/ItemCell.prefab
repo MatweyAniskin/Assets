@@ -130,6 +130,7 @@ MonoBehaviour:
   icon: {fileID: 3116310147765445518}
   rect: {fileID: 6095941629355914152}
   shadowImage: {fileID: 4644511123646559269}
+  ramp: {fileID: 0}
 --- !u!1 &4949667968518920370
 GameObject:
   m_ObjectHideFlags: 0
