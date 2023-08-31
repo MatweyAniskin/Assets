@@ -12,6 +12,7 @@ public class ItemSpecPanel : MonoBehaviour
     [SerializeField] RectTransform fieldSpec;
     [SerializeField] PropertyView prefabPropertyView;
     [SerializeField] Text itemNameText;
+    [SerializeField] MovingUiElement[] movingUiElements;
     Item curItem;
 
     List<PropertyView> propertyViews = new List<PropertyView>();
@@ -49,6 +50,8 @@ public class ItemSpecPanel : MonoBehaviour
             view.SetProperty(effectValues[i]);
             propertyViews.Add(view);
         }
+        foreach (var i in movingUiElements)
+            i.StartAnimation(this);
         StartCoroutine(Active());
     }
     void SetItem(Item item)

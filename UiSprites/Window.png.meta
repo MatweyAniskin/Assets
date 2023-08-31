@@ -686,6 +686,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Window_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5f607bb6149bd418727f35abcf340d
+      internalID: -1413788525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Window_27
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be5d838f81ffce34fa03cd90a468c252
+      internalID: 308180894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -711,6 +753,7 @@ TextureImporter:
       Window_2: 1556340049
       Window_17: 411390303
       Window_15: 484983921
+      Window_27: 308180894
       Window_0: 1016683990
       Window_12: -281493907
       Window_18: 1408202486
@@ -718,6 +761,7 @@ TextureImporter:
       Window_16: 359928937
       Window_1: -478742483
       Window_23: -1182268430
+      Window_26: -1413788525
       Window_24: -787718083
       Window_4: -1878728810
       Window_7: 2127980026
