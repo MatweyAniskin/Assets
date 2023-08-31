@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Item : ScriptableObject
 {
     [SerializeField] protected string keyName;
-    [SerializeField] protected Sprite icon;
+    [SerializeField] protected Sprite icon;  
     [SerializeField] Vector2Int cellSize = Vector2Int.one;
     [SerializeField] int rotateIcon = -30;
     public abstract string Description

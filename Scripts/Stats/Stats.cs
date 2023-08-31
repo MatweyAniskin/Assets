@@ -5,5 +5,10 @@ using UnityEngine;
 public class Stats : MonoBehaviour
 {
     [SerializeField] float maxHelse;
-    [SerializeField] float curHelse;    
+    [SerializeField] float curHelse;
+    [SerializeField] DefenceType[] types;
+    public void Damage(float value, DamageType damageType)
+    {
+
+    }
 }

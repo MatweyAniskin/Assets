@@ -28,8 +28,7 @@ public class ItemSpecView : MonoBehaviour
         {
             DelItem();
             return;
-        }
-        Debug.Log(itemCellsIcon);
+        }       
         SetItem(itemCellsIcon.GlobalPosition,itemCellsIcon.Item);
     }
     void SetItem(Vector2 pos, Item item)

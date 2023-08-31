@@ -13,7 +13,7 @@ public class PlayerMoveController : MoveCharacter
     }
     void Update()
     {
-        //if (!WindowController.IsOpened) return;
+        if (WindowController.IsOpened) return;
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         if (x != 0 || y != 0)
