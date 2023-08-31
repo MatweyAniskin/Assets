@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ItemSpecView : MonoBehaviour
+public class ItemSpecPanel : MonoBehaviour
 {
     [SerializeField] RectTransform rect;
     [SerializeField] float fadeSpeed = 4;
     [SerializeField] CanvasGroup group;
     [SerializeField] Vector2 offset;
+    [SerializeField] RectTransform fieldSpec;
+    [SerializeField] PropertyView prefabPropertyView;
+    [SerializeField] Text itemNameText;
     Item curItem;
 
+    List<PropertyView> propertyViews = new List<PropertyView>();
     void Start()
     {
         /* ItemDragHandler.OnCursorEnd += SetItem;
@@ -34,7 +39,16 @@ public class ItemSpecView : MonoBehaviour
     void SetItem(Vector2 pos, Item item)
     {
         rect.anchoredPosition = pos + offset;
-        //icon to item
+        itemNameText.text = item.ToString();
+        itemNameText.color = item.RarityColor;
+        PropertyValue[] effectValues = item.GetEffectsValues();
+        for(int i = 0; i < effectValues.Length;i++)
+        {
+            PropertyView view = Instantiate(prefabPropertyView,fieldSpec) as PropertyView;
+            view.SetPosition(0, view.Height * i);
+            view.SetProperty(effectValues[i]);
+            propertyViews.Add(view);
+        }
         StartCoroutine(Active());
     }
     void SetItem(Item item)
@@ -45,11 +59,16 @@ public class ItemSpecView : MonoBehaviour
     }
     void DelItem(Item item)
     {
-        StartCoroutine(Deactive());
+        DelItem();
     }
     void DelItem()
     {
         StartCoroutine(Deactive());
+        for (int i = 0; i < propertyViews.Count; i++)
+        {
+            propertyViews[i].Delete();            
+        }
+        propertyViews.Clear();
     }
     IEnumerator Follow()
     {

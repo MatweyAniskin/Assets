@@ -12,6 +12,8 @@ public class Icon : MonoBehaviour
     public void SetPosition(Vector2 position) => rect.anchoredPosition = position;
     public void SetSize(float width, float height) => SetSize(new Vector2(width, height));
     public void SetSize(Vector2 size) => rect.sizeDelta = size;
+    public float Width => rect.rect.width;
+    public float Height => rect.rect.height;
     public Vector2 GlobalPosition => rect.position;
     public virtual void SetIcon(Sprite icon) => this.icon.sprite = icon;
     public void SetRotateSprite(int rotate) => icon.transform.rotation = Quaternion.Euler(0, 0, rotate);

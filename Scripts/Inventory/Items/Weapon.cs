@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapon")]
 public class Weapon : Item
 {
-    [SerializeField] EffectType damageType;
+    [SerializeField] PropertyValue damageValue;
     public override string Description
     {
         get
@@ -14,6 +14,11 @@ public class Weapon : Item
 
             return des;
         }
+    }
+
+    public override PropertyValue[] GetEffectsValues() //Unit
+    {
+        return new PropertyValue[1] {damageValue };
     }
 
     public override string ToString()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class EffectType : ScriptableObject
+public abstract class PropertyType : ScriptableObject
 {
     [SerializeField] Sprite icon;
     [SerializeField] string keyName;

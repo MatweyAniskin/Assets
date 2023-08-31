@@ -16,3 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 9ea06f72c1ac56f4384af39ebc20bc32, type: 3}
   cellSize: {x: 2, y: 2}
   rotateIcon: 0
+  rarityStatus: {fileID: 11400000, guid: a0a310cc7e8a8d14dbbd59ba07535984, type: 2}
+  damageValue:
+    effectType: {fileID: 11400000, guid: c434b8cccb1d8584a9827466dc4b6bb4, type: 2}
+    value: 5
