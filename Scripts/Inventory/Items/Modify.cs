@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Modify : ScriptableObject
+[CreateAssetMenu(fileName = "Modify", menuName = "Item/Modify")]
+public class Modify : ScriptableObject
 {
     [SerializeField] protected string keyName;
+    [SerializeField] protected PropertyValue propertyValue;
 
-    public abstract void SetStats(Stats stats);    
+    public PropertyValue PropertyValue => propertyValue;
     public override string ToString() => keyName;    
 }
