@@ -7,8 +7,13 @@ public class IconWithShadow : Icon
 
     public override void SetIcon(Sprite icon)
     {
-        this.icon.sprite = icon;
+        base.SetIcon(icon);
         this.shadowImage.sprite = icon;
+    }
+    public override void SetActiveIcon(bool value)
+    {
+        base.SetActiveIcon(value);
+        shadowImage.gameObject.SetActive(value);
     }
 }
 

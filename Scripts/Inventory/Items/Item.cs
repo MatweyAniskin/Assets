@@ -9,6 +9,7 @@ public abstract class Item : ScriptableObject
     [SerializeField] Vector2Int cellSize = Vector2Int.one;
     [SerializeField] int rotateIcon = -30;
     [SerializeField] RarityStatus rarityStatus;
+    [SerializeField] EquipmentTypes.Type equipmentType;
     public abstract string Description
     {
         get;
@@ -20,6 +21,7 @@ public abstract class Item : ScriptableObject
     public int YScale => cellSize.y;
     public Vector2 Scale => cellSize;
     public int Rotate => rotateIcon;
+    public EquipmentTypes.Type ItemType => equipmentType;
     public override string ToString()
     {
         return keyName;

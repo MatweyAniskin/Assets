@@ -11,13 +11,13 @@ public class ItemCellsIcon : IconWithShadow
     [SerializeField] Vector3 maxScale = new Vector3(1.25f, 1.25f, 1.25f);
     [SerializeField] float animationSpeed = 4;
     
-    InventoryItem item;
+    protected InventoryItem item;
 
     public Item Item => item.Item;
     public int PosX => item.PosX;
     public int PosY => item.PosY;
     public Vector2 Pos => new Vector2(PosX, PosY);
-    public void SetItem(InventoryItem item, float scale)
+    public virtual void SetItem(InventoryItem item, float scale)
     {
         this.item = item;
         SetIcon(item.Item.Icon);

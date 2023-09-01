@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class InventoryItem
 {
-    [SerializeField] Item item;
+    [SerializeField] protected Item item;
     [SerializeField] int x = 0;
     [SerializeField] int y = 0;
 

@@ -7,8 +7,9 @@ public class Inventory : MonoBehaviour
     [SerializeField] int cellWidth = 4;
     [SerializeField] int secretHeight = 3;
     [SerializeField] int secretWidth = 4;
+    [SerializeField] InventoryEquipmentItem[] inventoryEquipmentItems;
 
-    List<InventoryItem> inventoryItems = new List<InventoryItem>();
+    List<InventoryItem> inventoryItems = new List<InventoryItem>();    
     bool[,] blockedCells;
     public int Height => cellHeight;
     public int Width => cellWidth;
@@ -29,6 +30,8 @@ public class Inventory : MonoBehaviour
     {        
         int xSize = item.XScale;
         int ySize = item.YScale;
+        if (FastSetInEquipment(item))
+            return true;
         for (int x = 0; x <= cellWidth - xSize; x++)
             for (int y = 0; y <= cellHeight - ySize; y++)
             {
@@ -40,6 +43,18 @@ public class Inventory : MonoBehaviour
 
             }
 
+        return false;
+    }
+    public bool FastSetInEquipment(Item item)
+    {
+        foreach (var i in inventoryEquipmentItems)
+        {
+            if (i.Item is null && item.ItemType == i.Equipment)
+            {
+                i.SetItem(item);
+                return true;
+            }
+        }
         return false;
     }
     public InventoryItem[] Items => inventoryItems.ToArray();

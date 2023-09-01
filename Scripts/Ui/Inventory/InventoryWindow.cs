@@ -120,7 +120,9 @@ public class InventoryWindow : Window
             {
                 Vector2 dir = new Vector2(horizontal, -vertical);                
                 if (SelectedItem != null)
+                {                   
                     SelectedItem = GetNear(SelectedItem, dir);
+                }
                 else
                     SelectedItem = GetNear(0, 0, dir);
                 yield return new WaitForSeconds(0.25f);
