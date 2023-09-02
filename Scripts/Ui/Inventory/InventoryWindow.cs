@@ -8,6 +8,7 @@ public class InventoryWindow : Window
     [SerializeField] InventoryCell cell;
     [SerializeField] RectTransform cellField;
     [SerializeField] ItemCellsIcon cellsIcon;
+    [SerializeField] ItemEquipmentIcon[] equipmentIcons;
     InventoryCell[,] cells;
 
     List<ItemCellsIcon> itemCellsIcons = new List<ItemCellsIcon>();
@@ -65,7 +66,7 @@ public class InventoryWindow : Window
     protected override void OnOpen()
     {
         DrawItems();
-
+        UpdateEquipment();
         StartCoroutine(InputWithKey());
     }
     protected override void OnClose()
@@ -107,6 +108,13 @@ public class InventoryWindow : Window
             for (int y = 0; y < inventory.Height; y++)
                 cells[x, y].SetBlock(false);
     }
+    void UpdateEquipment()
+    {
+        foreach (var i in equipmentIcons)
+        {            
+            i.SetItem(inventory.GetEquipmqment(i.EquipmentType), cell.Size);
+        }
+    }
     IEnumerator InputWithKey() //to new input
     {
         float horizontal;
@@ -129,17 +137,28 @@ public class InventoryWindow : Window
             }
         }
     }
+    List<ItemCellsIcon> AllItemIcons
+    {
+        get
+        {
+            List<ItemCellsIcon> itemCells = new List<ItemCellsIcon>();
+            itemCells.AddRange(itemCellsIcons);
+            itemCells.AddRange(equipmentIcons.Where(i => i.Item != null));
+            return itemCells;
+        }
+    }
     ItemCellsIcon GetNear(ItemCellsIcon itemCellsIcon, Vector2 dir) => GetNear(itemCellsIcon.PosX, itemCellsIcon.PosY, dir);
     ItemCellsIcon GetNear(int curX, int curY, Vector2 dir)
     {
-        if (itemCellsIcons.Count == 1)
-            return itemCellsIcons.FirstOrDefault();
+        List<ItemCellsIcon> icons = AllItemIcons;
+        if (icons.Count == 1)
+            return icons.FirstOrDefault();
         ItemCellsIcon near = null;
         dir.x += curX;
         dir.y += curY;
         float distance = 0;
         float minDistance = 0;
-        foreach (var icon in itemCellsIcons)
+        foreach (var icon in icons)
         {
             if (icon == SelectedItem)
                 continue;

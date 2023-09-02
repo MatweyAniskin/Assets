@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -25,6 +26,7 @@ public class Inventory : MonoBehaviour
     {
 
     }
+    public InventoryItem GetEquipmqment(EquipmentTypes.Type type) => inventoryEquipmentItems.FirstOrDefault(i => i.Equipment == type);
     public bool TakeItem(Drop drop) => TakeItem(drop.GetItem());
     public bool TakeItem(Item item)
     {        

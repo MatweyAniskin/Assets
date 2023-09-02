@@ -7,20 +7,17 @@ public class ItemEquipmentIcon : ItemCellsIcon
     [SerializeField] GameObject preview;
     [SerializeField] EquipmentTypes.Type equipmentType;
     public override void SetItem(InventoryItem item, float scale)
-    {
-        preview.SetActive(!(item is null));
+    {       
         this.item = item;
-        if (item is null)
-        {
-            preview.SetActive(false);
-            SetActiveIcon(false);
-        }
-        else
+        if (item.Item is null)
         {
             preview.SetActive(true);
-            SetActiveIcon(true);
-            SetIcon(item.Item.Icon);
-        }
+            SetActiveIcon(false);
+            return;
+        }        
+        preview.SetActive(false);
+        SetActiveIcon(true);
+        SetIcon(item.Item.Icon);
         Vector2 size = new Vector2(item.ScaleX * scale, item.ScaleY * scale);
         SetSize(size);        
         SetRotateSprite(item.Rotate);

@@ -21,4 +21,8 @@ public class InventoryItem
     public int ScaleX => item.XScale;
     public int ScaleY => item.YScale;
     public int Rotate => item.Rotate;
+    public override string ToString()
+    {
+        return item.ToString();
+    }
 }
