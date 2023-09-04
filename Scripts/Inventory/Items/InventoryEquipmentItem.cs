@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryEquipmentItem : InventoryItem
 {
     [SerializeField] EquipmentTypes.Type equipment;
-    public InventoryEquipmentItem(Item item, int x, int y) : base(item, x, y)
+    public InventoryEquipmentItem(Item item) : base(item, 1)
     {
     }
     public Item SetItem(Item item) => this.item = item;

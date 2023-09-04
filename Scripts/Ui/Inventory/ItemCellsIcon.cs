@@ -13,19 +13,18 @@ public class ItemCellsIcon : IconWithShadow
     
     protected InventoryItem item;
 
-    public Item Item => item.Item;
-    public int PosX => item.PosX;
-    public int PosY => item.PosY;
-    public Vector2 Pos => new Vector2(PosX, PosY);
-    public virtual void SetItem(InventoryItem item, float scale)
+    public Item Item => item.Item;    
+    public Vector2 Pos => rect.anchoredPosition;
+    public virtual void SetItem(InventoryItem item, Vector2 position)
     {
         this.item = item;
-        SetIcon(item.Item.Icon);
-        Vector2 pos = new Vector2(item.PosX * scale, -item.PosY * scale);
-        Vector2 size = new Vector2(item.ScaleX * scale, item.ScaleY * scale);
-        SetSize(size);
-        SetPosition(pos);
-        SetRotateSprite(item.Rotate);
+        SetIcon(item.Item.Icon);        
+        SetPosition(position);        
+    }
+    public virtual void SetItem(InventoryItem item)
+    {
+        this.item = item;
+        SetIcon(item.Item.Icon);        
     }
     public void OnSelected()
     {
