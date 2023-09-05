@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] float overloadWeight = 0;
     float curWeight = 0;
 
-    List<InventoryItem> inventoryItems = new List<InventoryItem>();
+    [SerializeField] List<InventoryItem> inventoryItems = new List<InventoryItem>();
 
     public delegate void ChangeWeightDelegate(float weight);
     public event ChangeWeightDelegate OnChangeWeight;

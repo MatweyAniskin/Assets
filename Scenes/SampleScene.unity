@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
+  m_IndirectSpecularColor: {r: 0.57034767, g: 0.6432593, b: 0.7327232, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -242,6 +242,7 @@ MonoBehaviour:
   renderer: {fileID: 40039196}
   item: {fileID: 11400000, guid: bc8a34011b962d044bb7477973a78d9c, type: 2}
   rigidbody: {fileID: 40039193}
+  count: 1
 --- !u!212 &40039196
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -852,11 +853,14 @@ MonoBehaviour:
   icon: {fileID: 138990593}
   rect: {fileID: 1666944218}
   shadowImage: {fileID: 483893555}
+  infoText: {fileID: 0}
   selectAnimationSpeed: 4
   selectRamp: {fileID: 276198931}
   standartScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 1.25, y: 1.25, z: 1.25}
   animationSpeed: 4
+  button: {fileID: 0}
+  eventTriggerForHighLight: {fileID: 0}
   preview: {fileID: 805479557}
   equipmentType: 4
 --- !u!1 &194926635
@@ -2216,11 +2220,14 @@ MonoBehaviour:
   icon: {fileID: 750662694}
   rect: {fileID: 1606692212}
   shadowImage: {fileID: 334308182}
+  infoText: {fileID: 0}
   selectAnimationSpeed: 4
   selectRamp: {fileID: 846237355}
   standartScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 1.25, y: 1.25, z: 1.25}
   animationSpeed: 4
+  button: {fileID: 0}
+  eventTriggerForHighLight: {fileID: 0}
   preview: {fileID: 1429675776}
   equipmentType: 5
 --- !u!1 &412976692
@@ -4830,11 +4837,14 @@ MonoBehaviour:
   icon: {fileID: 1874061763}
   rect: {fileID: 147518253}
   shadowImage: {fileID: 196504006}
+  infoText: {fileID: 0}
   selectAnimationSpeed: 4
   selectRamp: {fileID: 2072701439}
   standartScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 1.25, y: 1.25, z: 1.25}
   animationSpeed: 4
+  button: {fileID: 0}
+  eventTriggerForHighLight: {fileID: 0}
   preview: {fileID: 1960300177}
   equipmentType: 6
 --- !u!1 &547530007
@@ -5332,35 +5342,6 @@ MonoBehaviour:
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.695
-  m_Vertices:
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: -0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: -0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  m_Triangles: 030001000800020000000100030002000100050003000800040002000300050004000300070005000800060004000500070006000500010007000800000006000700010000000700
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -5681,11 +5662,14 @@ MonoBehaviour:
   icon: {fileID: 8442182835500488313}
   rect: {fileID: 760775751202981471}
   shadowImage: {fileID: 2189714088037482962}
+  infoText: {fileID: 0}
   selectAnimationSpeed: 4
   selectRamp: {fileID: 5816971778476399940}
   standartScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 1.25, y: 1.25, z: 1.25}
   animationSpeed: 4
+  button: {fileID: 0}
+  eventTriggerForHighLight: {fileID: 0}
   preview: {fileID: 592682511}
   equipmentType: 1
 --- !u!1 &653260035
@@ -6685,6 +6669,7 @@ MonoBehaviour:
   renderer: {fileID: 713931193}
   item: {fileID: 11400000, guid: bc8a34011b962d044bb7477973a78d9c, type: 2}
   rigidbody: {fileID: 713931190}
+  count: 1
 --- !u!212 &713931193
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6928,7 +6913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &721250365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7828,7 +7813,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 0}
+  m_AnchoredPosition: {x: 104, y: 0}
   m_SizeDelta: {x: 168.9474, y: 385.0487}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &831830935
@@ -8320,35 +8305,6 @@ MonoBehaviour:
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.695
-  m_Vertices:
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: -0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: -0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  m_Triangles: 030001000800020000000100030002000100050003000800040002000300050004000300070005000800060004000500070006000500010007000800000006000700010000000700
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -8541,6 +8497,7 @@ MonoBehaviour:
   renderer: {fileID: 889256633}
   item: {fileID: 11400000, guid: bc8a34011b962d044bb7477973a78d9c, type: 2}
   rigidbody: {fileID: 889256630}
+  count: 1
 --- !u!212 &889256633
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9363,6 +9320,7 @@ MonoBehaviour:
   renderer: {fileID: 1098742242}
   item: {fileID: 11400000, guid: bc8a34011b962d044bb7477973a78d9c, type: 2}
   rigidbody: {fileID: 1098742239}
+  count: 1
 --- !u!212 &1098742242
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9660,6 +9618,7 @@ MonoBehaviour:
   renderer: {fileID: 1160268046}
   item: {fileID: 11400000, guid: bc8a34011b962d044bb7477973a78d9c, type: 2}
   rigidbody: {fileID: 1160268048}
+  count: 1
 --- !u!212 &1160268046
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9938,11 +9897,14 @@ MonoBehaviour:
   icon: {fileID: 300159922}
   rect: {fileID: 1026106327}
   shadowImage: {fileID: 2072293880}
+  infoText: {fileID: 0}
   selectAnimationSpeed: 4
   selectRamp: {fileID: 622061730}
   standartScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 1.25, y: 1.25, z: 1.25}
   animationSpeed: 4
+  button: {fileID: 0}
+  eventTriggerForHighLight: {fileID: 0}
   preview: {fileID: 724979767}
   equipmentType: 0
 --- !u!1 &1365116285
@@ -10574,6 +10536,7 @@ MonoBehaviour:
   renderer: {fileID: 1476412055}
   item: {fileID: 11400000, guid: bc8a34011b962d044bb7477973a78d9c, type: 2}
   rigidbody: {fileID: 1476412052}
+  count: 1
 --- !u!212 &1476412055
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11157,11 +11120,14 @@ MonoBehaviour:
   icon: {fileID: 1794370582}
   rect: {fileID: 51587554}
   shadowImage: {fileID: 1097237316}
+  infoText: {fileID: 0}
   selectAnimationSpeed: 4
   selectRamp: {fileID: 933495026}
   standartScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 1.25, y: 1.25, z: 1.25}
   animationSpeed: 4
+  button: {fileID: 0}
+  eventTriggerForHighLight: {fileID: 0}
   preview: {fileID: 1730558750}
   equipmentType: 3
 --- !u!1 &1606692211
@@ -11915,11 +11881,14 @@ MonoBehaviour:
   icon: {fileID: 724746110}
   rect: {fileID: 317621257}
   shadowImage: {fileID: 862966482}
+  infoText: {fileID: 0}
   selectAnimationSpeed: 4
   selectRamp: {fileID: 248132892}
   standartScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 1.25, y: 1.25, z: 1.25}
   animationSpeed: 4
+  button: {fileID: 0}
+  eventTriggerForHighLight: {fileID: 0}
   preview: {fileID: 1883123337}
   equipmentType: 2
 --- !u!1 &1749124111
@@ -12930,35 +12899,6 @@ MonoBehaviour:
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.695
-  m_Vertices:
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: -0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: -0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  m_Triangles: 030001000800020000000100030002000100050003000800040002000300050004000300070005000800060004000500070006000500010007000800000006000700010000000700
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -13087,6 +13027,7 @@ MonoBehaviour:
   cell: {fileID: 6170501753616302882, guid: f147280e2854b0547b266d34db1a3be6, type: 3}
   cellField: {fileID: 809911296}
   cellsIcon: {fileID: 4723653916294437011, guid: 91f6836fe61b6ff4cb43fc05faab05e8, type: 3}
+  itemsListDirection: {x: 0, y: -1}
   equipmentIcons:
   - {fileID: 643912335}
   - {fileID: 1734051530}
@@ -19431,39 +19372,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbccc70cc8ae6c540931bf8b54361995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellHeight: 8
-  cellWidth: 4
-  secretHeight: 3
-  secretWidth: 4
+  maxWeightBase: 20
   inventoryEquipmentItems:
   - item: {fileID: 0}
-    x: -1
-    y: 0
+    count: 0
     equipment: 0
   - item: {fileID: 0}
-    x: -2
-    y: -2
+    count: 0
     equipment: 2
   - item: {fileID: 0}
-    x: -2
-    y: -1
+    count: 0
     equipment: 6
   - item: {fileID: 0}
-    x: -2
-    y: 0
+    count: 0
     equipment: 1
   - item: {fileID: 0}
-    x: -2
-    y: 1
+    count: 0
     equipment: 4
   - item: {fileID: 0}
-    x: -3
-    y: 0
+    count: 0
     equipment: 3
   - item: {fileID: 0}
-    x: -3
-    y: 1
+    count: 0
     equipment: 5
+  maxAddWeight: 0
+  overloadWeight: 0
+  inventoryItems: []
 --- !u!50 &919132149277857545
 Rigidbody2D:
   serializedVersion: 4
@@ -19522,7 +19456,7 @@ CapsuleCollider2D:
   m_Direction: 0
 --- !u!95 &919132149277857549
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -19539,7 +19473,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &919132149277857550
 MonoBehaviour:
   m_ObjectHideFlags: 0
