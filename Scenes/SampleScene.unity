@@ -18443,6 +18443,7 @@ MonoBehaviour:
     - {fileID: 3715852066115250493, guid: 6ddefbd795e15d8469c98b0dcd1a3cde, type: 3}
     - {fileID: 3715852066115250493, guid: 6ddefbd795e15d8469c98b0dcd1a3cde, type: 3}
     - {fileID: 3715852066115250493, guid: 6ddefbd795e15d8469c98b0dcd1a3cde, type: 3}
+    curFrame: 0
   - name: Walk
     sprites:
     - {fileID: 3715852066115250493, guid: 6ddefbd795e15d8469c98b0dcd1a3cde, type: 3}
@@ -18453,9 +18454,12 @@ MonoBehaviour:
     - {fileID: 4478746786120225013, guid: 6ddefbd795e15d8469c98b0dcd1a3cde, type: 3}
     - {fileID: 6223392769276919516, guid: 6ddefbd795e15d8469c98b0dcd1a3cde, type: 3}
     - {fileID: -7543186598623723199, guid: 6ddefbd795e15d8469c98b0dcd1a3cde, type: 3}
+    curFrame: 0
   secondPerFrame: 0.1
   curAnimation: 0
+  secondBetweenFrames: 0
   moveController: {fileID: 919132149277857547}
+  dir: {x: 0, y: 0}
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
@@ -18685,7 +18689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &919132149277857544
 MonoBehaviour:
   m_ObjectHideFlags: 0
