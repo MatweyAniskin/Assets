@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FloorSimpleType", menuName = "BlockTypes/FloorSimpleTypes")]
 public class FloorSimpleType : BlockType
 {
-    [SerializeField] Block block;
-    public override Block GetBlock(int type, int angle) => block;    
+    [SerializeField] SimpleBlock block;
+    public override SimpleBlock GetBlock(int type, int angle) => block;    
 }

@@ -1,54 +1,31 @@
 using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ItemCellsIcon : IconWithShadow
 {
-    [SerializeField] Text infoText;
     [SerializeField] float selectAnimationSpeed = 4;
     [SerializeField] GameObject selectRamp;
     [SerializeField] Vector3 standartScale = Vector3.one;
     [SerializeField] Vector3 maxScale = new Vector3(1.25f, 1.25f, 1.25f);
     [SerializeField] float animationSpeed = 4;
-    [SerializeField] Button button;
-    [SerializeField] EventTrigger eventTriggerForHighLight;
-
+    
     protected InventoryItem item;
-    public Item Item => item.Item;
-    public Vector2 Pos => rect.anchoredPosition;
 
-    private void Start()
-    {
-        EventController.AddEvent(ref button, Click);
-        EventController.AddEvent(ref eventTriggerForHighLight, EventTriggerType.PointerEnter, HighlightStart);
-        EventController.AddEvent(ref eventTriggerForHighLight, EventTriggerType.PointerExit, HighlightEnd);
-    }    
-    void Click()
-    {
-        Debug.Log("Click");
-    }
-    void HighlightStart()
-    {
-        selectRamp.SetActive(true);
-        StartCoroutine(SelectAnimation());
-    }
-    void HighlightEnd()
-    {
-        selectRamp.SetActive(false);
-    }
-    public virtual void SetItem(InventoryItem item, Vector2 position)
-    {
-        SetItem(item);   
-        SetPosition(position);
-    }
-    public virtual void SetItem(InventoryItem item)
+    public Item Item => item.Item;
+    public int PosX => item.PosX;
+    public int PosY => item.PosY;
+    public Vector2 Pos => new Vector2(PosX, PosY);
+    public virtual void SetItem(InventoryItem item, float scale)
     {
         this.item = item;
-        infoText.color = item.Item.RarityColor;
-        infoText.text = $"{item.Item}: {item.Count}";
-        SetIcon(item.Item.Icon);        
+        SetIcon(item.Item.Icon);
+        Vector2 pos = new Vector2(item.PosX * scale, -item.PosY * scale);
+        Vector2 size = new Vector2(item.ScaleX * scale, item.ScaleY * scale);
+        SetSize(size);
+        SetPosition(pos);
+        SetRotateSprite(item.Rotate);
     }
     public void OnSelected()
     {
@@ -63,7 +40,7 @@ public class ItemCellsIcon : IconWithShadow
     {
         float index = 0;
         Transform rampTransform = selectRamp.transform;
-        while (index < 1 && selectRamp.activeSelf)
+        while (index < 1)
         {
             index += Time.deltaTime * animationSpeed;
             rampTransform.localScale = Vector3.Lerp(maxScale, standartScale, index);

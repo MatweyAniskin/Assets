@@ -61,7 +61,7 @@ public class ColliderCell
         this.leftBreak = false;
     }
 
-    public static ColliderCell operator +(ColliderCell a, ColliderCell b)
+  /*  public static ColliderCell operator +(ColliderCell a, ColliderCell b)
     {
         bool upBreak = a.upBreak || b.upBreak;
         bool rightBreak = a.rightBreak || b.rightBreak;
@@ -76,5 +76,5 @@ public class ColliderCell
         bool downBreak = a.downBreak || b.Collider.downBreak;
         bool leftBreak = a.leftBreak || b.Collider.leftBreak;
         return new ColliderCell(upBreak, rightBreak, downBreak, leftBreak);
-    }
+    }*/
 }

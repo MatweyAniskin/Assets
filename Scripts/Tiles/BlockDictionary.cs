@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BlockDictionary : MonoBehaviour
 {
-    [SerializeField] Block[] blocks;
+    [SerializeField] SimpleBlock[] blocks;
 
-    static Dictionary<string, Block> blockDictionary;
-    public delegate Block GetDictionary(string name);
+    static Dictionary<string, SimpleBlock> blockDictionary;
+    public delegate SimpleBlock GetDictionary(string name);
     public static GetDictionary Get;
     private void Awake()
     {
         Get += GetBlock;
-        blockDictionary = new Dictionary<string, Block>();
+        blockDictionary = new Dictionary<string, SimpleBlock>();
         foreach (var i in blocks)
         {
             blockDictionary.Add(i.name, i);
@@ -22,7 +22,7 @@ public class BlockDictionary : MonoBehaviour
     {
         Get -= GetBlock;
     }
-    Block GetBlock(string name)
+    SimpleBlock GetBlock(string name)
     {
         try
         {

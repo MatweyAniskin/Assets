@@ -6,8 +6,7 @@ public class Drop : UsingObject
 {    
     [SerializeField] protected SpriteRenderer renderer;
     [SerializeField] protected Item item;
-    [SerializeField] Rigidbody2D rigidbody;
-    [SerializeField] [Range(1,1000)] int count = 1;
+    [SerializeField] Rigidbody2D rigidbody;   
     public delegate void ViewDrop(Drop drop);
     public static event ViewDrop OnViewDrop;
     public static event ViewDrop OnEndViewDrop;
@@ -19,7 +18,7 @@ public class Drop : UsingObject
 
     }
     public Item GetItem() => item;
-    public int Count => count;
+
     public void SetItem(Item item)
     {
         this.item = item;
@@ -49,7 +48,7 @@ public class Drop : UsingObject
     public override void UseObject()
     {
         Inventory inventory = PlayerObject.GetComponent<Inventory>();        
-        if (inventory.AddItem(this))
+        if (inventory.TakeItem(this))
         {
             OnEndViewDrop?.Invoke(this);
             Destroy(gameObject);

@@ -8,15 +8,15 @@ public class MatrixLoader : MonoBehaviour
 {
     [SerializeField] TextAsset defaultDocument;
 
-    public Block[,,] Load() => Load(defaultDocument.text);
-    public Block[,,] Load(string xml)
+    public SimpleBlock[,,] Load() => Load(defaultDocument.text);
+    public SimpleBlock[,,] Load(string xml)
     {
-        Block[,,] blocks;
+        SimpleBlock[,,] blocks;
         int scale = 0;
         XmlDocument document = new XmlDocument();
         document.LoadXml(defaultDocument.text);
         scale = Convert.ToInt32(document.GetElementsByTagName("Scale")[0].InnerText);
-        blocks = new Block[scale, scale,scale];
+        blocks = new SimpleBlock[scale, scale,scale];
         int x,y,z;
         foreach (XmlElement i in document.GetElementsByTagName("Block"))
         {

@@ -6,23 +6,19 @@ using UnityEngine;
 public class InventoryItem
 {
     [SerializeField] protected Item item;
-    [SerializeField] int count = 0;
+    [SerializeField] int x = 0;
+    [SerializeField] int y = 0;
 
-    public InventoryItem(Item item, int count)
+    public InventoryItem(Item item, int x, int y)
     {
         this.item = item;
-        this.count = count;
+        this.x = x;
+        this.y = y;
     }
-    public InventoryItem(Item item)
-    {
-        this.item = item;        
-    }
-    public void AddCount(int count) => this.count += count;
-    public void RemoveCount(int count) => this.count -= count;
     public Item Item => item;
-    public int Count => count;
-    public override string ToString()
-    {
-        return item.ToString();
-    }
+    public int PosX => x;
+    public int PosY => y;
+    public int ScaleX => item.XScale;
+    public int ScaleY => item.YScale;
+    public int Rotate => item.Rotate;
 }

@@ -10,7 +10,6 @@ public abstract class Item : ScriptableObject
     [SerializeField] int rotateIcon = -30;
     [SerializeField] RarityStatus rarityStatus;
     [SerializeField] EquipmentTypes.Type equipmentType;
-    [SerializeField] float weight = 1;
     public abstract string Description
     {
         get;
@@ -22,7 +21,6 @@ public abstract class Item : ScriptableObject
     public int YScale => cellSize.y;
     public Vector2 Scale => cellSize;
     public int Rotate => rotateIcon;
-    public float Weight => weight;
     public EquipmentTypes.Type ItemType => equipmentType;
     public override string ToString()
     {

@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    static List<AnimationBehaviour> animationBehaviours = new List<AnimationBehaviour>();
-    public static void Add(AnimationBehaviour animationBehaviour) => animationBehaviours.Add(animationBehaviour);
-    public static AnimationBehaviour GetBehaviour(int index) => animationBehaviours[index];
-    private void Awake()
+    [SerializeField] Animator animator;
+    [SerializeField] ScriptableAnimation[] scriptableAnimation;
+    [Tooltip("Seconds between animation frame")][SerializeField] float secondPerFrame = 0.1f;
+    [Tooltip("Current animation index")][SerializeField] int curAnimation = 0;
+
+    float secondBetweenFrames = 0;    
+    public bool FlipSprite
     {
-        animationBehaviours.Clear();
+        set => transform.rotation = Quaternion.Euler(0,value? 180 : 0,0);
+        //get => animator.flipX;
     }
+    public void SetAnimation(string name, bool value) => animator.SetBool(name, value);
 }

@@ -9,7 +9,11 @@ public class Tile : MonoBehaviour
     MeshRenderer renderer;
     MeshFilter filter;
     MeshCollider collider;
-    public void SetBlocks(Block[,,] blocks)
+    Vector2Int tileIndex;
+    public int X => tileIndex.x;
+    public int Y => tileIndex.y;
+    public void SetTileIndex(int x, int y) => tileIndex = new Vector2Int(x, y);
+    public void SetBlocks(SimpleBlock[,,] blocks)
     {
         filter = gameObject.AddComponent<MeshFilter>();
         renderer = gameObject.AddComponent<MeshRenderer>();
@@ -33,43 +37,5 @@ public class Tile : MonoBehaviour
         filter.mesh = mesh;
         collider.sharedMesh = mesh;
     }
-    /* void Instantiate()
-     {
-         filter = gameObject.AddComponent<MeshFilter>();
-         renderer = gameObject.AddComponent<MeshRenderer>();
-         renderer.material = material;
-         List<Vector3> vertices = new List<Vector3>();
-         List<int> triangles = new List<int>();
-         List<Vector2> uv = new List<Vector2>();
-
-         Vector3[] tempVertices;
-         int[] tempTriangles;
-         Vector2[] tempUvs;        
-         Mesh mesh = new Mesh();        
-         for (int x = 0; x < 8; x++)
-         {
-             for (int y = 0; y < 8; y++)
-             {
-                 tempVertices = block.Vertices;
-                 for (int i = 0; i < tempVertices.Length; i++)
-                 {
-                     tempVertices[i].x += x;
-                     tempVertices[i].y += y;
-                     vertices.Add(tempVertices[i]);
-                 }
-                 tempTriangles = block.Triangles;
-                 for (int i = 0; i < tempVertices.Length; i++)
-                 {
-                     tempTriangles[i] += 
-                     vertices.Add(tempVertices[i]);
-                 }                
-                 triangles.AddRange(block.Triangles);
-                 uv.AddRange(block.Uv);
-             }
-         }
-         mesh.vertices = vertices.ToArray();
-         mesh.triangles = triangles.ToArray();
-         mesh.uv = uv.ToArray();
-         filter.mesh = mesh;
-     }*/
+    public void Destroy() => Destroy(gameObject);
 }

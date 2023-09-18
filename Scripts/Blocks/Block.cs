@@ -1,21 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public abstract class Block : ScriptableObject
-{    
-    [SerializeField] protected int rotation;
-    [SerializeField] protected BlockMaterial material;
-    [SerializeField] ColliderCell collider;
-    protected static Vector2 UvMap(Vector2 index, Vector2 curPoint)
+public class Block : SimpleBlock
+{
+    float scale = 1;
+    public override void Instantiate(Transform transform, int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles)
     {
-        int side = 16;
-        float sideLarge = 1f / side;
-        curPoint *= sideLarge;        
-        curPoint += new Vector2(index.x * sideLarge, index.y * sideLarge);        
-        return curPoint;                
-    }    
-    public abstract void Instantiate(Transform transform, int x, int y, int z, ref List<CombineInstance> combines);
+        
+    }
+    void DrawFront(ref List<Vector3> vertex, ref List<int> triangles)
+    {
+        vertex.Add(new Vector3(0, 0, 1) * scale);
+        vertex.Add(new Vector3(0, 1, 1) * scale);
+        vertex.Add(new Vector3(1, 0, 1) * scale);
+        vertex.Add(new Vector3(1, 1, 1) * scale);
 
-    public ColliderCell Collider => collider;   
+        triangles.Add(vertex.Count - 2);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 4);
+
+        triangles.Add(vertex.Count - 1);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 2);
+    }
+    void DrawRight(ref List<Vector3> vertex, ref List<int> triangles)
+    {
+        vertex.Add(new Vector3(1, 0, 0) * scale);
+        vertex.Add(new Vector3(1, 1, 0) * scale);
+        vertex.Add(new Vector3(1, 0, 1) * scale);
+        vertex.Add(new Vector3(1, 1, 1) * scale);
+
+        triangles.Add(vertex.Count - 4);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 2);
+
+        triangles.Add(vertex.Count - 2);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 1);
+    }
+    void DrawBack(ref List<Vector3> vertex, ref List<int> triangles)
+    {
+        vertex.Add(new Vector3(0, 0, 0) * scale);
+        vertex.Add(new Vector3(0, 1, 0) * scale);
+        vertex.Add(new Vector3(1, 0, 0) * scale);
+        vertex.Add(new Vector3(1, 1, 0) * scale);
+
+        triangles.Add(vertex.Count - 4);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 2);
+
+        triangles.Add(vertex.Count - 2);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 1);
+    }
+    void DrawLeft(ref List<Vector3> vertex, ref List<int> triangles)
+    {
+        vertex.Add(new Vector3(0, 0, 0) * scale);
+        vertex.Add(new Vector3(0, 1, 0) * scale);
+        vertex.Add(new Vector3(0, 0, 1) * scale);
+        vertex.Add(new Vector3(0, 1, 1) * scale);
+
+        triangles.Add(vertex.Count - 2);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 4);
+
+        triangles.Add(vertex.Count - 1);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 2);
+    }
+    void DrawTop(ref List<Vector3> vertex, ref List<int> triangles)
+    {
+        vertex.Add(new Vector3(0, 1, 0) * scale);
+        vertex.Add(new Vector3(1, 1, 0) * scale);
+        vertex.Add(new Vector3(0, 1, 1) * scale);
+        vertex.Add(new Vector3(1, 1, 1) * scale);
+
+        triangles.Add(vertex.Count - 2);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 4);
+
+        triangles.Add(vertex.Count - 1);
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 2);
+    }
 }

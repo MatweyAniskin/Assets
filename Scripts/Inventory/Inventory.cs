@@ -1,90 +1,90 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] float maxWeightBase = 20;    
+    [SerializeField] int cellHeight = 8;
+    [SerializeField] int cellWidth = 4;
+    [SerializeField] int secretHeight = 3;
+    [SerializeField] int secretWidth = 4;
     [SerializeField] InventoryEquipmentItem[] inventoryEquipmentItems;
-    [SerializeField] float maxAddWeight = 0;
-    [SerializeField] float overloadWeight = 0;
-    float curWeight = 0;
 
-    [SerializeField] List<InventoryItem> inventoryItems = new List<InventoryItem>();
-
-    public delegate void ChangeWeightDelegate(float weight);
-    public event ChangeWeightDelegate OnChangeWeight;
-    public event ChangeWeightDelegate OnChangeMaxWeight;
-    public delegate void ChangeInventoryItems();
-    public event ChangeInventoryItems OnInventoryItemsChange;
-    float Weight
-    {
-        get => curWeight;
-        set
-        {
-            curWeight = value;
-            OnChangeWeight?.Invoke(curWeight);
-        }
-    }
-    float MaxWeight
-    {
-        get => maxWeightBase + maxAddWeight;
-        set
-        {
-            maxAddWeight = value;
-            OnChangeMaxWeight?.Invoke(MaxWeight);
-        }
-    }    
+    List<InventoryItem> inventoryItems = new List<InventoryItem>();    
+    bool[,] blockedCells;
+    public int Height => cellHeight;
+    public int Width => cellWidth;
+    public int SecretHeight => secretHeight;
+    public int SecretWidth => secretWidth;
 
     private void Awake()
     {
-        inventoryItems.Clear();        
+        inventoryItems.Clear();
+        blockedCells = new bool[cellWidth, cellHeight];
     }
     private void OnDestroy()
     {
 
     }
-    public InventoryItem GetEquipmqment(EquipmentTypes.Type type) => inventoryEquipmentItems.FirstOrDefault(i => i.Equipment == type);
-    public bool AddItem(Drop drop) => AddItem(drop.GetItem(),drop.Count);
-    public bool AddItem(Item item, int count)
-    {
-        if (maxWeightBase + maxAddWeight + overloadWeight - Weight < item.Weight*count)
-            return false;
-        SetItem(item,count);
-        return true;
-    }    
-    public InventoryItem[] Items => inventoryItems.ToArray();
-
-    InventoryItem GetInventoryItem(Item item)
-    {
-        InventoryItem inventoryItem = inventoryItems.Where(i => i.Item == item).FirstOrDefault();
-        if (inventoryItem == null)
-        {
-            inventoryItem = new InventoryItem(item);
-            inventoryItems.Add(inventoryItem);
-            return inventoryItem;
-        }
-        return inventoryItem;
-    }
-    public void SetItem(Item item, int count)
-    {
-        GetInventoryItem(item).AddCount(count);
-        Weight += item.Weight * count;
-        OnInventoryItemsChange?.Invoke();
-    }
-    public void RemoveItem(Item item, int count)
-    {
-        InventoryItem itemInventory = GetInventoryItem(item);
-        if (itemInventory.Count <= count)
-            inventoryItems.Remove(itemInventory);
-        else
-            itemInventory.RemoveCount(count);
-        Weight -= item.Weight * count;
-        OnInventoryItemsChange?.Invoke();
-    }
-    public void RemoveItem(Item item)
+    public bool TakeItem(Drop drop) => TakeItem(drop.GetItem());
+    public bool TakeItem(Item item)
     {        
-        inventoryItems.Remove(GetInventoryItem(item));        
-        OnInventoryItemsChange?.Invoke();
+        int xSize = item.XScale;
+        int ySize = item.YScale;
+        if (FastSetInEquipment(item))
+            return true;
+        for (int x = 0; x <= cellWidth - xSize; x++)
+            for (int y = 0; y <= cellHeight - ySize; y++)
+            {
+                if (CheckCells(x, y, xSize, ySize))
+                {                    
+                    SetItem(item, x, y);
+                    return true;
+                }
+
+            }
+
+        return false;
+    }
+    public bool FastSetInEquipment(Item item)
+    {
+        foreach (var i in inventoryEquipmentItems)
+        {
+            if (i.Item is null && item.ItemType == i.Equipment)
+            {
+                i.SetItem(item);
+                return true;
+            }
+        }
+        return false;
+    }
+    public InventoryItem[] Items => inventoryItems.ToArray();
+    public void SetItem(Item item, int x, int y)
+    {
+        inventoryItems.Add(new InventoryItem(item, x, y));
+        BlockCells(x, y, item.XScale, item.YScale);
+    }
+    public void ReSetItem(InventoryItem item, int x, int y)
+    {
+        inventoryItems.Remove(item);
+        UnBlockCells(x, y, item.Item.XScale, item.Item.YScale);
+    }
+    bool CheckCells(int x, int y, int scaleX, int scaleY)
+    {
+        for (int i = x; i < x + scaleX; i++)
+            for (int j = y; j < y + scaleY; j++)
+            {
+                if (blockedCells[i, j])
+                    return false;
+            }
+        return true;
+    }
+    public bool GetBlock(int x, int y) => blockedCells[x, y];
+    void BlockCells(int x, int y, int scaleX, int scaleY) => BlockCells(x, y, scaleX, scaleY, true);
+    void UnBlockCells(int x, int y, int scaleX, int scaleY) => BlockCells(x, y, scaleX, scaleY, false);
+    void BlockCells(int x, int y, int scaleX, int scaleY, bool value)
+    {        
+        for (int i = x; i < x + scaleX; i++)        
+            for (int j = y; j < y + scaleY; j++)            
+                blockedCells[i, j] = value;                                     
     }
 }
