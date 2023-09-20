@@ -23,7 +23,7 @@ public class MatrixLoader : MonoBehaviour
            x = Convert.ToInt32(i.GetAttribute("x"));
            y = Convert.ToInt32(i.GetAttribute("y"));
            z = Convert.ToInt32(i.GetAttribute("z"));
-            blocks[x, y,z] = BlockDictionary.Get(i.InnerText.Trim());
+            blocks[x, y,z] = BlockRepository.Get(i.InnerText.Trim());
         }
 
         return blocks;

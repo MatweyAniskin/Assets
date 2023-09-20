@@ -5,11 +5,16 @@ using UnityEngine.UIElements;
 
 public class Block : SimpleBlock
 {
-    float scale = 1;
-    public override void Instantiate(Transform transform, int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles)
+    
+    public override void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, SimpleBlock[,,] matrix)
     {
-        
+        if (IsNotBlocks(x,y,z+1,matrix)) DrawFront(ref vertex, ref triangles);
+        if (IsNotBlocks(x, y, z - 1, matrix)) DrawBack(ref vertex, ref triangles);
+        if (IsNotBlocks(x+1, y, z, matrix)) DrawRight(ref vertex, ref triangles);
+        if (IsNotBlocks(x - 1, y, z, matrix)) DrawLeft(ref vertex, ref triangles);
+        if (IsNotBlocks(x, y + 1, z, matrix)) DrawTop(ref vertex, ref triangles);        
     }
+   
     void DrawFront(ref List<Vector3> vertex, ref List<int> triangles)
     {
         vertex.Add(new Vector3(0, 0, 1) * scale);

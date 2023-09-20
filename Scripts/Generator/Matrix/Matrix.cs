@@ -42,7 +42,7 @@ public class Matrix : MonoBehaviour
                 }
             }
             Tile tempTile = Instantiate(tile, new Vector3(x * 8, y * 8, 0), Quaternion.Euler(Vector3.zero), transform) as Tile;
-            tempTile.SetBlocks(tempBlocks);
+            //tempTile.SetBlocks(tempBlocks);
             return tempTile;
         }
         catch
