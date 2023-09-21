@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TileCacheRepository : MonoBehaviour
-{
-    static Dictionary<string, TileCache> tileCacheDictionary = new Dictionary<string, TileCache>();        
+{    
+    static Dictionary<string, TileCache> tileCacheDictionary = new Dictionary<string, TileCache>();
+   
     private void OnDestroy()
     {
         tileCacheDictionary.Clear();
@@ -13,6 +14,7 @@ public class TileCacheRepository : MonoBehaviour
     {
         TileCache tileCache = new TileCache(blocks);
         tileCacheDictionary.Add(name, tileCache); //for rotation swap x and y + length - cord
+        Debug.Log($"Set tile {name}");
     }
     public static TileCache GetTile(string name)
     {
@@ -22,7 +24,7 @@ public class TileCacheRepository : MonoBehaviour
         }
         catch
         {
-            Debug.LogError($"Not found block {name}");
+            Debug.LogError($"Not found tile {name}");
             return null;
         }
     }

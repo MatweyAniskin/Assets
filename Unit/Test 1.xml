@@ -1,0 +1,24 @@
+﻿
+	<Tiles>
+		<Tile Name = "Test">
+			<Block X = "0" Y = "0" Z="0">
+				Ground
+			</Block>
+			<Block X = "1" Y = "0" Z="0">
+				Ground
+			</Block>
+			<Block X = "2" Y = "0" Z="0">
+				Ground
+			</Block>
+			<Block X = "2" Y = "0" Z="1">
+				Ground
+			</Block>
+			<Block X = "2" Y = "0" Z="2">
+				Ground
+			</Block>
+			<Block X = "2" Y = "1" Z="2">
+				Ground
+			</Block>
+		</Tile>
+	</Tiles>
+

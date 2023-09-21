@@ -3,18 +3,33 @@ using UnityEngine;
 
 public abstract class SimpleBlock : ScriptableObject
 {    
-    [SerializeField] protected int rotation;
+    [SerializeField] protected Vector2Int textureCoordinate;
     [SerializeField] protected BlockMaterial material;
-    protected float scale = 1;
-    protected static Vector2 UvMap(Vector2 index, Vector2 curPoint)
+    public static float BlockScale {get; set; } =1;
+    public static float UvSideCountTextures 
+    { 
+        get
+        {
+            return uvSideCountTextures;
+        } 
+        set
+        {
+            uvSideCountTextures = value;
+            uvScale = 1f / uvSideCountTextures;
+        }
+    }
+
+    protected static float uvSideCountTextures = 1;    
+    protected static float uvScale = 1f;
+
+    protected void GenerateUvMap(ref List<Vector2> uvs)
     {
-        int side = 16;
-        float sideLarge = 1f / side;
-        curPoint *= sideLarge;        
-        curPoint += new Vector2(index.x * sideLarge, index.y * sideLarge);        
-        return curPoint;                
+        uvs.Add(new Vector2(textureCoordinate.x, textureCoordinate.y)*uvScale);
+        uvs.Add(new Vector2(textureCoordinate.x, textureCoordinate.y+1) * uvScale);
+        uvs.Add(new Vector2(textureCoordinate.x+1, textureCoordinate.y) * uvScale);
+        uvs.Add(new Vector2(textureCoordinate.x + 1, textureCoordinate.y+1) * uvScale);
     }    
-    public abstract void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, SimpleBlock[ , , ] matrix);
+    public abstract void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs, SimpleBlock[ , , ] matrix);
     protected bool IsNotBlocks(int x, int y, int z, SimpleBlock[ , , ] matrix)
     {
         try
@@ -26,4 +41,5 @@ public abstract class SimpleBlock : ScriptableObject
             return true;
         }
     }
+    protected Vector3 Offset(int x, int y, int z) => new Vector3(x, y, z) * BlockScale;
 }

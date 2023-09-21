@@ -12,6 +12,7 @@ public class TestRectangleDraw : MonoBehaviour
         Mesh mesh = new Mesh();
         
         List<Vector3> vertex = new List<Vector3>();
+        List<Vector2> uv = new List<Vector2>();
         List<int> triangles = new List<int>();
 
         //back
@@ -19,7 +20,12 @@ public class TestRectangleDraw : MonoBehaviour
         vertex.Add(new Vector3(0,1,0) * scale);
         vertex.Add(new Vector3(1, 0, 0) * scale);
         vertex.Add(new Vector3(1, 1, 0) * scale);
-        
+
+        uv.Add(new Vector2(0, 0));
+        uv.Add(new Vector2(0, 1));
+        uv.Add(new Vector2(1, 0));
+        uv.Add(new Vector2(1, 1));
+
         triangles.Add(vertex.Count - 4);
         triangles.Add(vertex.Count - 3);
         triangles.Add(vertex.Count - 2);
@@ -29,7 +35,7 @@ public class TestRectangleDraw : MonoBehaviour
         triangles.Add(vertex.Count - 1);
 
         //front
-        vertex.Add(new Vector3(0, 0, 1) * scale);
+        /*vertex.Add(new Vector3(0, 0, 1) * scale);
         vertex.Add(new Vector3(0, 1, 1) * scale);
         vertex.Add(new Vector3(1, 0, 1) * scale);
         vertex.Add(new Vector3(1, 1, 1) * scale);
@@ -82,12 +88,12 @@ public class TestRectangleDraw : MonoBehaviour
 
         triangles.Add(vertex.Count - 1);
         triangles.Add(vertex.Count - 3);
-        triangles.Add(vertex.Count - 2);
+        triangles.Add(vertex.Count - 2);*/
 
 
         mesh.vertices = vertex.ToArray();
         mesh.triangles = triangles.ToArray();
-        
+        mesh.uv = uv.ToArray();
         
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();

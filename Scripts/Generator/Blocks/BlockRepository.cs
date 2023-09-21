@@ -4,17 +4,13 @@ using System.Linq;
 using UnityEngine;
 
 public class BlockRepository : MonoBehaviour
-{
-    [SerializeField] List<SimpleBlock> blocks;
-    static Dictionary<string, SimpleBlock> blocksDictionary = new Dictionary<string, SimpleBlock>();    
-    private void Awake()
+{  
+    static Dictionary<string, SimpleBlock> blocksDictionary = new Dictionary<string, SimpleBlock>();
+
+    public static void Clear() => blocksDictionary.Clear();
+    public static void Set(SimpleBlock value)
     {
-        foreach (var i in blocks)
-            blocksDictionary.Add(i.name, i);      
-    }
-    private void OnDestroy()
-    {
-        blocksDictionary.Clear();
+        blocksDictionary.Add(value.name, value);
     }
     public static SimpleBlock Get(string name)
     {
@@ -27,5 +23,5 @@ public class BlockRepository : MonoBehaviour
             Debug.LogError($"Not found block {name}");
             return null;   
         }
-    }
+    }   
 }
