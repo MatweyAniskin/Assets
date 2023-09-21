@@ -24,17 +24,17 @@ public abstract class SimpleBlock : ScriptableObject
 
     protected void GenerateUvMap(ref List<Vector2> uvs)
     {
-        uvs.Add(new Vector2(textureCoordinate.x, textureCoordinate.y)*uvScale);
-        uvs.Add(new Vector2(textureCoordinate.x, textureCoordinate.y+1) * uvScale);
-        uvs.Add(new Vector2(textureCoordinate.x+1, textureCoordinate.y) * uvScale);
-        uvs.Add(new Vector2(textureCoordinate.x + 1, textureCoordinate.y+1) * uvScale);
+        uvs.Add(new Vector2(textureCoordinate.x, uvSideCountTextures- textureCoordinate.y)*uvScale);
+        uvs.Add(new Vector2(textureCoordinate.x, uvSideCountTextures - textureCoordinate.y-1) * uvScale);
+        uvs.Add(new Vector2(textureCoordinate.x+1, uvSideCountTextures - textureCoordinate.y) * uvScale);
+        uvs.Add(new Vector2(textureCoordinate.x + 1, uvSideCountTextures - textureCoordinate.y-1) * uvScale);
     }    
     public abstract void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs, SimpleBlock[ , , ] matrix);
     protected bool IsNotBlocks(int x, int y, int z, SimpleBlock[ , , ] matrix)
     {
         try
         {
-            return !(matrix[x,y,z].GetType() == typeof(Block));
+            return !(matrix[x,y,z].GetType() == typeof(Block));            
         }
         catch
         {

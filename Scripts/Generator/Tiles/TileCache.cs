@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class TileCache
 {
-    [SerializeField] string name;
+    [SerializeField] string title;
     [SerializeField] Mesh mesh;
     SimpleBlock[,,] matrix;
 
     public Mesh TileMesh => mesh;
     public SimpleBlock[,,] Blocks => matrix;
 
-    public TileCache(SimpleBlock[,,] matrix)
-    {        
+    public TileCache(string title, SimpleBlock[,,] matrix)
+    {
+        this.title = title;
         this.matrix = matrix;
         int count = matrix.GetLength(0);
         mesh = new Mesh();
@@ -33,8 +34,8 @@ public class TileCache
         mesh.RecalculateNormals();
     }
     
-    public override string ToString() => name;
+    public override string ToString() => title;
 
-    public static bool operator ==(TileCache a, string b) => a.name == b;
-    public static bool operator !=(TileCache a, string b) => a.name != b;
+    public static bool operator ==(TileCache a, string b) => a.title == b;
+    public static bool operator !=(TileCache a, string b) => a.title != b;
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BlockPropertyLoader : MonoBehaviour, IService
 {
-    [SerializeField] string serviceName;
     [SerializeField] int order;
+    [SerializeField] string serviceName;    
     [SerializeField] float blockScale = 1;
     [SerializeField] float textureCountPerSide = 1;
     public int Order { get => order; set => order = value; }

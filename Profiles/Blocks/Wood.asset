@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7481678d39e5394448ee15cc85ecbb3c, type: 3}
-  m_Name: Ground
+  m_Name: Wood
   m_EditorClassIdentifier: 
-  textureCoordinate: {x: 0, y: 0}
+  textureCoordinate: {x: 8, y: 0}
   material: {fileID: 0}

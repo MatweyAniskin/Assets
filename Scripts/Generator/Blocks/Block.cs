@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Block : SimpleBlock
 {    
     public override void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles,ref List<Vector2> uvs, SimpleBlock[,,] matrix)
-    {
+    {       
         if (IsNotBlocks(x,y,z+1,matrix)) DrawFront(x,y,z,ref vertex, ref triangles, ref uvs);
         if (IsNotBlocks(x, y, z - 1, matrix)) DrawBack(x, y, z, ref vertex, ref triangles, ref uvs);
         if (IsNotBlocks(x+1, y, z, matrix)) DrawRight(x, y, z, ref vertex, ref triangles, ref uvs);

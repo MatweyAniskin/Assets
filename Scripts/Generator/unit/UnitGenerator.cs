@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class UnitGenerator : MonoBehaviour
 {
-    [SerializeField] string tileName;
+    [SerializeField] int tileIndex;
     [SerializeField] Vector3 tilePostion;
     [SerializeField] Tile tilePrefab;
 
     private void OnEnable()
     {
-        TileCache tileCache = TileCacheRepository.GetTile(tileName);
+        TileCache tileCache = TileCacheRepository.GetTile(tileIndex);
         Tile tile = Instantiate(tilePrefab) as Tile;
         tile.SetBlocks(tileCache);
         tile.SetPosition(tilePostion);
