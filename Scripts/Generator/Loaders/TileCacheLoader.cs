@@ -27,7 +27,7 @@ public class TileCacheLoader : MonoBehaviour, IService
     public void StartWork()
     {
         xmlDocument.LoadXml(xmlFile.text);
-        tileElementQueue = new Queue<XmlElement>(xmlDocument.GetElementsByTagName("Tile").Cast<XmlElement>());
+        tileElementQueue = new Queue<XmlElement>(xmlDocument.GetElementsByTagName("Tile").Cast<XmlElement>());        
     }
 
     public bool Next()
