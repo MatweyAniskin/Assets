@@ -7,7 +7,7 @@ public class BlockPropertyLoader : MonoBehaviour, IService
     [SerializeField] int order;
     [SerializeField] string serviceName;    
     [SerializeField] float blockScale = 1;
-    [SerializeField] float textureCountPerSide = 1;
+    [SerializeField] float textureCountPerSide = 1;    
     public int Order { get => order; set => order = value; }
     public string Name { get => serviceName; set => serviceName = value; }
 

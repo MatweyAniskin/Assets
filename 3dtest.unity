@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9c2ee0259525f4cb656b8e7280cdae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileIndex: 1
+  tileIndex: 2
   tilePostion: {x: 0, y: 0, z: 0}
   tilePrefab: {fileID: 5123481963307340713, guid: 959f69f77d07e0346a3f36663ae415b4, type: 3}
 --- !u!4 &1306204265
@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 1533774070}
   - component: {fileID: 1533774069}
   - component: {fileID: 1533774068}
+  - component: {fileID: 1533774073}
   m_Layer: 0
   m_Name: Loader
   m_TagString: Untagged
@@ -565,6 +566,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1533774073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533774067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb91ca117e6bb459ae10da99cad31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 3
+  nameService: GenerationServices
+  height: 15
+  width: 15
 --- !u!1 &1570923863
 GameObject:
   m_ObjectHideFlags: 0
