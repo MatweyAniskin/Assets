@@ -5,16 +5,10 @@ using System.Linq;
 using System.Xml;
 using UnityEngine;
 
-public class TileCacheLoader : MonoBehaviour, IService
-{
-    [SerializeField] int order = 2;
-    [SerializeField] string nameService;
+public class TileCacheLoader : Loader
+{    
     [SerializeField] TextAsset xmlFile;
-    [SerializeField] int scale = 64;
-
-    public int Order => order;
-
-    public string Name => nameService;
+     
 
     XmlDocument xmlDocument = new XmlDocument();
     string tileName = string.Empty;
@@ -24,19 +18,19 @@ public class TileCacheLoader : MonoBehaviour, IService
     Queue<XmlElement> tileElementQueue;   
     int GetIntAttribute(string name, XmlElement xmlElement) => Convert.ToInt32(xmlElement.Attributes[name].InnerText);
 
-    public void StartWork()
+    public override void StartWork()
     {
         xmlDocument.LoadXml(xmlFile.text);
-        tileElementQueue = new Queue<XmlElement>(xmlDocument.GetElementsByTagName("Tile").Cast<XmlElement>());
-        TileCacheRepository.BlocksLengthSide = scale;
+        tileElementQueue = new Queue<XmlElement>(xmlDocument.GetElementsByTagName("Tile").Cast<XmlElement>());        
     }
 
-    public bool Next()
+    public override bool Next()
     {
         if (tileElementQueue.Count == 0)
             return false;
         XmlElement tileElement = tileElementQueue.Dequeue();
         tileName = tileElement.Attributes["Name"].InnerText;
+        int scale = GenerateProperty.TileSideLength;
         blocks = new SimpleBlock[scale, scale, scale];
         foreach (XmlElement blockElement in tileElement.GetElementsByTagName("Block"))
         {

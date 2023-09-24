@@ -5,7 +5,7 @@ using UnityEngine;
 public class UnitGenerator : MonoBehaviour
 {
     [SerializeField] int tileIndex;
-    [SerializeField] Vector3 tilePostion;
+    [SerializeField] Vector2Int tilePostion;
     [SerializeField] Tile tilePrefab;
 
     private void OnEnable()

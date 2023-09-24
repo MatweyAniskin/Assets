@@ -1,28 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatrixView : MonoBehaviour
+public class MatrixView : Loader
 {
-    [SerializeField] int viewRadius = 4;
-    Camera camera;
-    Tile[,] curTiles;
-    Tile[,] nextTiles;
+    [SerializeField] Tile tilePrefab;
+    [SerializeField] Transform spawnTilePoint;
+    [SerializeField] bool isSetActiveTile = true;
+    int width, height, curX, curY;
+    public override void StartWork()
+    {
+        width = GenerateProperty.MapWidth; 
+        height = GenerateProperty.MapHeight;
+        curY = curX = 0;
+    }
 
-    private void Start()
+    public override bool Next()
     {
-        camera = Camera.main;
-    }
-    private void Update()
-    {
-        
-    }
-    void ReDrawTiles()
-    {
-        for(int x = 0; x < viewRadius; x++)
+        if (curX == width)
+            return false;
+        Tile temp = Instantiate(tilePrefab, spawnTilePoint) as Tile;
+        temp.SetBlocks(Matrix.Get(curX, curY));
+        temp.SetPosition(curX, curY);
+
+
+        temp.SetActive(isSetActiveTile);
+        curY++;
+        if(curY == height)
         {
-            for (int y = 0; y < viewRadius; y++)
-
+            curX++;
+            curY = 0;
         }
+        return true;
     }
 }

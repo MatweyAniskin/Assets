@@ -17,10 +17,10 @@ public class Block : SimpleBlock
    
     void DrawFront(int x, int y,int z,ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs)
     {
-        vertex.Add(new Vector3(0, 0, 1)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(0, 1, 1)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 0, 1)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 1, 1)  * BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 0, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 1, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 0, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 1, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
 
         triangles.Add(vertex.Count - 2);
         triangles.Add(vertex.Count - 3);
@@ -33,10 +33,10 @@ public class Block : SimpleBlock
     }
     void DrawRight(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs)
     {
-        vertex.Add(new Vector3(1, 0, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 1, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 0, 1)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 1, 1)  * BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 0, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 1, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 0, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 1, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
 
         triangles.Add(vertex.Count - 4);
         triangles.Add(vertex.Count - 3);
@@ -49,10 +49,10 @@ public class Block : SimpleBlock
     }
     void DrawBack(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs)
     {
-        vertex.Add(new Vector3(0, 0, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(0, 1, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 0, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 1, 0)  * BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 0, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 1, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 0, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 1, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
 
         triangles.Add(vertex.Count - 4);
         triangles.Add(vertex.Count - 3);
@@ -65,10 +65,10 @@ public class Block : SimpleBlock
     }
     void DrawLeft(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs)
     {
-        vertex.Add(new Vector3(0, 0, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(0, 1, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(0, 0, 1)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(0, 1, 1)  * BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 0, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 1, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 0, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 1, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
 
         triangles.Add(vertex.Count - 2);
         triangles.Add(vertex.Count - 3);
@@ -81,10 +81,10 @@ public class Block : SimpleBlock
     }
     void DrawTop(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs)
     {
-        vertex.Add(new Vector3(0, 1, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 1, 0)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(0, 1, 1)  * BlockScale + Offset(x,y,z));
-        vertex.Add(new Vector3(1, 1, 1)  * BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 1, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 1, 0)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(0, 1, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
+        vertex.Add(new Vector3(1, 1, 1)  * GenerateProperty.BlockScale + Offset(x,y,z));
 
         triangles.Add(vertex.Count - 2);
         triangles.Add(vertex.Count - 3);

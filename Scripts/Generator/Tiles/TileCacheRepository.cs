@@ -11,7 +11,7 @@ public class TileCacheRepository : MonoBehaviour
     delegate void DegreeDelegate(ref SimpleBlock[,,] rotatedBlocks, SimpleBlock[,,] blocks, int x, int y, int z, int length);
     public static void Clear() => tileCacheList.Clear();
     public static int Count => tileCacheList.Count;
-    public static int BlocksLengthSide { get; set; }
+    
     public static void SetTile(string name,SimpleBlock[,,] blocks)
     {        
         tileCacheList.Add(new TileCache(name, blocks)); //for rotation swap x and y + length - cord

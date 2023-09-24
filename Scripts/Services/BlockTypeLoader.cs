@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockTypeLoader : MonoBehaviour, IService
-{
-    [SerializeField] int order = 0;
-    [SerializeField] string serviceName;
+public class BlockTypeLoader : Loader
+{   
     [SerializeField] List<SimpleBlock> blocks = new List<SimpleBlock>();
-    Queue<SimpleBlock> tempBlocks;
-    public int Order { get => order;}
-    public string Name { get => serviceName; }
+    Queue<SimpleBlock> tempBlocks;   
 
-    public bool Next()
+    public override bool Next()
     {
         if (tempBlocks.Count == 0)
             return false;
@@ -19,7 +15,7 @@ public class BlockTypeLoader : MonoBehaviour, IService
         return true;
     }
 
-    public void StartWork()
+    public override void StartWork()
     {
         tempBlocks = new Queue<SimpleBlock>(blocks);
         BlockRepository.Clear();

@@ -15,9 +15,28 @@ public class TestRectangleDraw : MonoBehaviour
         List<Vector2> uv = new List<Vector2>();
         List<int> triangles = new List<int>();
 
-        //back
+        //Right
         vertex.Add(new Vector3(0,0,0) * scale);
         vertex.Add(new Vector3(0,1,0) * scale);
+        vertex.Add(new Vector3(1, 0, 1) * scale);
+        vertex.Add(new Vector3(1, 1, 1) * scale);
+
+        uv.Add(new Vector2(0, 0));
+        uv.Add(new Vector2(0, 1));
+        uv.Add(new Vector2(1, 0));
+        uv.Add(new Vector2(1, 1));
+
+        triangles.Add(vertex.Count - 2);        
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 4);
+
+        triangles.Add(vertex.Count - 1);        
+        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 2);
+
+        //Left
+        vertex.Add(new Vector3(0, 0, 1) * scale);
+        vertex.Add(new Vector3(0, 1, 1) * scale);
         vertex.Add(new Vector3(1, 0, 0) * scale);
         vertex.Add(new Vector3(1, 1, 0) * scale);
 
@@ -26,12 +45,12 @@ public class TestRectangleDraw : MonoBehaviour
         uv.Add(new Vector2(1, 0));
         uv.Add(new Vector2(1, 1));
 
-        triangles.Add(vertex.Count - 4);
+        triangles.Add(vertex.Count - 4);        
         triangles.Add(vertex.Count - 3);
         triangles.Add(vertex.Count - 2);
 
         triangles.Add(vertex.Count - 2);
-        triangles.Add(vertex.Count - 3);
+        triangles.Add(vertex.Count - 3);        
         triangles.Add(vertex.Count - 1);
 
         //front

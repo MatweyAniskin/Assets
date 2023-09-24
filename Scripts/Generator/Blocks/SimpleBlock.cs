@@ -4,30 +4,14 @@ using UnityEngine;
 public abstract class SimpleBlock : ScriptableObject
 {    
     [SerializeField] protected Vector2Int textureCoordinate;
-    [SerializeField] protected BlockMaterial material;
-    public static float BlockScale {get; set; } =1;
-    public static float UvSideCountTextures 
-    { 
-        get
-        {
-            return uvSideCountTextures;
-        } 
-        set
-        {
-            uvSideCountTextures = value;
-            uvScale = 1f / uvSideCountTextures;
-        }
-    }
-
-    protected static float uvSideCountTextures = 1;    
-    protected static float uvScale = 1f;
+    [SerializeField] protected BlockMaterial material;    
 
     protected void GenerateUvMap(ref List<Vector2> uvs)
     {
-        uvs.Add(new Vector2(textureCoordinate.x, uvSideCountTextures- textureCoordinate.y)*uvScale);
-        uvs.Add(new Vector2(textureCoordinate.x, uvSideCountTextures - textureCoordinate.y-1) * uvScale);
-        uvs.Add(new Vector2(textureCoordinate.x+1, uvSideCountTextures - textureCoordinate.y) * uvScale);
-        uvs.Add(new Vector2(textureCoordinate.x + 1, uvSideCountTextures - textureCoordinate.y-1) * uvScale);
+        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures - textureCoordinate.x)* GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures - textureCoordinate.x-1) * GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y +1, GenerateProperty.UvSideCountTextures - textureCoordinate.x) * GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y + 1, GenerateProperty.UvSideCountTextures - textureCoordinate.x-1) * GenerateProperty.UvScale);
     }    
     public abstract void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs, SimpleBlock[ , , ] matrix);
     protected bool IsNotBlocks(int x, int y, int z, SimpleBlock[ , , ] matrix)
@@ -41,5 +25,5 @@ public abstract class SimpleBlock : ScriptableObject
             return true;
         }
     }
-    protected Vector3 Offset(int x, int y, int z) => new Vector3(x, y, z) * BlockScale;
+    protected Vector3 Offset(int x, int y, int z) => new Vector3(x, y, z) * GenerateProperty.BlockScale;
 }

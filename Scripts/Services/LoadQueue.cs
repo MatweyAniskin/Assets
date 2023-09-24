@@ -11,18 +11,18 @@ public class LoadQueue : MonoBehaviour
     public delegate void LoadStackDelegate();
     public static event LoadStackDelegate OnLoadStackEnd;
 
-    Stack<IService> services;
+    Stack<Loader> services;
 
     private void Start()
     {
-        services = new Stack<IService>(GetComponents<IService>().OrderByDescending(i => i.Order).ToList());
+        services = new Stack<Loader>(GetComponents<Loader>().OrderByDescending(i => i.Order).ToList());
         StartCoroutine(LoadCoroutine());
     }
     IEnumerator LoadCoroutine()
     {
         while(services.Count > 0)
         {
-            IService service = services.Pop();
+            Loader service = services.Pop();
             service.StartWork();
             OnStartLoadService?.Invoke(service.Name);
             yield return null;

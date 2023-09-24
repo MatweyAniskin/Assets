@@ -26,7 +26,7 @@ MonoBehaviour:
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 4
-    enableWrite: 1
+    enableWrite: 0
     stencilSettings:
       overrideStencilState: 0
       stencilReference: 0
@@ -80,8 +80,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_DefaultStencilState:
-    overrideStencilState: 0
-    stencilReference: 0
+    overrideStencilState: 1
+    stencilReference: 7
     stencilCompareFunction: 8
     passOperation: 0
     failOperation: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
     AfterOpaque: 0
     Source: 1
     NormalSamples: 1
-    Intensity: 2.68
-    DirectLightingStrength: 0.942
-    Radius: 0.22
+    Intensity: 1.13
+    DirectLightingStrength: 0.16
+    Radius: 0.5
     SampleCount: 6
