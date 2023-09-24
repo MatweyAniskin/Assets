@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Block", menuName = "Blocks/Block")]
-public class Block : SimpleBlock
+public class SolidBlock : SimpleBlock
 {    
     public override void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles,ref List<Vector2> uvs, SimpleBlock[,,] matrix)
     {       

@@ -251,7 +251,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 1
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -769,7 +769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &1427389732
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -978,6 +978,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11a62607990b48747ace1e3ba525af7e, type: 2}
   - {fileID: 11400000, guid: 09c267c29ab62e64a9be673e4a6ee7ec, type: 2}
   - {fileID: 11400000, guid: 2d0d3fc06bde9cc48a28111723fbdfad, type: 2}
+  - {fileID: 11400000, guid: e9f7c03c507965c4bbf681c01a2791a7, type: 2}
 --- !u!114 &1533774069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,7 +1221,7 @@ GameObject:
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1915506650
 Transform:
   m_ObjectHideFlags: 0

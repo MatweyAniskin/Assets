@@ -8,17 +8,24 @@ public abstract class SimpleBlock : ScriptableObject
 
     protected void GenerateUvMap(ref List<Vector2> uvs)
     {
-        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures - textureCoordinate.x)* GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures - textureCoordinate.x - 1) * GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures - textureCoordinate.x) * GenerateProperty.UvScale);        
+        uvs.Add(new Vector2(textureCoordinate.y + 1, GenerateProperty.UvSideCountTextures - textureCoordinate.x - 1) * GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y + 1, GenerateProperty.UvSideCountTextures - textureCoordinate.x) * GenerateProperty.UvScale);
+        
+
+/*        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures - textureCoordinate.x)* GenerateProperty.UvScale);
         uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures - textureCoordinate.x-1) * GenerateProperty.UvScale);
         uvs.Add(new Vector2(textureCoordinate.y +1, GenerateProperty.UvSideCountTextures - textureCoordinate.x) * GenerateProperty.UvScale);
         uvs.Add(new Vector2(textureCoordinate.y + 1, GenerateProperty.UvSideCountTextures - textureCoordinate.x-1) * GenerateProperty.UvScale);
-    }    
+  */
+        }    
     public abstract void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs, SimpleBlock[ , , ] matrix);
     protected bool IsNotBlocks(int x, int y, int z, SimpleBlock[ , , ] matrix)
     {
         try
         {
-            return !(matrix[x,y,z].GetType() == typeof(Block));            
+            return !(matrix[x,y,z].GetType() == typeof(SolidBlock));            
         }
         catch
         {
