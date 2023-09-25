@@ -46,4 +46,17 @@ public class GenerateProperty : MonoBehaviour
     /// Map Generated height
     /// </summary>
     public static int MapHeight { get; set; }
+
+    /// <summary>
+    /// Map lenght blocks in height
+    /// </summary>
+    public static int MapHeightBlockLength => TileSideLength * MapHeight;
+    /// <summary>
+    /// Map lenght blocks in width
+    /// </summary>
+    public static int MapWidthBlockLength => TileSideLength * MapWidth;
+    /// <summary>
+    /// Layer in tile blocks (y) for walk
+    /// </summary>
+    public static int WalkebleLayer { get; set; }
 }

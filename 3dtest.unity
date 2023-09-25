@@ -207,6 +207,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &304829361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 304829362}
+  - component: {fileID: 304829363}
+  m_Layer: 0
+  m_Name: System
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &304829362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304829361}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1915506650}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &304829363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304829361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c11c41f1e78b7c4baddff178ff4a9bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 2
 --- !u!1 &366473772
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +844,7 @@ GameObject:
   - component: {fileID: 1533774068}
   - component: {fileID: 1533774073}
   - component: {fileID: 1533774074}
+  - component: {fileID: 1533774075}
   m_Layer: 0
   m_Name: Loader
   m_TagString: Untagged
@@ -848,6 +894,7 @@ MonoBehaviour:
   tileScale: 16
   mapWidth: 10
   mapHeight: 10
+  walkebleLayer: 3
 --- !u!114 &1533774070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,11 +963,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d6c0c9d9adbf9419eefb25477083ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  order: 4
+  order: 5
   loaderName: 
   tilePrefab: {fileID: 5123481963307340713, guid: 959f69f77d07e0346a3f36663ae415b4, type: 3}
   spawnTilePoint: {fileID: 366783974}
   isSetActiveTile: 1
+--- !u!114 &1533774075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533774067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec3a0d25d293033438943c24c2e23e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 4
+  loaderName: 
 --- !u!1 &1570923863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1148,7 @@ Transform:
   - {fileID: 2013606765}
   - {fileID: 1533774072}
   - {fileID: 1765055648}
+  - {fileID: 304829362}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1172,6 +1234,8 @@ GameObject:
   - component: {fileID: 2013606765}
   - component: {fileID: 2013606767}
   - component: {fileID: 2013606766}
+  - component: {fileID: 2013606769}
+  - component: {fileID: 2013606768}
   m_Layer: 0
   m_Name: Repository
   m_TagString: Untagged
@@ -1216,5 +1280,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bb5f2f7a6781db468f859a7c3ce33a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2013606768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013606764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04b91bae5448a24c8182090f252aa32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2013606769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013606764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd01c5e24fdf43c4e9126759a68c1359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimator : AnimationController
 {
-    [SerializeField] MoveCharacter moveController;
+    /*[SerializeField] MoveCharacter moveController;
     Vector2 dir;
     private void Start()
     {
@@ -24,14 +24,14 @@ public class PlayerAnimator : AnimationController
         moveController.OnFallStart -= FallStart;
         moveController.OnFallEnd -= FallEnd;
     }
-  /*  private void Update()
+    private void Update()
     {
         if ((dir = moveController.MoveMagnitude) != Vector2.zero)
         {
             FlipSprite = dir.x < 0;
         }
         SetAnimation("Move", moveController.MoveMagnitude.x != 0);
-    }*/
+    }
 
     void FallStart()
     {
@@ -49,5 +49,5 @@ public class PlayerAnimator : AnimationController
     void IdleAnimation()
     {
         SetAnimation("Move", false);
-    }
+    }*/
 }

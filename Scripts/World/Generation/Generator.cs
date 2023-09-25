@@ -30,6 +30,6 @@ public abstract class Generator : Loader
         curX = curY = 0;
         height = GenerateProperty.MapHeight;
         width = GenerateProperty.MapWidth;
-        Matrix.InitMatrix(height, width);
+        CacheMatrix.InitMatrix(height, width);
     }
 }

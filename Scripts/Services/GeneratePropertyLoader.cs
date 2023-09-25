@@ -8,7 +8,8 @@ public class GeneratePropertyLoader : Loader
     [SerializeField] float textureCountPerSide = 1;
     [SerializeField] int tileScale = 64;
     [SerializeField] int mapWidth = 10;
-    [SerializeField] int mapHeight = 10;     
+    [SerializeField] int mapHeight = 10;
+    [SerializeField] int walkebleLayer = 3;
     public override bool Next() => false;
 
     public override void StartWork()
@@ -18,5 +19,6 @@ public class GeneratePropertyLoader : Loader
         GenerateProperty.TileSideLength = tileScale;
         GenerateProperty.MapHeight = mapHeight;
         GenerateProperty.MapWidth = mapWidth;
+        GenerateProperty.WalkebleLayer = walkebleLayer;
     }
 }

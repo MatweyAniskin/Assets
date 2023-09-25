@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Matrix : MonoBehaviour
+public class CacheMatrix : MonoBehaviour
 {        
     static TileCache[,] cells;    
     

@@ -21,7 +21,7 @@ public class MatrixView : Loader
         if (curX == width)
             return false;
         Tile temp = Instantiate(tilePrefab, spawnTilePoint) as Tile;
-        temp.SetBlocks(Matrix.Get(curX, curY));
+        temp.SetBlocks(CacheMatrix.Get(curX, curY));
         temp.SetPosition(curX, curY);
 
 

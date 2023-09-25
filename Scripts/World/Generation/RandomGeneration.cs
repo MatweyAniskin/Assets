@@ -6,6 +6,6 @@ public class RandomGeneration : Generator
 {
     public override void SetTileCache()
     {
-        Matrix.Add(TileCacheRepository.GetTile(Random.Range(0,TileCacheRepository.Count)),curX,curY);
+        CacheMatrix.Add(TileCacheRepository.GetTile(Random.Range(0,TileCacheRepository.Count)),curX,curY);
     }
 }
