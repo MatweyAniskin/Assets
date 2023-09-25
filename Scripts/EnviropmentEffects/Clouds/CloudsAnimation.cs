@@ -6,12 +6,10 @@ public class CloudsAnimation : MonoBehaviour
 {
     [SerializeField] Sprite[] cloudsSprites;
     [SerializeField] Cloud cloud;
-    [SerializeField] float minX = -20;
-    [SerializeField] float maxX = 20;
-    [SerializeField] float minY = -2.5f;
-    [SerializeField] float maxY = 2.5f;
-    [SerializeField] float minAnimationSpeed = 0.01f;
-    [SerializeField] float maxAnimationSpeed = 0.02f;
+    [SerializeField] CloudProperty spawnXprop;
+    [SerializeField] CloudProperty spawnZprop;
+    [SerializeField] CloudProperty animationSpeed;
+    [SerializeField] float spawnYPos;
     [SerializeField] float spawnTimer;
     [SerializeField] [Range(0,1)] float timerRandomPercent;
     [SerializeField] AnimationType animationType;
@@ -52,23 +50,22 @@ public class CloudsAnimation : MonoBehaviour
     }
     void MaxToMin(out Vector3 start, out Vector3 end, out float speed)
     {
-        float y = Random.Range(minY, maxY);
-        start = new Vector3(maxX, y);
-        end = new Vector3(minX, y);
-        speed = Random.Range(minAnimationSpeed, maxAnimationSpeed);
+        float z = spawnZprop.Random;
+        start = new Vector3(spawnXprop.Max, spawnYPos, z);
+        end = new Vector3(spawnXprop.Min, spawnYPos, z);
+        speed = animationSpeed.Random;
     }
     void MinToMax(out Vector3 start, out Vector3 end, out float speed)
     {
-        float y = Random.Range(minY, maxY);
-        start = new Vector3(minX, y);
-        end = new Vector3(maxX, y);
-        speed = Random.Range(minAnimationSpeed, maxAnimationSpeed);
+        float z = spawnZprop.Random;
+        start = new Vector3(spawnXprop.Min, spawnYPos, z);
+        end = new Vector3(spawnXprop.Max, spawnYPos, z);
+        speed = animationSpeed.Random;
     }
     void FullRandom(out Vector3 start, out Vector3 end, out float speed)
-    {
-        float y = Random.Range(minY, maxY);
-        start = new Vector3(Random.Range(minX, maxX), y);
-        end = new Vector3(Random.Range(minX, maxX), y);
-        speed = Random.Range(minAnimationSpeed, maxAnimationSpeed);
+    {        
+        start = new Vector3(spawnXprop.Random, spawnYPos, spawnZprop.Random);
+        end = new Vector3(spawnXprop.Random, spawnYPos, spawnZprop.Random);
+        speed = animationSpeed.Random;
     }
 }
