@@ -6,13 +6,13 @@ using UnityEngine.UIElements;
 [CreateAssetMenu(fileName = "Block", menuName = "Blocks/Block")]
 public class SolidBlock : SimpleBlock
 {    
-    public override void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles,ref List<Vector2> uvs, SimpleBlock[,,] matrix)
+    public override void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int>[] triangles,ref List<Vector2> uvs, SimpleBlock[,,] matrix)
     {       
-        if (IsNotBlocks(x,y,z+1,matrix)) DrawFront(x,y,z,ref vertex, ref triangles, ref uvs);
-        if (IsNotBlocks(x, y, z - 1, matrix)) DrawBack(x, y, z, ref vertex, ref triangles, ref uvs);
-        if (IsNotBlocks(x+1, y, z, matrix)) DrawRight(x, y, z, ref vertex, ref triangles, ref uvs);
-        if (IsNotBlocks(x - 1, y, z, matrix)) DrawLeft(x, y, z, ref vertex, ref triangles, ref uvs);
-        if (IsNotBlocks(x, y + 1, z, matrix)) DrawTop(x, y, z, ref vertex, ref triangles, ref uvs);        
+        if (IsNotBlocks(x,y,z+1,matrix)) DrawFront(x,y,z,ref vertex, ref triangles[0], ref uvs);
+        if (IsNotBlocks(x, y, z - 1, matrix)) DrawBack(x, y, z, ref vertex, ref triangles[0], ref uvs);
+        if (IsNotBlocks(x+1, y, z, matrix)) DrawRight(x, y, z, ref vertex, ref triangles[0], ref uvs);
+        if (IsNotBlocks(x - 1, y, z, matrix)) DrawLeft(x, y, z, ref vertex, ref triangles[0], ref uvs);
+        if (IsNotBlocks(x, y + 1, z, matrix)) DrawTop(x, y, z, ref vertex, ref triangles[0], ref uvs);        
     }
    
     void DrawFront(int x, int y,int z,ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs)

@@ -8,6 +8,8 @@ public class TileCache
     [SerializeField] Mesh mesh;
     SimpleBlock[,,] matrix;
 
+    readonly int materialsCount = 3;
+
     public Mesh TileMesh => mesh;
     public SimpleBlock[,,] Blocks => matrix;
 
@@ -18,7 +20,9 @@ public class TileCache
         int count = matrix.GetLength(0);
         mesh = new Mesh();
         List<Vector3> vertex = new List<Vector3>();
-        List<int> triangles = new List<int>();
+        List<int>[] triangles = new List<int>[materialsCount];
+        for (int i = 0; i < materialsCount; i++)
+            triangles[i] = new List<int>();
         List<Vector2> uvs = new List<Vector2>();
         for (int x = 0; x < count; x++)
             for (int y = 0; y < count; y++)
@@ -28,7 +32,12 @@ public class TileCache
                     else
                         matrix[x,y,z].Instantiate(x, y, z, ref vertex, ref triangles, ref uvs, matrix);
         mesh.vertices = vertex.ToArray();
-        mesh.triangles = triangles.ToArray();               
+        mesh.subMeshCount = materialsCount;
+        for (int i = 0; i < materialsCount; i++)
+        {            
+            mesh.SetTriangles(triangles[i], i);
+        }
+       // mesh.triangles = triangles.ToArray();               
         mesh.uv = uvs.ToArray();        
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();

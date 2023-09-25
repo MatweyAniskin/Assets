@@ -20,7 +20,7 @@ public abstract class SimpleBlock : ScriptableObject
         uvs.Add(new Vector2(textureCoordinate.y + 1, GenerateProperty.UvSideCountTextures - textureCoordinate.x-1) * GenerateProperty.UvScale);
   */
         }    
-    public abstract void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int> triangles, ref List<Vector2> uvs, SimpleBlock[ , , ] matrix);
+    public abstract void Instantiate(int x, int y, int z, ref List<Vector3> vertex, ref List<int>[] triangles, ref List<Vector2> uvs, SimpleBlock[ , , ] matrix);
     protected bool IsNotBlocks(int x, int y, int z, SimpleBlock[ , , ] matrix)
     {
         try
