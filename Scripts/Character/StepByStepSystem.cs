@@ -11,10 +11,10 @@ public class StepByStepSystem : MonoBehaviour
 
     static float stepAnimationIndex = 0;
     /// <summary>
-    /// Animation index from 1 to 0
+    /// Animation index from 0 to 1
     /// </summary>
     public static float StepAnimationIndex => stepAnimationIndex;
-    public static bool IsMakeStep => stepAnimationIndex > 0;
+    public static bool IsMakeStep { get; protected set; }
 
     private void Start()
     {
@@ -25,18 +25,20 @@ public class StepByStepSystem : MonoBehaviour
         GoStep -= Step;
     }
     void Step()
-    {
-        OnStep?.Invoke();
+    {        
         StartCoroutine(StepCoroutine());
+        OnStep?.Invoke();
     }
     IEnumerator StepCoroutine()
     {
-        stepAnimationIndex = 1;
-        while (IsMakeStep)
+        stepAnimationIndex = 0;
+        IsMakeStep = true;
+        while (stepAnimationIndex < 1)
         {
-            stepAnimationIndex = Mathf.Clamp01(stepAnimationIndex - Time.deltaTime * animationSpeed);            
+            stepAnimationIndex = Mathf.Clamp01(stepAnimationIndex + Time.deltaTime * animationSpeed);            
             yield return null;
         }
+        IsMakeStep = false;
     }
 
 }

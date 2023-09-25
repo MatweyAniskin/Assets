@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public abstract class CharacterBehaviour : MonoBehaviour
 {
-    StepAction[] stepActions;
+   
     protected delegate void StepActionDelegate(Vector2Int dir, Stats stats);
-    protected StepActionDelegate CurAction;
+    StepActionDelegate CurAction;
     protected Vector2Int dir;
     protected Stats stats;
     private void Start()
     {
-        StepByStepSystem.OnStep += StepAction;
-        stepActions = GetComponents<StepAction>();
+        StepByStepSystem.OnStep += StepAction;       
         stats = GetComponent<Stats>();
         OnStart();
     }
@@ -21,6 +19,11 @@ public abstract class CharacterBehaviour : MonoBehaviour
     {
         StepByStepSystem.OnStep -= StepAction;
         OnDelete();
+    }
+    protected void SetAction(StepActionDelegate stepAction, Vector2Int dir)
+    {
+        CurAction = stepAction;
+        this.dir = dir;        
     }
     public abstract void OnStart();
     public abstract void OnDelete();
