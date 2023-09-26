@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : CharacterBehaviour
 {
-    [SerializeField] CharacterMovement movement;
+    [SerializeField] StepAction movement;
     float horizontal, vertical;
     private void Update()
     {

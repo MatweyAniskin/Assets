@@ -39,11 +39,11 @@ public class GenerateProperty : MonoBehaviour
     /// </summary>
     public static int TileSideLength { get; set; } = 64;
     /// <summary>
-    /// Map Generated width
+    /// Map Generated tiles length in width (x)
     /// </summary>
     public static int MapWidth { get; set; }
     /// <summary>
-    /// Map Generated height
+    /// Map Generated tiles length in height (y)
     /// </summary>
     public static int MapHeight { get; set; }
 

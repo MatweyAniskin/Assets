@@ -16,6 +16,8 @@ public class MovementMatrixLoader : Loader
         tileLength = GenerateProperty.TileSideLength;
         widthBlockLength = GenerateProperty.MapWidthBlockLength;
         heightblockLenght = GenerateProperty.MapHeightBlockLength;
+        maxTileX = GenerateProperty.MapWidth;
+        maxTileY = GenerateProperty.MapHeight;
         MovementMatrix.InitMatrix(widthBlockLength, heightblockLenght);
     }
     public override bool Next()
@@ -24,15 +26,15 @@ public class MovementMatrixLoader : Loader
             return false;
 
         TileCache curTile = CacheMatrix.Get(curTileX, curTileY);
-
+        bool isBlocked;
         for(int x = 0; x < tileLength;x++)
         {
             for (int y = 0; y < tileLength; y++)
             {
-               MovementMatrix.SetBlock(x+curTileX*tileLength, y + curTileY * tileLength, curTile.GetType(x, walkebleLayer, y) == typeof(SolidBlock));
+                isBlocked = curTile.GetType(x, walkebleLayer, y) == typeof(SolidBlock);  //todo make with attributes
+                MovementMatrix.SetBlock(x+curTileX*tileLength, y + curTileY * tileLength, isBlocked);
             }
-        }
-
+        }        
         curTileY++;
         if (curTileY == maxTileY)
         {

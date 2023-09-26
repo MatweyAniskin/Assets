@@ -15,7 +15,7 @@ public class TileCache
     public SimpleBlock[,,] Blocks => matrix;
     public SimpleBlock GetBlock(Vector3Int position) => GetBlock(position.x, position.y, position.z);
     public SimpleBlock GetBlock(int x, int y, int z) => matrix[x, y, z];
-    public Type GetType(int x, int y, int z) => GetBlock(x,y,z).GetType();
+    public Type GetType(int x, int y, int z) => GetBlock(x,y,z)?.GetType();
 
     public TileCache(string title, SimpleBlock[,,] matrix)
     {
