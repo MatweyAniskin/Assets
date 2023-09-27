@@ -22,8 +22,7 @@ public class MatrixTransform : MonoBehaviour
             transform.position = MatrixToPosition();
             Vector2Int next = TransformRepository.GetSquarePosition(matrixPosition);
             if (next != squarePosition)
-            {
-                Debug.Log($"Last: {squarePosition}, Next: {next}");
+            {                
                 TransformRepository.SwitchSquad(squarePosition, next, this);
                 squarePosition = next;
             }
