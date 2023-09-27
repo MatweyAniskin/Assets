@@ -364,7 +364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366473772}
   m_LocalRotation: {x: 0.18301275, y: 0.6830127, z: -0.18301275, w: 0.6830127}
-  m_LocalPosition: {x: -2.5802526, y: 5.5020022, z: 15.000005}
+  m_LocalPosition: {x: -3.080253, y: 5.5020022, z: 8.000004}
   m_LocalScale: {x: 0.6662, y: 0.66620004, z: 0.66620004}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -465,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454485910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0.492, z: 15}
+  m_LocalPosition: {x: 4.5, y: 0.492, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -842,7 +842,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456776424}
   m_LocalRotation: {x: 0.18301275, y: 0.6830127, z: -0.18301275, w: 0.6830127}
-  m_LocalPosition: {x: -2.5802526, y: 5.5020022, z: 15.000005}
+  m_LocalPosition: {x: -3.080253, y: 5.5020022, z: 8.000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 1533774074}
   - component: {fileID: 1533774075}
   - component: {fileID: 1533774076}
+  - component: {fileID: 1533774077}
   m_Layer: 0
   m_Name: Loader
   m_TagString: Untagged
@@ -1104,6 +1105,20 @@ MonoBehaviour:
   loaderName: 
   activateObjects:
   - {fileID: 454485910}
+--- !u!114 &1533774077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533774067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc70982e18bc0842a15bc00ce4018a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 4
+  loaderName: 
 --- !u!1 &1570923863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1460,7 @@ GameObject:
   - component: {fileID: 2013606766}
   - component: {fileID: 2013606769}
   - component: {fileID: 2013606768}
+  - component: {fileID: 2013606770}
   m_Layer: 0
   m_Name: Repository
   m_TagString: Untagged
@@ -1513,5 +1529,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd01c5e24fdf43c4e9126759a68c1359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2013606770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013606764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c53121918da2e479b5f1f969a07727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

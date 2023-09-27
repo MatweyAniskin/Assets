@@ -6,14 +6,8 @@ public class CharacterMovement : StepAction
 {
     [SerializeField] MatrixTransform matrixTransform;
     [SerializeField] AnimationCurve animation;    
-    [SerializeField] int stepBlocks = 2;
-    float blockScale;
-    Vector2Int nextPosition;
-    private void Start()
-    {
-        blockScale = GenerateProperty.BlockScale;
-        matrixTransform.Position = matrixTransform.PositionToMatrix();      
-    }
+    [SerializeField] int stepBlocks = 2;    
+    Vector2Int nextPosition;   
 
     public override void Action(Vector2Int dir, Stats stats)
     {
