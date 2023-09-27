@@ -4,33 +4,32 @@ using UnityEngine;
 
 public class CharacterMovement : StepAction
 {
-    [SerializeField] AnimationCurve animation;
-    [SerializeField] Vector2Int matrixPosition; //unit
-    [SerializeField] int radius = 1;
+    [SerializeField] MatrixTransform matrixTransform;
+    [SerializeField] AnimationCurve animation;    
     [SerializeField] int stepBlocks = 2;
     float blockScale;
+    Vector2Int nextPosition;
     private void Start()
     {
         blockScale = GenerateProperty.BlockScale;
-        matrixPosition = new Vector2Int(Mathf.CeilToInt(transform.position.x / blockScale), Mathf.CeilToInt(transform.position.z / blockScale));
-        transform.position = MatrixToPosition();
+        matrixTransform.Position = matrixTransform.PositionToMatrix();      
     }
 
     public override void Action(Vector2Int dir, Stats stats)
-    {                        
-            matrixPosition = CheckState(out int curStep, dir);
-        Vector3 endPosition = MatrixToPosition();        
+    {
+        nextPosition = CheckState(out int curStep, dir);
+        Vector3 endPosition = MatrixTransform.MatrixToPosition(nextPosition,transform.position);        
         ActionEvent(dir);
         StartCoroutine(AnimationCoroutine(transform.position, endPosition));
     }
     Vector2Int CheckState(out int curStepBlocks,Vector2Int dir)
     {
-        Vector2Int res = matrixPosition;
+        Vector2Int res = matrixTransform.Position;
         Vector2Int cur;
         for (curStepBlocks = 0; curStepBlocks <= stepBlocks; curStepBlocks++)
         {
-            cur = matrixPosition + dir * curStepBlocks;
-            if (MovementMatrix.CheckState(cur, radius))
+            cur = matrixTransform.Position + dir * curStepBlocks;
+            if (MovementMatrix.CheckState(cur, matrixTransform.Radius))
             {
                 res = cur;
             }else
@@ -40,14 +39,14 @@ public class CharacterMovement : StepAction
         }
         return res;
     }
-    Vector3 MatrixToPosition() => MatrixToPosition(matrixPosition);
-    Vector3 MatrixToPosition(Vector2Int pos) => new Vector3(pos.x * blockScale, transform.position.y, pos.y * blockScale);
+   
     IEnumerator AnimationCoroutine(Vector3 startPosition,Vector3 endPosition)
     {       
         while (StepByStepSystem.IsMakeStep)
         {
             transform.position = Vector3.Lerp(startPosition, endPosition, animation.Evaluate(StepByStepSystem.StepAnimationIndex));           
             yield return null;
-        }        
+        }
+        matrixTransform.Position = nextPosition;
     }
 }
