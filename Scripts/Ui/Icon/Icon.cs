@@ -6,7 +6,11 @@ using UnityEngine.UI;
 public class Icon : MonoBehaviour
 {
     [SerializeField] protected Image icon;
-    [SerializeField] protected RectTransform rect;    
+    [SerializeField] protected RectTransform rect;
+    public virtual void SetElement(IViewElement element)
+    {
+        SetIcon(element.Icon);
+    }
     public void SetPosition(float x, float y) => SetPosition(new Vector2(x, y));
     public void SetPosition(Vector2 position) => rect.anchoredPosition = position;
     public void SetSize(float width, float height) => SetSize(new Vector2(width, height));

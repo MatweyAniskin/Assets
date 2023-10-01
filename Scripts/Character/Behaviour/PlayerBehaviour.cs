@@ -5,17 +5,24 @@ using UnityEngine;
 public class PlayerBehaviour : CharacterBehaviour
 {
     [SerializeField] StepAction movement;
-    float horizontal, vertical;
+    int horizontal, vertical;
     private void Update()
     {
         if (StepByStepSystem.IsMakeStep)
+        {           
             return;
-        horizontal = Mathf.Clamp(Input.GetAxis("Horizontal")*1000,-1,1);
-        vertical = Mathf.Clamp(Input.GetAxis("Vertical") * 1000, -1, 1);       
+        }
+
+        if (Input.GetKey(KeyCode.D)) horizontal = 1;
+        if (Input.GetKey(KeyCode.A)) horizontal = -1;        
+        if (Input.GetKey(KeyCode.W)) vertical = 1;
+        if (Input.GetKey(KeyCode.S)) vertical = -1;
         if (horizontal != 0 || vertical != 0)
         {
-            SetAction(movement.Action, new Vector2Int(Mathf.CeilToInt(vertical), Mathf.CeilToInt(-horizontal)));
+            SetAction(movement.Action, new Vector2Int(vertical, -horizontal));
             StepByStepSystem.GoStep();
+            horizontal = 0;
+            vertical = 0;
         }
     }
     public override void OnDelete()
