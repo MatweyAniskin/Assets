@@ -6,6 +6,7 @@ public class SpriteMovementAnimation : MonoBehaviour
 {
     [SerializeField] AnimationAssembly[] animationAssemblies;
     [SerializeField] Transform spriteTransform;
+    [SerializeField] SpriteRenderer spriteRenderer;
     Vector3 spriteStartPosition;
     Quaternion spriteStartRotation;
     private void Start()
@@ -26,6 +27,6 @@ public class SpriteMovementAnimation : MonoBehaviour
     }
     void StartAnimation(Vector2Int dir, SpriteAnimationProfile animationProfile)
     {       
-        StartCoroutine(animationProfile.Animation(dir,spriteStartPosition, spriteStartRotation,spriteTransform));
+        StartCoroutine(animationProfile.Animation(dir,spriteStartPosition, spriteStartRotation,spriteTransform, spriteRenderer));
     }    
 }

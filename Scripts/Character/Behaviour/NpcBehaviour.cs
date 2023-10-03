@@ -9,6 +9,7 @@ public class NpcBehaviour : CharacterBehaviour
     public override void OnStart()
     {
         stepActions = GetComponents<StepAction>();
+        base.OnStart();
     }
     public override void OnDelete()
     {

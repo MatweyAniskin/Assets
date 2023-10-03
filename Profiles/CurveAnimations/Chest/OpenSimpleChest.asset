@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f10229d3f3045a40b47098ba4fbd095, type: 3}
+  m_Name: OpenSimpleChest
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.14849634
+      outSlope: 0.14849634
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.07079318
+    - serializedVersion: 3
+      time: 0.7938403
+      value: 0.017790034
+      inSlope: 0.01434889
+      outSlope: 0.01434889
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.076901406
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.79999995
+      value: 0.9993958
+      inSlope: 0.0004265016
+      outSlope: 0.0004265016
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.24666303
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.01113268
+      outSlope: 0.01113268
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5163685
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  sprites:
+  - {fileID: -1759757534, guid: da1dc4d3e8b01ea49b1b6048f41a44c3, type: 3}
+  - {fileID: -1130767579, guid: da1dc4d3e8b01ea49b1b6048f41a44c3, type: 3}
+  forceSetSprite: -1

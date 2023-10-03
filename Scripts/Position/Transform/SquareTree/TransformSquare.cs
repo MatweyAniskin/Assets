@@ -10,5 +10,6 @@ public class TransformSquare
     public void Add(MatrixTransform transform) => transforms.Add(transform);
     public void Remove(MatrixTransform transform) => transforms?.Remove(transform);
     public MatrixTransform GetContact(Vector2Int globalPosition) => transforms?.FirstOrDefault(i=> i.IsContact(globalPosition));
+    public MatrixTransform GetContact(MatrixTransform transform) => transforms?.FirstOrDefault(i => i != transform && i.IsContact(transform.Position));
     public IEnumerable<MatrixTransform> GetTransforms => transforms;
 }

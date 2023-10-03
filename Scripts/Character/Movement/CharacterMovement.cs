@@ -12,8 +12,9 @@ public class CharacterMovement : StepAction
     public override void Action(Vector2Int dir, Stats stats)
     {
         nextPosition = CheckState(out int curStep, dir);
+        matrixTransform.LogicPosition = nextPosition;
         Vector3 endPosition = MatrixTransform.MatrixToPosition(nextPosition,transform.position);        
-        ActionEvent(dir);
+        ActionEvent(dir);       
         StartCoroutine(AnimationCoroutine(transform.position, endPosition));
     }
     Vector2Int CheckState(out int curStepBlocks,Vector2Int dir)
@@ -41,6 +42,6 @@ public class CharacterMovement : StepAction
             transform.position = Vector3.Lerp(startPosition, endPosition, animation.Evaluate(StepByStepSystem.StepAnimationIndex));           
             yield return null;
         }
-        matrixTransform.Position = nextPosition;
+        matrixTransform.RecalculateMatrixPositionToUnitPosition();        
     }
 }

@@ -4,10 +4,9 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "PositionAnimation", menuName = "CurveAnimation/PositionAnimation")]
 public class PositionSpriteAnimation : SpriteAnimationProfile
-{
-    [SerializeField] AnimationCurve curve;
+{  
     [SerializeField] Vector3 animationDirection;
-    public override IEnumerator Animation(Vector2Int dir, Vector3 spriteStartPosition, Quaternion startRotation, Transform spriteTransform)
+    public override IEnumerator Animation(Vector2Int dir, Vector3 spriteStartPosition, Quaternion startRotation, Transform spriteTransform, SpriteRenderer renderer)
     {
         Vector3 spriteEndPosition;
         float index;

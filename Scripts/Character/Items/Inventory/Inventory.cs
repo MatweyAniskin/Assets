@@ -15,6 +15,11 @@ public class Inventory : MonoBehaviour
     {
         curWeight = 0;
     }
+    /// <summary>
+    /// Add item with mass calculate
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns>true - is add, false - is not add</returns>
     public bool TakeItem(Item item)
     {
         if(item.Weight+curWeight > maxWeight)

@@ -1,33 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MatrixTransform : MonoBehaviour
 {
     [SerializeField] Vector2Int matrixPosition;
     [SerializeField] int radius;
     Vector2Int squarePosition;
-    private void Start()
+    
+    private void OnDestroy()
     {
-        matrixPosition = PositionToMatrix();
-        squarePosition = TransformRepository.GetSquarePosition(matrixPosition);
+        TransformRepository.Remove(this);
+    }
+    /// <summary>
+    /// Set matrix start position, use once 
+    /// </summary>
+    /// <param name="globalposition">matrix global position</param>
+    public void SetStartPosition(Vector2Int globalposition)
+    {
+        matrixPosition = globalposition;
+        squarePosition = TransformRepository.GetSquarePosition(matrixPosition);      
         TransformRepository.Add(squarePosition, this);
     }
+    /// <summary>
+    /// Set matrix start position, use once 
+    /// </summary>
+    /// <param name="unitPosition">unit global position</param>
+    public void SetStartPosition(Vector3 unitPosition) => SetStartPosition(PositionToMatrix(unitPosition));
     public Vector2Int Position
+    {
+        get => LogicPosition;
+        set
+        {
+            LogicPosition = value;
+            RecalculateMatrixPositionToUnitPosition();
+        }
+    }
+    public Vector2Int LogicPosition
     {
         get => matrixPosition;
         set
-        {            
-            matrixPosition = value;
-            transform.position = MatrixToPosition();
+        {
+            matrixPosition = value;           
             Vector2Int next = TransformRepository.GetSquarePosition(matrixPosition);
             if (next != squarePosition)
-            {                
+            {
                 TransformRepository.SwitchSquad(squarePosition, next, this);
                 squarePosition = next;
             }
-        }        
+        }
     }
+    public void RecalculateMatrixPositionToUnitPosition() => transform.position = MatrixToPosition();
     public int Radius => radius;
     public Vector2Int SquarePosition => squarePosition;
     public bool IsContact(Vector2Int pos) => matrixPosition.x - Radius <= pos.x && matrixPosition.x + Radius >= pos.x && matrixPosition.y - Radius <= pos.y && matrixPosition.y + Radius >= pos.y;

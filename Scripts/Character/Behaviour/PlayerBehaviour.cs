@@ -24,14 +24,5 @@ public class PlayerBehaviour : CharacterBehaviour
             horizontal = 0;
             vertical = 0;
         }
-    }
-    public override void OnDelete()
-    {
-        //throw new System.NotImplementedException();
-    }
-
-    public override void OnStart()
-    {
-        //throw new System.NotImplementedException();
-    }
+    }   
 }
