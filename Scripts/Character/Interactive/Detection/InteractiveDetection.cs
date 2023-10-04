@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InteractiveDetection : StepListener
+public abstract class InteractiveDetection : BehaviourListener
 {
     [SerializeField] protected MatrixTransform matrixTransform;
     public override void StepAction()

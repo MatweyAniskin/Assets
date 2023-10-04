@@ -9,6 +9,7 @@ public class LoadQueue : MonoBehaviour
     public static event LoadQueueDelegate OnStartLoadService;
     public static event LoadQueueDelegate OnEndLoadService;
     public delegate void LoadStackDelegate();
+    public static event LoadStackDelegate OnLoadStackStart;
     public static event LoadStackDelegate OnLoadStackEnd;
 
     Stack<Loader> services;
@@ -20,7 +21,8 @@ public class LoadQueue : MonoBehaviour
     }
     IEnumerator LoadCoroutine()
     {
-        while(services.Count > 0)
+        OnLoadStackStart?.Invoke();
+        while (services.Count > 0)
         {
             Loader service = services.Pop();
             service.StartWork();
