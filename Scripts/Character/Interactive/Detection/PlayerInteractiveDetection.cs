@@ -11,6 +11,12 @@ public class PlayerInteractiveDetection : InteractiveDetection
 
     IInteractiveObject curInteractive;
 
+    private void Update() //Unit
+    {
+        if (StepByStepSystem.IsMakeStep)
+            return;
+        if (Input.GetKeyDown(KeyCode.E)) UseInteractive();
+    }
     void UseInteractive()
     {
         if (curInteractive is null)

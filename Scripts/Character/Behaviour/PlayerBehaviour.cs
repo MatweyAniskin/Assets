@@ -6,12 +6,10 @@ public class PlayerBehaviour : CharacterBehaviour
 {
     [SerializeField] StepAction movement;
     int horizontal, vertical;
-    private void Update()
+    private void Update()//Unit
     {
         if (StepByStepSystem.IsMakeStep)
-        {           
             return;
-        }
 
         if (Input.GetKey(KeyCode.D)) horizontal = 1;
         if (Input.GetKey(KeyCode.A)) horizontal = -1;        

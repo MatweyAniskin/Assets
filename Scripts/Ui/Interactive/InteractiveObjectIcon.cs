@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractiveObjectIcon : Icon
@@ -28,7 +29,7 @@ public class InteractiveObjectIcon : Icon
     }
     IEnumerator InterpolateCoroutine()
     {
-        while (gameObject.active)
+        while (!curElement.IsUnityNull())
         {
             transform.position = camera.WorldToScreenPoint(curElement.Position + offset);
             yield return null;

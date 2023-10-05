@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
@@ -52,5 +53,5 @@ public class Drop : MatrixTransform, IInteractiveObject
 
     public string Description => item.Description;
 
-    Vector3 IInteractiveObject.Position => transform.position;
+    Vector3 IInteractiveObject.Position => transform.position;    
 }

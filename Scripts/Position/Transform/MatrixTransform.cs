@@ -62,5 +62,5 @@ public class MatrixTransform : MonoBehaviour
     public static Vector3 MatrixToPosition(Vector2Int matrixPos, Vector3 globalPos) => MatrixToPosition(matrixPos, globalPos, GenerateProperty.BlockScale);
     public static Vector3 MatrixToPosition(Vector2Int matrixPos, Vector3 globalPos, float blockScale) => new Vector3(matrixPos.x * blockScale, globalPos.y, matrixPos.y * blockScale);
     public void Destroy() => Destroy(gameObject);
-    public T GetComponent<T>() => GetComponent<T>();
+    public T GetComponent<T>() => gameObject.GetComponent<T>();
 }

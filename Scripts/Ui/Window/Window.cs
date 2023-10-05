@@ -24,8 +24,8 @@ public abstract class Window : MonoBehaviour
     }    
     protected bool isOpen;
 
-    protected abstract void OnOpen();
-    protected abstract void OnClose();
+    protected virtual void OnOpen() { }
+    protected virtual void OnClose() { }
     public void Open()
     {
         StartCoroutine(OpenAnimation());
