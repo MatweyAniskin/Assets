@@ -6,6 +6,7 @@ public class WindowController : MonoBehaviour
 {
     public static Window RequestWindow { get; set; }
     static Window curWindow;
+    static Transform canvas;
     public static Window CurWindow
     {
         get
@@ -35,24 +36,18 @@ public class WindowController : MonoBehaviour
         }
         set
         {
-            isOpened = value;
-            /*if (isOpened = Cursor.visible = value)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                
-            }else
-            {
-                Cursor.lockState = CursorLockMode.Locked;                
-            }*/
+            isOpened = value;          
             OnWindowOpen?.Invoke(value);
         }
     }
-    
-    private void Start()
-    {             
-        IsOpened = false;
+    public static void InstantiateWindow(Window window)
+    {
+        CurWindow = Instantiate(window, canvas) as Window;
+        CurWindow.SetPosition();
     }
-    private void OnDestroy()
-    {        
-    }   
+
+    private void Start()
+    {
+        canvas = transform;
+    }
 }
