@@ -12,13 +12,12 @@ public class TileCacheRepository : MonoBehaviour
     public static void Clear() => tileCacheList.Clear();
     public static int Count => tileCacheList.Count;
     
-    public static void SetTile(string name,SimpleBlock[,,] blocks)
+    public static void SetTile(string name,SimpleBlock[,,] blocks, string[] directions)
     {        
-        tileCacheList.Add(new TileCache(name, blocks)); //for rotation swap x and y + length - cord
-        tileCacheList.Add(new TileCache($"{name}90", RotateCacheTile(blocks, To90)));
-        tileCacheList.Add(new TileCache($"{name}180", RotateCacheTile(blocks, To180)));
-        tileCacheList.Add(new TileCache($"{name}270", RotateCacheTile(blocks, To270)));
-        Debug.Log($"tiles cahce loaded: {tileCacheList.Count}");
+        tileCacheList.Add(new TileCache(name, blocks,directions)); //for rotation swap x and y + length - cord
+        tileCacheList.Add(new TileCache($"{name}90", RotateCacheTile(blocks, To90), Directions(directions,1,2,3,0)));
+        tileCacheList.Add(new TileCache($"{name}180", RotateCacheTile(blocks, To180), Directions(directions, 0, 2, 1, 3)));
+        tileCacheList.Add(new TileCache($"{name}270", RotateCacheTile(blocks, To270), Directions(directions, 3, 2, 1, 0)));        
     }
     static SimpleBlock[,,] RotateCacheTile(SimpleBlock[,,] blocks, DegreeDelegate rotateMethod)
     {
@@ -32,11 +31,21 @@ public class TileCacheRepository : MonoBehaviour
                 }
         return rotatedBlocks;
     }
+    static string[] Directions(string[] dir, params int[] index )
+    {
+        List<string> newDirs = new List<string>();
+        for (int i = 0; i < 4; i++)
+        {
+            newDirs.Add(dir[index[i]]);
+        }
+        return newDirs.ToArray();
+    }
     static void To90(ref SimpleBlock[,,] rotatedBlocks, SimpleBlock[,,] blocks, int x, int y, int z, int length) => rotatedBlocks[length - 1 - z, y, x] = blocks[x, y, z];
     static void To180(ref SimpleBlock[,,] rotatedBlocks, SimpleBlock[,,] blocks, int x, int y, int z, int length) => rotatedBlocks[length - 1 - x, y, length - 1 - z] = blocks[x, y, z];
     static void To270(ref SimpleBlock[,,] rotatedBlocks, SimpleBlock[,,] blocks, int x, int y, int z, int length) => rotatedBlocks[ z, y, length - 1 - x] = blocks[x, y, z];
 
     public static TileCache[] GetTiles() => tileCacheList.ToArray();
+    public static TileCache[] GetTiles(TileDirection.DirectionType direction, string dirName) => tileCacheList.Where(i => i.Direction(direction) == dirName).ToArray();
     public static TileCache GetTile(string name)
     {
         try

@@ -32,6 +32,13 @@ public class TileCacheLoader : Loader
         tileName = tileElement.Attributes["Name"].InnerText;
         int scale = GenerateProperty.TileSideLength;
         blocks = new SimpleBlock[scale, scale, scale];
+        string[] directions = new string[4];
+        int dirIndex;
+        foreach (XmlElement dirElement in tileElement.GetElementsByTagName("Direction"))
+        {
+            dirIndex = GetIntAttribute("Type", dirElement);
+            directions[dirIndex] = dirElement.InnerText;
+        }
         foreach (XmlElement blockElement in tileElement.GetElementsByTagName("Block"))
         {
             blockName = blockElement.InnerText.Trim();
@@ -42,7 +49,7 @@ public class TileCacheLoader : Loader
                 continue;
             blocks[x, y, z] = BlockRepository.Get(blockName);
         }
-        TileCacheRepository.SetTile(tileName, blocks);
+        TileCacheRepository.SetTile(tileName, blocks, directions);
         return true;
     }
 }

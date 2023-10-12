@@ -8,17 +8,21 @@ public class TileCache
     [SerializeField] string title;
     [SerializeField] Mesh mesh;
     SimpleBlock[,,] matrix;
+    string[] directions;
 
     readonly int materialsCount = 3;
 
     public Mesh TileMesh => mesh;
-    public SimpleBlock[,,] Blocks => matrix;
+    public SimpleBlock[,,] Blocks => matrix;    
+    public string Direction(int index) => directions[index];
+    public string Direction(TileDirection.DirectionType direction) => Direction(TileDirection.Direction(direction));
     public SimpleBlock GetBlock(Vector3Int position) => GetBlock(position.x, position.y, position.z);
     public SimpleBlock GetBlock(int x, int y, int z) => matrix[x, y, z];
     public Type GetType(int x, int y, int z) => GetBlock(x,y,z)?.GetType();
 
-    public TileCache(string title, SimpleBlock[,,] matrix)
+    public TileCache(string title, SimpleBlock[,,] matrix, string[] directions)
     {
+        this.directions = directions;
         this.title = title;
         this.matrix = matrix;
         int count = matrix.GetLength(0);

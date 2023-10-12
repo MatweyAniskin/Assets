@@ -7,8 +7,9 @@ public abstract class Generator : Loader
     protected int height;
     protected int width;
     protected int curX, curY;
-    
 
+
+    protected TileCache GetRandomTileCache(TileCache[] tileCaches) => tileCaches[Random.Range(0, TileCacheRepository.Count)];
     public abstract void SetTileCache();
     public override bool Next()
     {
