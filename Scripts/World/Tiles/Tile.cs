@@ -17,6 +17,7 @@ public class Tile : MonoBehaviour
         this.matrix = tileCache.Blocks;
         filter.mesh = tileCache.TileMesh;
         collider.sharedMesh = tileCache.TileMesh;
+        gameObject.name = tileCache.ToString();
     }
     public void SetPosition(Vector2Int pos) => SetPosition(pos.x, pos.y);
     public void SetPosition(int x, int y) => transform.localPosition = new Vector3(x*GenerateProperty.TileSideScale,0, y * GenerateProperty.TileSideScale);

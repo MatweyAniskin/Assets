@@ -13,11 +13,11 @@ public abstract class Generator : Loader
     {
         try
         {
-            return tileCaches[Random.Range(0, TileCacheRepository.Count)];
+            return tileCaches[Random.Range(0, tileCaches.Length)];
         }
         catch
         {
-            return GetRandomTileCache(TileCacheRepository.GetTiles());
+            return null;//GetRandomTileCache(TileCacheRepository.GetTiles());
         }
     }
     public abstract void SetTileCache();

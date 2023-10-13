@@ -12485,9 +12485,9 @@
     <Block X="25" Y="4" Z="31">Grass</Block>
   </Tile>
   <Tile Name="AngleNormal">
-    <Direction Type="0">Ground</Direction>
+    <Direction Type="0">Road</Direction>
     <Direction Type="1">Ground</Direction>
-    <Direction Type="2">Road</Direction>
+    <Direction Type="2">Ground</Direction>
     <Direction Type="3">Road</Direction>
     <Block X="0" Y="0" Z="0">Ground</Block>
     <Block X="1" Y="0" Z="0">Ground</Block>
@@ -20837,9 +20837,9 @@
     <Block X="30" Y="4" Z="31">Grass</Block>
   </Tile>
   <Tile Name="DeadEndRoadOld">
-    <Direction Type="0">Ground</Direction>
+    <Direction Type="0">Road</Direction>
     <Direction Type="1">Ground</Direction>
-    <Direction Type="2">Road</Direction>
+    <Direction Type="2">Ground</Direction>
     <Direction Type="3">Ground</Direction>
     <Block X="0" Y="0" Z="0">Ground</Block>
     <Block X="1" Y="0" Z="0">Ground</Block>

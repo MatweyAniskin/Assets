@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEngine;
 
 public class CollapsingGenerator : Generator
 {
@@ -12,8 +13,9 @@ public class CollapsingGenerator : Generator
     {
         if (ruledValue == 0)
             return tileCaches;
-        return tileCaches.Where(i => i.Direction(requestType) == CacheMatrix.Get(referenceX, referenceY).Direction(referenceType)).ToArray();
+        string reference = CacheMatrix.Get(referenceX, referenceY).Direction(referenceType);            
+        return tileCaches.Where(i => i.Direction(requestType) == reference).ToArray();
     }
     TileCache[] GetRight(TileCache[] tileCaches) => GetRuledTiles(tileCaches, curX, curX - 1, curY, TileDirection.DirectionType.Right, TileDirection.DirectionType.Left);
-    TileCache[] GetUp(TileCache[] tileCaches) => GetRuledTiles(tileCaches, curY, curX, curY - 1, TileDirection.DirectionType.Up, TileDirection.DirectionType.Down);
+    TileCache[] GetUp(TileCache[] tileCaches) => GetRuledTiles(tileCaches, curY, curX, curY - 1, TileDirection.DirectionType.Down, TileDirection.DirectionType.Up);
 }
