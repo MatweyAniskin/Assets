@@ -12,7 +12,7 @@ public class GenerateProperty : MonoBehaviour
     /// <summary>
     /// Texture count per side of texture atlas
     /// </summary>
-    public static float UvSideCountTextures
+    public static Vector2Int UvSideCountTextures
     {
         get
         {
@@ -21,15 +21,15 @@ public class GenerateProperty : MonoBehaviour
         set
         {
             uvSideCountTextures = value;
-            UvScale = 1f / uvSideCountTextures;
+            UvScale = new Vector2(1f / uvSideCountTextures.x, 1f / uvSideCountTextures.y);
         }
     }
     /// <summary>
     /// Scale side of one texture in atlas
     /// </summary>
-    public static float UvScale { get; private set; }
+    public static Vector2 UvScale { get; private set; }
 
-    protected static float uvSideCountTextures = 1; 
+    protected static Vector2Int uvSideCountTextures = Vector2Int.one; 
     /// <summary>
     /// Calculated unit tile scale in unity
     /// </summary>

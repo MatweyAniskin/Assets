@@ -823,7 +823,7 @@ Transform:
   m_GameObject: {fileID: 366783973}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2968,14 +2968,10 @@ MonoBehaviour:
   order: 0
   loaderName: 
   blocks:
-  - {fileID: 11400000, guid: 3e92d5d1419f2a6488b98dd028c5f9d0, type: 2}
-  - {fileID: 11400000, guid: 6d3c7495dba1f234b8bc620f46748680, type: 2}
-  - {fileID: 11400000, guid: c2bf3cf3a824640459b351b5e22e1879, type: 2}
-  - {fileID: 11400000, guid: 4b1dd81b7efc53c4c8324b44366e0ce3, type: 2}
-  - {fileID: 11400000, guid: 11a62607990b48747ace1e3ba525af7e, type: 2}
-  - {fileID: 11400000, guid: 09c267c29ab62e64a9be673e4a6ee7ec, type: 2}
-  - {fileID: 11400000, guid: 2d0d3fc06bde9cc48a28111723fbdfad, type: 2}
   - {fileID: 11400000, guid: e9f7c03c507965c4bbf681c01a2791a7, type: 2}
+  - {fileID: 11400000, guid: c2bf3cf3a824640459b351b5e22e1879, type: 2}
+  - {fileID: 11400000, guid: 836d674c3e61ff8438ed12db944d1171, type: 2}
+  - {fileID: 11400000, guid: d10fe84cf6491a94dbbce1278c0aea68, type: 2}
 --- !u!114 &1533774069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,11 +2987,11 @@ MonoBehaviour:
   order: 1
   loaderName: 
   blockScale: 0.25
-  textureCountPerSide: 2
-  tileScale: 16
+  textureCountPerSide: {x: 3, y: 6}
+  tileScale: 32
   mapWidth: 10
   mapHeight: 10
-  walkebleLayer: 2
+  walkebleLayer: 4
 --- !u!114 &1533774070
 MonoBehaviour:
   m_ObjectHideFlags: 0

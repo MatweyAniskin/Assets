@@ -9,7 +9,17 @@ public abstract class Generator : Loader
     protected int curX, curY;
 
 
-    protected TileCache GetRandomTileCache(TileCache[] tileCaches) => tileCaches[Random.Range(0, TileCacheRepository.Count)];
+    protected TileCache GetRandomTileCache(TileCache[] tileCaches)
+    {
+        try
+        {
+            return tileCaches[Random.Range(0, TileCacheRepository.Count)];
+        }
+        catch
+        {
+            return GetRandomTileCache(TileCacheRepository.GetTiles());
+        }
+    }
     public abstract void SetTileCache();
     public override bool Next()
     {
