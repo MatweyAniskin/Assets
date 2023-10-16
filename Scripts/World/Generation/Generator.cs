@@ -36,7 +36,7 @@ public abstract class Generator : Loader
         return true;
     }
 
-    public override void StartWork()
+    public override void StartWork(MonoBehaviour executor)
     {
         curX = curY = 0;
         height = GenerateProperty.MapHeight;

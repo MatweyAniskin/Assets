@@ -3,24 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Loader/MatrixView")]
 public class MatrixView : Loader
 {
-    [SerializeField] Tile tilePrefab;
-    [SerializeField] Transform spawnTilePoint;
+    [SerializeField] Tile tilePrefab;    
     [SerializeField] bool isSetActiveTile = true;
+    [SerializeField] string tagForInstantiateTiles;
     int width, height, curX, curY;
-    public override void StartWork()
+    Transform spawnTilePoint;
+    public override void StartWork(MonoBehaviour executor)
     {
         width = GenerateProperty.MapWidth; 
         height = GenerateProperty.MapHeight;
         curY = curX = 0;
+        spawnTilePoint = GameObject.FindWithTag(tagForInstantiateTiles).transform;
     }
 
     public override bool Next()
     {
         if (curX == width)
             return false;
-        Tile temp = Instantiate(tilePrefab, spawnTilePoint) as Tile;
+        Tile temp =  Instantiate(tilePrefab, spawnTilePoint) as Tile;
         temp.SetBlocks(CacheMatrix.Get(curX, curY));
         temp.SetPosition(curX, curY);
 

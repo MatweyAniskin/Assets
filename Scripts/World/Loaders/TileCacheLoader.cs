@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Loader/TileCache")]
 public class TileCacheLoader : Loader
 {    
     [SerializeField] TextAsset xmlFile;
@@ -18,7 +19,7 @@ public class TileCacheLoader : Loader
     Queue<XmlElement> tileElementQueue;   
     int GetIntAttribute(string name, XmlElement xmlElement) => Convert.ToInt32(xmlElement.Attributes[name].InnerText);
 
-    public override void StartWork()
+    public override void StartWork(MonoBehaviour executor)
     {
         xmlDocument.LoadXml(xmlFile.text);
         tileElementQueue = new Queue<XmlElement>(xmlDocument.GetElementsByTagName("Tile").Cast<XmlElement>());        

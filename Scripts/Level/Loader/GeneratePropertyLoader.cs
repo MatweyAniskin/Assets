@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Loader/Propertys")]
 public class GeneratePropertyLoader : Loader
 {    
     [SerializeField] float blockScale = 1;
@@ -12,7 +13,7 @@ public class GeneratePropertyLoader : Loader
     [SerializeField] int walkebleLayer = 3;
     public override bool Next() => false;
 
-    public override void StartWork()
+    public override void StartWork(MonoBehaviour executor)
     {
         GenerateProperty.BlockScale = blockScale;
         GenerateProperty.UvSideCountTextures = textureCountPerSide;

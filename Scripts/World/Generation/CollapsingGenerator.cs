@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Loader/Generator/Collapsing")]
 public class CollapsingGenerator : Generator
 {
     public override void SetTileCache()

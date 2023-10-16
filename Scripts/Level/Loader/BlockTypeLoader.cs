@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Loader/BlockType")]
 public class BlockTypeLoader : Loader
 {   
     [SerializeField] List<SimpleBlock> blocks = new List<SimpleBlock>();
@@ -15,7 +16,7 @@ public class BlockTypeLoader : Loader
         return true;
     }
 
-    public override void StartWork()
+    public override void StartWork(MonoBehaviour executor)
     {
         tempBlocks = new Queue<SimpleBlock>(blocks);
         BlockRepository.Clear();

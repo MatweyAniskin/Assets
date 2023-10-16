@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Loader/TransformMatrix")]
 public class TransformMatrixLoader : Loader
 {
     public override bool Next() => false;    
 
-    public override void StartWork()
+    public override void StartWork(MonoBehaviour executor)
     {
         TransformRepository.SetTransforms(GenerateProperty.MapWidth, GenerateProperty.MapHeight,GenerateProperty.TileSideLength);
     }

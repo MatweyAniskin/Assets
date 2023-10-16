@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[CreateAssetMenu(menuName = "Loader/MoveMatrix")]
 public class MovementMatrixLoader : Loader
 {
     int widthBlockLength, heightblockLenght;
     int curTileX, curTileY, maxTileX, maxTileY;
     int tileLength;
     int walkebleLayer;
-    public override void StartWork()
+    public override void StartWork(MonoBehaviour executor)
     {
         curTileY = curTileX  = 0;
         walkebleLayer = GenerateProperty.WalkebleLayer;
