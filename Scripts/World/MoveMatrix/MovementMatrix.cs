@@ -34,14 +34,21 @@ public class MovementMatrix : MonoBehaviour
     /// <returns>true is free, false is blocked</returns>
     public static bool CheckState(int xMin, int yMin, int xMax, int yMax)
     {
-        for (int x = xMin; x < xMax; x++)
+        try
         {
-            for (int y = yMin; y < yMax; y++)
+            for (int x = xMin; x < xMax; x++)
             {
-                if (GetBlock(x, y))
-                    return false;
+                for (int y = yMin; y < yMax; y++)
+                {
+                    if (GetBlock(x, y))
+                        return false;
+                }
             }
         }
+        catch {
+            return false;
+        }
+        
         return true;
     }
     public static void SetBlock(Vector2Int min, Vector2Int max, bool value) => SetBlock(min.x, min.y, max.x, max.y, value);

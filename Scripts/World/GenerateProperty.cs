@@ -59,4 +59,8 @@ public class GenerateProperty : MonoBehaviour
     /// Layer in tile blocks (y) for walk
     /// </summary>
     public static int WalkebleLayer { get; set; }
+    /// <summary>
+    /// Character height (y) in unit transform
+    /// </summary>
+    public static float WalkebleHeight => WalkebleLayer * BlockScale;
 }

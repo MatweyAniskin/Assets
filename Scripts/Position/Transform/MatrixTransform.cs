@@ -17,8 +17,9 @@ public class MatrixTransform : MonoBehaviour
     /// Set matrix start position, use once 
     /// </summary>
     /// <param name="globalposition">matrix global position</param>
-    public void SetStartPosition(Vector2Int globalposition)
+    public virtual void SetStartPosition(Vector2Int globalposition)
     {
+        transform.localPosition = Vector3.up * GenerateProperty.WalkebleHeight;
         matrixPosition = globalposition;
         squarePosition = TransformRepository.GetSquarePosition(matrixPosition);      
         TransformRepository.Add(squarePosition, this);
