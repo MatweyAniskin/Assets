@@ -21,7 +21,8 @@ public class MatrixTransform : MonoBehaviour
     {
         transform.localPosition = Vector3.up * GenerateProperty.WalkebleHeight;
         matrixPosition = globalposition;
-        squarePosition = TransformRepository.GetSquarePosition(matrixPosition);      
+        RecalculateMatrixPositionToUnitPosition();
+         squarePosition = TransformRepository.GetSquarePosition(matrixPosition);      
         TransformRepository.Add(squarePosition, this);
     }
     /// <summary>
