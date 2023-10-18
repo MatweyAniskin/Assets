@@ -6,6 +6,7 @@ public class NpcBehaviour : CharacterBehaviour
 {
     StepAction[] stepActions;
 
+
     public override void OnStart()
     {
         stepActions = GetComponents<StepAction>();
@@ -13,7 +14,7 @@ public class NpcBehaviour : CharacterBehaviour
     }
     public override void OnDelete()
     {
-        throw new System.NotImplementedException();
+     //   throw new System.NotImplementedException();
     }
 
     
