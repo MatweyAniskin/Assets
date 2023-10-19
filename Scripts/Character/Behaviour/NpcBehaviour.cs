@@ -10,16 +10,17 @@ public class NpcBehaviour : CharacterBehaviour
     MatrixTransform attackTarget;
 
     public MatrixTransform AttackTarget => attackTarget;
+    public bool IsTargeting => !(attackTarget is null);
     public void SetTarget(MatrixTransform target) => attackTarget = target;
     public override void OnStart()
     {
         stepActions = GetComponents<StepAction>();
-        base.OnStart();
+        base.OnStart();      
     }
     public override void StepAction()
-    {
-        SetAction(GetNextStep(), CalculateDir());
+    {        
         base.StepAction();
+        SetAction(GetNextStep(), CalculateDir());
     }
     Vector2Int CalculateDir()
     {

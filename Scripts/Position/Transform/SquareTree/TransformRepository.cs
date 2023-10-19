@@ -45,6 +45,7 @@ public class TransformRepository : MonoBehaviour
     /// <param name="position">global position</param>
     /// <returns></returns>
     public static MatrixTransform GetTransformInPosition(Vector2Int position) => GetSquare(position).GetContact(position);
+    public static IEnumerable<MatrixTransform> GetTransformsInSquare(Vector2Int squareIndex) => GetSquare(squareIndex).Transforms;
     static TransformSquare GetSquare(Vector2Int squareIndex) => squares[squareIndex.x, squareIndex.y];
     public static Vector2Int GetSquarePosition(Vector2Int position) => new Vector2Int(position.x/SquareSideLength, position.y / SquareSideLength);
 }

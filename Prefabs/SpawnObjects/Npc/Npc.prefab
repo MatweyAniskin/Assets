@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 5106596047426959489}
   - component: {fileID: 968601698012127589}
   - component: {fileID: 9079450448816183141}
+  - component: {fileID: -1609560769411711040}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -247,6 +248,7 @@ MonoBehaviour:
   stats: {fileID: 9079450448816183141}
   states:
   - {fileID: 11400000, guid: 7b7ef03e96f394b47ac1fd343e3a3d64, type: 2}
+  - {fileID: 11400000, guid: 6df6cbba567d9af4caf541fd16e3a48a, type: 2}
 --- !u!114 &9079450448816183141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +264,21 @@ MonoBehaviour:
   maxHelse: 10
   curHelse: 10
   types: []
+--- !u!114 &-1609560769411711040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813841225085765988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1c8723a6b3a2945aaafc79a34e1262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviour: {fileID: 5106596047426959489}
+  matrixTransform: {fileID: 2103554306322706161}
+  radius: 10
 --- !u!1 &8031294945641591867
 GameObject:
   m_ObjectHideFlags: 0
