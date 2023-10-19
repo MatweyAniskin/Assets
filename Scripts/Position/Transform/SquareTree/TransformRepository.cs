@@ -25,7 +25,8 @@ public class TransformRepository : MonoBehaviour
    
     public static void SwitchSquad(Vector2Int curSquareIndex, Vector2Int nextSquareIndex, MatrixTransform transform)
     {
-        Remove(curSquareIndex, transform);
+        
+        Remove(curSquareIndex, transform);        
         Add(nextSquareIndex, transform);
     }
     public static void Add(MatrixTransform transform) => GetSquare(transform.SquarePosition).Add(transform);

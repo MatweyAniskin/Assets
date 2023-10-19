@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3650955466042638172}
   - component: {fileID: 5141602950182061045}
   - component: {fileID: 2961381809678199920}
+  - component: {fileID: 7090647283457784489}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -65,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13070d5a03f435408fe7074d75d6166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 7090647283457784489}
   movement: {fileID: 1898333882492005542}
 --- !u!114 &1898333882492005542
 MonoBehaviour:
@@ -160,6 +162,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterBehaviour: {fileID: 824240868400077858}
   matrixTransform: {fileID: 2116047233892433050}
+--- !u!114 &7090647283457784489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735464963878326567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39512c1b099e3074185c9b4ec020396c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHelse: 0
+  curHelse: 0
+  types: []
 --- !u!1 &7879623690453437145
 GameObject:
   m_ObjectHideFlags: 0

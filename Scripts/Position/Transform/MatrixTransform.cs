@@ -22,7 +22,7 @@ public class MatrixTransform : MonoBehaviour
         transform.localPosition = Vector3.up * GenerateProperty.WalkebleHeight;
         matrixPosition = globalposition;
         RecalculateMatrixPositionToUnitPosition();
-         squarePosition = TransformRepository.GetSquarePosition(matrixPosition);      
+        squarePosition = TransformRepository.GetSquarePosition(matrixPosition);      
         TransformRepository.Add(squarePosition, this);
     }
     /// <summary>
@@ -46,6 +46,8 @@ public class MatrixTransform : MonoBehaviour
         {
             matrixPosition = value;           
             Vector2Int next = TransformRepository.GetSquarePosition(matrixPosition);
+            if (next.x < 0 || next.y < 0 || next.x >= GenerateProperty.MapWidth || next.y >= GenerateProperty.MapHeight)
+                return;
             if (next != squarePosition)
             {
                 TransformRepository.SwitchSquad(squarePosition, next, this);
@@ -56,6 +58,8 @@ public class MatrixTransform : MonoBehaviour
     public void RecalculateMatrixPositionToUnitPosition() => transform.position = MatrixToPosition();
     public int Radius => radius;
     public Vector2Int SquarePosition => squarePosition;
+    public void Destroy() => Destroy(gameObject);
+    public T GetComponent<T>() => gameObject.GetComponent<T>();
     public bool IsContact(Vector2Int pos) => matrixPosition.x - Radius <= pos.x && matrixPosition.x + Radius >= pos.x && matrixPosition.y - Radius <= pos.y && matrixPosition.y + Radius >= pos.y;
     public Vector2Int PositionToMatrix() => PositionToMatrix(transform.position);
     public static Vector2Int PositionToMatrix(Vector3 globalPosition) => PositionToMatrix(globalPosition, GenerateProperty.BlockScale);
@@ -63,6 +67,6 @@ public class MatrixTransform : MonoBehaviour
     public Vector3 MatrixToPosition() => MatrixToPosition(Position, transform.position);
     public static Vector3 MatrixToPosition(Vector2Int matrixPos, Vector3 globalPos) => MatrixToPosition(matrixPos, globalPos, GenerateProperty.BlockScale);
     public static Vector3 MatrixToPosition(Vector2Int matrixPos, Vector3 globalPos, float blockScale) => new Vector3(matrixPos.x * blockScale, globalPos.y, matrixPos.y * blockScale);
-    public void Destroy() => Destroy(gameObject);
-    public T GetComponent<T>() => gameObject.GetComponent<T>();
+    public static Vector2Int CalculateDirection(MatrixTransform first, MatrixTransform second) => CalculateDirection(first.LogicPosition, second.LogicPosition);
+    public static Vector2Int CalculateDirection(Vector2Int first, Vector2Int second) => second - first;
 }

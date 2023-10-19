@@ -10,5 +10,5 @@ public abstract class StepAction : MonoBehaviour
     public event StepActionDelegate OnAction;
     public abstract void Action(Vector2Int dir, Stats stats);
     protected void ActionEvent(Vector2Int dir) => OnAction?.Invoke(dir);
-    
+    public ActionType.Types ActionType => actionType;
 }
