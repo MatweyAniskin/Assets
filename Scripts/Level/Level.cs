@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Level")]
+[CreateAssetMenu(fileName = "Level", menuName = "Loader/Level")]
 public class Level : ScriptableObject
 {
     [SerializeField] string title;

@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionType
+[CreateAssetMenu(fileName = "ActionType", menuName = "Logic/Action/Type")] 
+public class ActionType : ScriptableObject
 {
-    public enum Types { Neutral, Move, Attack, Defence }
+    [SerializeField] string title;    
+
+    public static bool operator ==(ActionType lhs, ActionType rhs) => lhs.title == rhs.title;
+    public static bool operator !=(ActionType lhs, ActionType rhs) => lhs.title != rhs.title;
 }

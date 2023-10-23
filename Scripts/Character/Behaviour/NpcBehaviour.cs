@@ -30,7 +30,7 @@ public class NpcBehaviour : CharacterBehaviour
     }
     StepActionDelegate GetNextStep()
     {
-        ActionType.Types type = stateMachine.NextAction();
+        ActionType type = stateMachine.NextAction();
         StepAction[] tempActions = stepActions.Where(i => i.ActionType == type).ToArray();
         if (tempActions.Length > 0)
             return GetActionInArray(tempActions);

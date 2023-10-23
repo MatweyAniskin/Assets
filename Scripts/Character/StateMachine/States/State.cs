@@ -3,8 +3,8 @@ using UnityEngine;
 public abstract class State : ScriptableObject
 {
     [SerializeField] string title;
-    [SerializeField] ActionType.Types[] actions;
+    [SerializeField] ActionType[] actions;
     public abstract bool Rule(Stats stats, NpcBehaviour behaviour);
-    public ActionType.Types[] Script => actions;
+    public ActionType[] Script => actions;
     public override string ToString() => title;    
 }

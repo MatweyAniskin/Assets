@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "KeyProfile")]
+[CreateAssetMenu(menuName = "Logic/Input/KeyProfile")]
 public class KeyProfile : ScriptableObject
 {
     [SerializeField] string title;

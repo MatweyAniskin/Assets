@@ -10,14 +10,14 @@ public class StateMachine : MonoBehaviour
     [SerializeField] Stats stats;    
     [SerializeField] State[] states;
 
-    Queue<ActionType.Types> script = new Queue<ActionType.Types>();
+    Queue<ActionType> script = new Queue<ActionType>();
     private void Start()
     {
         NextScript();
     }
-    public ActionType.Types NextAction()
+    public ActionType NextAction()
     {
-        ActionType.Types type = script.Dequeue();
+        ActionType type = script.Dequeue();
         if (script.Count == 0)
             NextScript();
         return type;
@@ -30,5 +30,5 @@ public class StateMachine : MonoBehaviour
         else 
             SetScript(states);
     }
-    void SetScript(State[] curStates) => script = new Queue<ActionType.Types>(curStates[Random.Range(0, curStates.Length)].Script);
+    void SetScript(State[] curStates) => script = new Queue<ActionType>(curStates[Random.Range(0, curStates.Length)].Script);
 }

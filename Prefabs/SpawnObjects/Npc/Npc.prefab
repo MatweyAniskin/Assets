@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677639544742ead41af7d49370e69f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionType: 1
+  actionType: {fileID: 11400000, guid: 16be1c97c6a9e214abcf7a9fc65bfbfa, type: 2}
   matrixTransform: {fileID: 2103554306322706161}
   animation:
     serializedVersion: 2
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a949007c745850f43a84b1cb7bdd2f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionType: 0
+  actionType: {fileID: 11400000, guid: c5336a345ac07cd47bc2482a880b4da0, type: 2}
 --- !u!114 &39285877247662334
 MonoBehaviour:
   m_ObjectHideFlags: 0
