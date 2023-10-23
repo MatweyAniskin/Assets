@@ -24,9 +24,9 @@ public class NpcBehaviour : CharacterBehaviour
     }
     Vector2Int CalculateDir()
     {
-        if (attackTarget is null)
+        if (!IsTargeting)
             return new Vector2Int(Random.Range(-1, 2), Random.Range(-1, 2));
-        return MatrixTransform.CalculateDirection(matrixTransform, AttackTarget);
+        return attackTarget.Position;
     }
     StepActionDelegate GetNextStep()
     {

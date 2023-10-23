@@ -667,7 +667,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   group: {fileID: 8724938653255301203}
   windowSpeed: 4
-  movingUiElements: []
+  movingUiElements:
+  - rectTransform: {fileID: 480740524441305588}
+    waitTime: 0
+    animationSpeed: 1
+    hiddenPosition: {x: 0, y: 250}
+    viewPosition: {x: 0, y: 320}
+  - rectTransform: {fileID: 3669995095068457030}
+    waitTime: 0.5
+    animationSpeed: 2
+    hiddenPosition: {x: 0, y: 250}
+    viewPosition: {x: 0, y: 320}
+  - rectTransform: {fileID: 7455412399903770446}
+    waitTime: 0.5
+    animationSpeed: 4
+    hiddenPosition: {x: 0, y: -250}
+    viewPosition: {x: 0, y: -320}
   defaultPosition: {x: 0, y: 0}
   rectTransform: {fileID: 0}
 --- !u!1 &4691393504096865258
@@ -1250,7 +1265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 94.125, y: 104}
+  m_AnchoredPosition: {x: 102.94, y: 104}
   m_SizeDelta: {x: 94.1245, y: 143.7507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6879084280936569198

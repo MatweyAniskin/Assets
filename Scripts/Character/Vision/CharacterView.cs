@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CharacterView : MonoBehaviour
@@ -15,33 +13,34 @@ public class CharacterView : MonoBehaviour
     {
         behaviour.OnBehaviourAction += IsViewEnemy;
         sqareRadius = Mathf.CeilToInt(1f * radius / GenerateProperty.TileSideLength);
-        maxMatrixPosition = new Vector2Int(GenerateProperty.MapWidth-1, GenerateProperty.MapHeight-1);        
+        maxMatrixPosition = new Vector2Int(GenerateProperty.MapWidth - 1, GenerateProperty.MapHeight - 1);
     }
     private void OnDestroy()
     {
         behaviour.OnBehaviourAction -= IsViewEnemy;
     }
     void IsViewEnemy()
-    {        
+    {
         if (behaviour.IsTargeting)
             return;
         List<MatrixTransform> transforms = new List<MatrixTransform>();
         Vector2Int temp;
-        for (int x = - sqareRadius; x < sqareRadius;x++)
+        for (int x = -sqareRadius; x < sqareRadius; x++)
             for (int y = -sqareRadius; y < sqareRadius; y++)
             {
                 temp = matrixTransform.SquarePosition + new Vector2Int(x, y);
                 temp.Clamp(Vector2Int.zero, maxMatrixPosition);
                 transforms.AddRange(TransformRepository.GetTransformsInSquare(temp));
             }
-                
-        transforms.ForEach(i => {
-                if (i is PlayerMatrixTransform || Vector2Int.Distance(i.Position,matrixTransform.Position) <= radius) //is unit test
-                {
-                    behaviour.SetTarget(i);
-                    return;
-                }
+
+        transforms.ForEach(i =>
+        {
+            if (i is PlayerMatrixTransform && Vector2Int.Distance(i.Position, matrixTransform.Position) <= radius) //is unit test
+            {
+                behaviour.SetTarget(i);                
+                return;
             }
+        }
         );
     }
 }
