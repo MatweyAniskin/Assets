@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Chase
   m_EditorClassIdentifier: 
   title: Chase
-  actions: 01000000
+  actions:
+  - {fileID: 11400000, guid: 16be1c97c6a9e214abcf7a9fc65bfbfa, type: 2}

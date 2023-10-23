@@ -67,6 +67,6 @@ public class MatrixTransform : MonoBehaviour
     public Vector3 MatrixToPosition() => MatrixToPosition(Position, transform.position);
     public static Vector3 MatrixToPosition(Vector2Int matrixPos, Vector3 globalPos) => MatrixToPosition(matrixPos, globalPos, GenerateProperty.BlockScale);
     public static Vector3 MatrixToPosition(Vector2Int matrixPos, Vector3 globalPos, float blockScale) => new Vector3(matrixPos.x * blockScale, globalPos.y, matrixPos.y * blockScale);
-    public static Vector2Int CalculateDirection(MatrixTransform first, MatrixTransform second) => CalculateDirection(first.LogicPosition, second.LogicPosition);
-    public static Vector2Int CalculateDirection(Vector2Int first, Vector2Int second) => new Vector2Int(Mathf.Clamp(second.x - first.x, -1, 1), Mathf.Clamp(second.y - first.y,-1,1));
+    public static Vector2Int CalculateDirection(MatrixTransform to, MatrixTransform from) => CalculateDirection(to.LogicPosition, from.LogicPosition);
+    public static Vector2Int CalculateDirection(Vector2Int to, Vector2Int from) => new Vector2Int(Mathf.Clamp(to.x - from.x, -1, 1), Mathf.Clamp(to.y - from.y,-1,1));
 }

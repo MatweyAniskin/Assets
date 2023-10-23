@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Neutral
   m_EditorClassIdentifier: 
   title: Neutral
-  actions: 000000000100000000000000
+  actions:
+  - {fileID: 11400000, guid: c5336a345ac07cd47bc2482a880b4da0, type: 2}
+  - {fileID: 11400000, guid: 16be1c97c6a9e214abcf7a9fc65bfbfa, type: 2}

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CharacterMovement : StepAction
 {
-    [SerializeField] MatrixTransform matrixTransform;
+    [SerializeField] protected MatrixTransform matrixTransform;
     [SerializeField] AnimationCurve animation;    
-    [SerializeField] int stepBlocks = 2;    
+    [SerializeField] protected int stepBlocks = 2;    
     Vector2Int nextPosition;   
 
     public override void Action(Vector2Int dir, Stats stats)
@@ -14,7 +14,7 @@ public class CharacterMovement : StepAction
         nextPosition = CheckState(out int curStep, dir);
         matrixTransform.LogicPosition = nextPosition;
         Vector3 endPosition = MatrixTransform.MatrixToPosition(nextPosition,transform.position);        
-        ActionEvent(dir);       
+        base.Action(dir, stats);
         StartCoroutine(AnimationCoroutine(transform.position, endPosition));
     }
     Vector2Int CheckState(out int curStepBlocks,Vector2Int dir)
