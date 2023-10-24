@@ -6,7 +6,7 @@ public abstract class SimpleBlock : ScriptableObject
     [SerializeField] protected Vector2Int[] textureCoordinate;
     [SerializeField] protected BlockMaterial material;
     [SerializeField] private bool isSolid;
-
+    [SerializeField] protected int trianglesArray = 0;
     public bool IsSolid => isSolid;
     protected void GenerateUvMap(ref List<Vector2> uvs)
     {

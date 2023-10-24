@@ -16,13 +16,13 @@ public class GrassBlock : SimpleBlock
 
         GenerateUvMap(ref uvs);
 
-        triangles[1].Add(vertex.Count - 2);
-        triangles[1].Add(vertex.Count - 3);
-        triangles[1].Add(vertex.Count - 4);
+        triangles[trianglesArray].Add(vertex.Count - 2);
+        triangles[trianglesArray].Add(vertex.Count - 3);
+        triangles[trianglesArray].Add(vertex.Count - 4);
 
-        triangles[1].Add(vertex.Count - 1);
-        triangles[1].Add(vertex.Count - 3);
-        triangles[1].Add(vertex.Count - 2);
+        triangles[trianglesArray].Add(vertex.Count - 1);
+        triangles[trianglesArray].Add(vertex.Count - 3);
+        triangles[trianglesArray].Add(vertex.Count - 2);
        
 
         //Left
@@ -33,12 +33,12 @@ public class GrassBlock : SimpleBlock
 
         GenerateUvMap(ref uvs);
 
-        triangles[1].Add(vertex.Count - 4);
-        triangles[1].Add(vertex.Count - 3);
-        triangles[1].Add(vertex.Count - 2);
+        triangles[trianglesArray].Add(vertex.Count - 4);
+        triangles[trianglesArray].Add(vertex.Count - 3);
+        triangles[trianglesArray].Add(vertex.Count - 2);
 
-        triangles[1].Add(vertex.Count - 2);
-        triangles[1].Add(vertex.Count - 3);
-        triangles[1].Add(vertex.Count - 1);
+        triangles[trianglesArray].Add(vertex.Count - 2);
+        triangles[trianglesArray].Add(vertex.Count - 3);
+        triangles[trianglesArray].Add(vertex.Count - 1);
     }
 }
