@@ -4,8 +4,10 @@ using UnityEngine;
 public abstract class SimpleBlock : ScriptableObject
 {    
     [SerializeField] protected Vector2Int[] textureCoordinate;
-    [SerializeField] protected BlockMaterial material;    
+    [SerializeField] protected BlockMaterial material;
+    [SerializeField] private bool isSolid;
 
+    public bool IsSolid => isSolid;
     protected void GenerateUvMap(ref List<Vector2> uvs)
     {
         Vector2Int textureCoordinate = this.textureCoordinate[Random.Range(0, this.textureCoordinate.Length)];
@@ -26,7 +28,7 @@ public abstract class SimpleBlock : ScriptableObject
     {
         try
         {
-            return !(matrix[x,y,z].GetType() == typeof(SolidBlock));            
+            return !(matrix[x,y,z].isSolid);            
         }
         catch
         {

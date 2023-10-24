@@ -28,11 +28,13 @@ public class MovementMatrixLoader : Loader
 
         TileCache curTile = CacheMatrix.Get(curTileX, curTileY);
         bool isBlocked;
+        SimpleBlock block;
         for(int x = 0; x < tileLength;x++)
         {
             for (int y = 0; y < tileLength; y++)
             {
-                isBlocked = curTile.GetType(x, walkebleLayer, y) == typeof(SolidBlock);  //todo make with attributes
+                block = curTile.GetBlock(x, walkebleLayer, y);
+                isBlocked = block is null? false : block.IsSolid;
                 MovementMatrix.SetBlock(x+curTileX*tileLength, y + curTileY * tileLength, isBlocked);
             }
         }        

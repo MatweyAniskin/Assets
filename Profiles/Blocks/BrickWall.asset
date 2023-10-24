@@ -17,3 +17,4 @@ MonoBehaviour:
   - {x: 3, y: 1}
   - {x: 3, y: 2}
   material: {fileID: 0}
+  isSolid: 1
