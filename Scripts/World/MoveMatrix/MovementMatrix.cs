@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MovementMatrix : MonoBehaviour
 {
@@ -62,5 +63,5 @@ public class MovementMatrix : MonoBehaviour
                 SetBlock(x, y, value);
             }
         }       
-    }
+    }   
 }

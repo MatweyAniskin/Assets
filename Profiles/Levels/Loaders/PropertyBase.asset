@@ -15,7 +15,7 @@ MonoBehaviour:
   order: 1
   loaderName: 
   blockScale: 0.25
-  textureCountPerSide: {x: 3, y: 6}
+  textureCountPerSide: {x: 3, y: 7}
   tileScale: 32
   mapWidth: 10
   mapHeight: 10

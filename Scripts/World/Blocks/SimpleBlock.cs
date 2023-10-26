@@ -7,14 +7,15 @@ public abstract class SimpleBlock : ScriptableObject
     [SerializeField] protected BlockMaterial material;
     [SerializeField] private bool isSolid;
     [SerializeField] protected int trianglesArray = 0;
+    float uvOffset = 0f;
     public bool IsSolid => isSolid;
     protected void GenerateUvMap(ref List<Vector2> uvs)
     {
         Vector2Int textureCoordinate = this.textureCoordinate[Random.Range(0, this.textureCoordinate.Length)];
-        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x - 1) * GenerateProperty.UvScale);
-        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x) * GenerateProperty.UvScale);        
-        uvs.Add(new Vector2(textureCoordinate.y + 1, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x - 1) * GenerateProperty.UvScale);
-        uvs.Add(new Vector2(textureCoordinate.y + 1, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x) * GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y - uvOffset, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x - 1 + uvOffset) * GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y - uvOffset, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x - uvOffset) * GenerateProperty.UvScale);        
+        uvs.Add(new Vector2(textureCoordinate.y + 1 - uvOffset, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x - 1 + uvOffset) * GenerateProperty.UvScale);
+        uvs.Add(new Vector2(textureCoordinate.y + 1 - uvOffset, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x - uvOffset) * GenerateProperty.UvScale);
         
 
 /*        uvs.Add(new Vector2(textureCoordinate.y, GenerateProperty.UvSideCountTextures - textureCoordinate.x)* GenerateProperty.UvScale);

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   order: 2
   loaderName: 
-  xmlFile: {fileID: 4900000, guid: 30b9b8e3e93d3df43bcfd9b3bfa89bb5, type: 3}
+  xmlFile: {fileID: 4900000, guid: 9942cbd7486a55b47a8f04099528f73e, type: 3}

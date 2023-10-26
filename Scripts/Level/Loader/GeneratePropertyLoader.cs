@@ -11,6 +11,7 @@ public class GeneratePropertyLoader : Loader
     [SerializeField] int mapWidth = 10;
     [SerializeField] int mapHeight = 10;
     [SerializeField] int walkebleLayer = 3;
+    [SerializeField] int characterHeight = 4;
     public override bool Next() => false;
 
     public override void StartWork(MonoBehaviour executor)
@@ -21,5 +22,6 @@ public class GeneratePropertyLoader : Loader
         GenerateProperty.MapHeight = mapHeight;
         GenerateProperty.MapWidth = mapWidth;
         GenerateProperty.WalkebleLayer = walkebleLayer;
+        GenerateProperty.CharactersHeight = characterHeight;
     }
 }

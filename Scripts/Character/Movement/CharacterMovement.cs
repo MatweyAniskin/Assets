@@ -6,7 +6,8 @@ public class CharacterMovement : StepAction
 {
     [SerializeField] protected MatrixTransform matrixTransform;
     [SerializeField] AnimationCurve animation;    
-    [SerializeField] protected int stepBlocks = 2;    
+    [SerializeField] protected int stepBlocks = 2;
+    [SerializeField] bool debugMode;
     Vector2Int nextPosition;   
 
     public override void Action(Vector2Int dir, Stats stats)
@@ -25,7 +26,7 @@ public class CharacterMovement : StepAction
         {
             cur = matrixTransform.Position + dir * curStepBlocks;
             if (MovementMatrix.CheckState(cur, matrixTransform.Radius))
-            {
+            {               
                 res = cur;
             }else
             {

@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matrixPosition: {x: 0, y: 0}
-  radius: 0
+  radius: 1
 --- !u!114 &824240868400077858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677639544742ead41af7d49370e69f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionType: 1
+  actionType: {fileID: 0}
   matrixTransform: {fileID: 2116047233892433050}
   animation:
     serializedVersion: 2
@@ -116,6 +116,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   stepBlocks: 2
+  debugMode: 1
 --- !u!114 &3650955466042638172
 MonoBehaviour:
   m_ObjectHideFlags: 0

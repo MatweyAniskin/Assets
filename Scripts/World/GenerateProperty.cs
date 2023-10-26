@@ -60,6 +60,10 @@ public class GenerateProperty : MonoBehaviour
     /// </summary>
     public static int WalkebleLayer { get; set; }
     /// <summary>
+    /// Count of blocks from Walkeble layer for characters may walk
+    /// </summary>
+    public static int CharactersHeight { get; set; }
+    /// <summary>
     /// Character height (y) in unit transform
     /// </summary>
     public static float WalkebleHeight => WalkebleLayer * BlockScale;

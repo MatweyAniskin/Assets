@@ -9,7 +9,7 @@ public class MovementMatrixLoader : Loader
     int widthBlockLength, heightblockLenght;
     int curTileX, curTileY, maxTileX, maxTileY;
     int tileLength;
-    int walkebleLayer;
+    int walkebleLayer, characterHeight;
     public override void StartWork(MonoBehaviour executor)
     {
         curTileY = curTileX  = 0;
@@ -19,6 +19,7 @@ public class MovementMatrixLoader : Loader
         heightblockLenght = GenerateProperty.MapHeightBlockLength;
         maxTileX = GenerateProperty.MapWidth;
         maxTileY = GenerateProperty.MapHeight;
+        characterHeight = GenerateProperty.CharactersHeight;
         MovementMatrix.InitMatrix(widthBlockLength, heightblockLenght);
     }
     public override bool Next()
@@ -33,8 +34,17 @@ public class MovementMatrixLoader : Loader
         {
             for (int y = 0; y < tileLength; y++)
             {
-                block = curTile.GetBlock(x, walkebleLayer, y);
-                isBlocked = block is null? false : block.IsSolid;
+                isBlocked = false;
+                for (int z = walkebleLayer; z < walkebleLayer + characterHeight; z++)
+                {
+                    block = curTile.GetBlock(x, z, y);                     
+                    if (block is null ? false : block.IsSolid)
+                    {
+                        isBlocked = true;                      
+                        break;
+                    }
+                        
+                }                
                 MovementMatrix.SetBlock(x+curTileX*tileLength, y + curTileY * tileLength, isBlocked);
             }
         }        
