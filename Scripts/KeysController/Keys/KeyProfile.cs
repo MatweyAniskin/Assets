@@ -11,5 +11,6 @@ public class KeyProfile : ScriptableObject
     protected delegate bool IsKeyDelegate(KeyCode keyCode);
     public bool CheckKeyDown() => IsKey(Input.GetKeyDown);
     public bool CheckKeyUp() => IsKey(Input.GetKeyUp);
+    public bool CheckKeyPress() => IsKey(Input.GetKey);
     bool IsKey(IsKeyDelegate method) => method(this.key) || method(altKey);
 }
