@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class WindowInstaller : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] KeyProfile forceCloseKey;
+    [SerializeField] List<WindowProfile> windows;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        windows.ForEach(i => i.Start(this));
+    }
+    private void OnDestroy()
+    {
+        windows.ForEach(i => i.End(this));
     }
 }

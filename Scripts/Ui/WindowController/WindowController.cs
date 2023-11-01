@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WindowController : MonoBehaviour
 {
+    [SerializeField] Transform canvas;
     public static Window RequestWindow { get; set; }
     static Window curWindow;
-    static Transform canvas;
+    static Transform _canvas;
     public static Window CurWindow
     {
         get
         {
             return curWindow;
         }
-        set
+        protected set
         {
-            if(curWindow != null)
-                curWindow.Close();
+            ForceClose();
             curWindow = value;
         }
     }
@@ -40,14 +41,20 @@ public class WindowController : MonoBehaviour
             OnWindowOpen?.Invoke(value);
         }
     }
-    public static void InstantiateWindow(Window window)
+    public static void InstantiateWindow(WindowProfile window)
     {
-        CurWindow = Instantiate(window, canvas) as Window;
+        CurWindow = Instantiate(window.Window, _canvas) as Window;
         CurWindow.SetPosition();
     }
-
-    private void Start()
+    public static void ForceClose()
     {
-        canvas = transform;
+        if(CurWindow.IsDestroyed())
+            return;
+        CurWindow.Close();
+    }
+
+    private void Awake()
+    {
+        _canvas = canvas;
     }
 }
