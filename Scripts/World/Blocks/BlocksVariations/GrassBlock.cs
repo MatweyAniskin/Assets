@@ -40,5 +40,5 @@ public class GrassBlock : SimpleBlock
         triangles[trianglesArray].Add(vertex.Count - 2);
         triangles[trianglesArray].Add(vertex.Count - 3);
         triangles[trianglesArray].Add(vertex.Count - 1);
-    }
+    }   
 }

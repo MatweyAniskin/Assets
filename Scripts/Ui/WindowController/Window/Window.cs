@@ -40,41 +40,36 @@ public abstract class Window : MonoBehaviour
     public void Close()
     {        
         StartCoroutine(CloseAnimation());
-        OnClose();
+       
     }
     IEnumerator OpenAnimation()
     {
-        StopCoroutine(CloseAnimation());
-        isOpen = true;
+        float index = group.alpha = 0;
         group.gameObject.SetActive(true);
-        group.alpha = 0;
         foreach (MovingUiElement i in movingUiElements)
             i.StartAnimation(this);
-        while (group.alpha != 1)
+        while (index < 1)
         {
-            group.alpha += Time.unscaledDeltaTime * windowSpeed;
+            index += Time.unscaledDeltaTime * windowSpeed;
+            group.alpha = index;
             yield return null;
         }
-             
-        WindowController.IsOpened = isOpen;
+                     
     }
     IEnumerator CloseAnimation()
     {
         StopCoroutine(OpenAnimation());
         ViewPoint = null;
-        group.alpha = 1;
-        isOpen = false;
-        WindowController.IsOpened = isOpen;
+        float index = group.alpha = 1;
+        isOpen = false;        
         foreach (MovingUiElement i in movingUiElements)
             i.EndAnimation(this);
-        while (group.alpha != 0)
+        while (index > 0)
         {
-            group.alpha -= Time.unscaledDeltaTime * windowSpeed;
+            index -= Time.unscaledDeltaTime * windowSpeed;
+            group.alpha = index; 
             yield return null;
         }
-
-        group.gameObject.SetActive(false);
-        
-        yield return null;
+        OnClose();        
     }
 }

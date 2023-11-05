@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class WindowController : MonoBehaviour
@@ -8,49 +9,44 @@ public class WindowController : MonoBehaviour
     [SerializeField] Transform canvas;
     public static Window RequestWindow { get; set; }
     static Window curWindow;
+    static WindowProfile curProfile;
     static Transform _canvas;
-    public static Window CurWindow
-    {
-        get
-        {
-            return curWindow;
-        }
-        protected set
-        {
-            ForceClose();
-            curWindow = value;
-        }
-    }
-    static bool isOpened = false;
     
-    public delegate void OpenWindow();
-    public event OpenWindow OnOpenInventory;
-    public event OpenWindow OnWindowClose;
-    public delegate void ChangeWindow(bool value);
-    public static event ChangeWindow OnWindowOpen;
-
-    public static bool IsOpened
+    public static WindowProfile CurWindowProfile 
     {
-        get
-        {
-            return isOpened;
-        }
-        set
-        {
-            isOpened = value;          
-            OnWindowOpen?.Invoke(value);
-        }
+        get => curProfile;
+        protected set
+        {            
+            curProfile = value;
+            if (curProfile is null)
+            {
+                CloseCurWindow();
+                return;
+            }
+                
+            curWindow = Instantiate(curProfile.Window, _canvas) as Window;
+            curWindow.SetPosition();
+        } 
     }
+    public static bool IsOpenWindow => !(CurWindowProfile is null);
+
     public static void InstantiateWindow(WindowProfile window)
     {
-        CurWindow = Instantiate(window.Window, _canvas) as Window;
-        CurWindow.SetPosition();
-    }
-    public static void ForceClose()
-    {
-        if(CurWindow.IsDestroyed())
+        if (CurWindowProfile == window)
+        {
+            CurWindowProfile = null;
             return;
-        CurWindow.Close();
+        }
+        CurWindowProfile = window;
+            
+    }
+    public static void ForceClose() => CurWindowProfile = null;
+    static void CloseCurWindow()
+    {
+        if (curWindow is null)
+            return;
+        curWindow.Close();
+        curWindow = null;
     }
 
     private void Awake()

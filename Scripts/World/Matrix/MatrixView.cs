@@ -15,6 +15,7 @@ public class MatrixView : Loader
     {
         width = GenerateProperty.MapWidth; 
         height = GenerateProperty.MapHeight;
+        MatrixViewRepository.InitMatrix(width, height);
         curY = curX = 0;
         spawnTilePoint = GameObject.FindWithTag(tagForInstantiateTiles).transform;
     }
@@ -26,7 +27,7 @@ public class MatrixView : Loader
         Tile temp =  Instantiate(tilePrefab, spawnTilePoint) as Tile;
         temp.SetBlocks(CacheMatrix.Get(curX, curY));
         temp.SetPosition(curX, curY);
-
+        MatrixViewRepository.AddTile(curX, curY,temp);
 
         temp.SetActive(isSetActiveTile);
         curY++;

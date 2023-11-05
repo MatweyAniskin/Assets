@@ -8,7 +8,8 @@ public class MatrixTransform : MonoBehaviour
     [SerializeField] Vector2Int matrixPosition;
     [SerializeField] int radius;
     Vector2Int squarePosition;
-    
+    public delegate void DelegateTransformChange(Vector2Int next, Vector2Int last);
+    public event DelegateTransformChange OnSquareChange;
     private void OnDestroy()
     {
         TransformRepository.Remove(this);
@@ -51,7 +52,8 @@ public class MatrixTransform : MonoBehaviour
             if (next != squarePosition)
             {
                 TransformRepository.SwitchSquad(squarePosition, next, this);
-                squarePosition = next;
+                OnSquareChange?.Invoke(next,squarePosition);
+                squarePosition = next;                
             }
         }
     }

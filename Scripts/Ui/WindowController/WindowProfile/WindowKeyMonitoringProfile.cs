@@ -6,7 +6,7 @@ using UnityEngine;
 public class WindowKeyMonitoringProfile : WindowProfile
 {
     [SerializeField] KeyProfile keyProfileMonitoring;
-    public override void Start(WindowInstaller installer)
+    public override void Init(WindowInstaller installer)
     {
         KeyController.OnKeyUp += KeyUpListener;
     }
@@ -17,6 +17,6 @@ public class WindowKeyMonitoringProfile : WindowProfile
     void KeyUpListener(KeyProfile profile)
     {
         if (keyProfileMonitoring != profile) return;
-        WindowController.InstantiateWindow(this);
+        InteractWithThisWindow();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class WindowProfile : ScriptableObject
 {
     [SerializeField] protected Window window;
-    public virtual void Start(WindowInstaller installer)
+    public virtual void Init(WindowInstaller installer)
     {
 
     }
@@ -12,5 +12,6 @@ public class WindowProfile : ScriptableObject
     {
 
     }
+    public virtual void InteractWithThisWindow() => WindowController.InstantiateWindow(this);
     public virtual Window Window => window;
 }

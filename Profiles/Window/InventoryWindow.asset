@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9bcf4b9eb10bb4d957a79c3ebd17ab, type: 3}
-  m_Name: Foliage
+  m_Script: {fileID: 11500000, guid: 411f97a604b3d434ea8dd62972b18035, type: 3}
+  m_Name: InventoryWindow
   m_EditorClassIdentifier: 
-  textureCoordinate:
-  - {x: 1, y: 0}
-  - {x: 1, y: 1}
-  - {x: 1, y: 2}
-  material: {fileID: 0}
-  isSolid: 0
-  trianglesArray: 1
+  window: {fileID: 4449978701648792545, guid: 8efda225f9fdde7479a648a42a8f477f, type: 3}
+  keyProfileMonitoring: {fileID: 11400000, guid: 6bd6a2309ba8a624896b10b4c7c83c85, type: 2}
