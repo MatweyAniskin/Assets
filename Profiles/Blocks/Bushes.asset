@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Bushes
   m_EditorClassIdentifier: 
   textureCoordinate:
-  - {x: 1, y: 0}
-  - {x: 1, y: 1}
-  - {x: 1, y: 2}
+  - {x: 3, y: 0}
+  - {x: 3, y: 1}
+  - {x: 3, y: 2}
   material: {fileID: 0}
   isSolid: 1
   trianglesArray: 1

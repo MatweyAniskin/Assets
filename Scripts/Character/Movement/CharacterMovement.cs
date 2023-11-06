@@ -16,7 +16,8 @@ public class CharacterMovement : StepAction
         matrixTransform.LogicPosition = nextPosition;
         Vector3 endPosition = MatrixTransform.MatrixToPosition(nextPosition,transform.position);        
         base.Action(dir, stats);
-        StartCoroutine(AnimationCoroutine(transform.position, endPosition));
+        if(gameObject.activeSelf)
+            StartCoroutine(AnimationCoroutine(transform.position, endPosition));
     }
     Vector2Int CheckState(out int curStepBlocks,Vector2Int dir)
     {

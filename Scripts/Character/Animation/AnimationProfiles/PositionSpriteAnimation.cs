@@ -10,7 +10,7 @@ public class PositionSpriteAnimation : SpriteAnimationProfile
     {
         Vector3 spriteEndPosition;
         float index;
-        while (StepByStepSystem.IsMakeStep)
+        while (StepByStepSystem.IsMakeStep )
         {
             index = StepByStepSystem.StepAnimationIndex;
             spriteEndPosition = spriteStartPosition + animationDirection * curve.Evaluate(index);

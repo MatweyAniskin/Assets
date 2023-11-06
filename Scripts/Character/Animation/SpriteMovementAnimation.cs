@@ -27,6 +27,7 @@ public class SpriteMovementAnimation : MonoBehaviour
     }
     void StartAnimation(Vector2Int dir, SpriteAnimationProfile animationProfile)
     {       
-        StartCoroutine(animationProfile.Animation(dir,spriteStartPosition, spriteStartRotation,spriteTransform, spriteRenderer));
+        if(gameObject.activeSelf)
+            StartCoroutine(animationProfile.Animation(dir,spriteStartPosition, spriteStartRotation,spriteTransform, spriteRenderer));
     }    
 }

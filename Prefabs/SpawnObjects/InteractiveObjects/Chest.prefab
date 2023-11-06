@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6930289984338069414}
   - component: {fileID: 470166796402019638}
   - component: {fileID: 8115846901685548190}
+  - component: {fileID: 615612449536057737}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -156,6 +157,21 @@ MonoBehaviour:
   exitAnimations:
   - {fileID: 11400000, guid: be8629ad1790303409c28d1c5da9e620, type: 2}
   - {fileID: 11400000, guid: 4ba916f8c6109a34abe36a495db58435, type: 2}
+--- !u!114 &615612449536057737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2804714140925167165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c80a7e6798fb64fa78a94439670eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 1f43c89b40645a14d9aab1cf71140348, type: 2}
+  renderers:
+  - {fileID: 5157177856356203171}
 --- !u!1 &3276353495947065574
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,6 +60,7 @@ public class MatrixTransform : MonoBehaviour
     public void RecalculateMatrixPositionToUnitPosition() => transform.position = MatrixToPosition();
     public int Radius => radius;
     public Vector2Int SquarePosition => squarePosition;
+    public void SetActive(bool value) => gameObject.SetActive(value);
     public void Destroy() => Destroy(gameObject);
     public T GetComponent<T>() => gameObject.GetComponent<T>();
     public bool IsContact(Vector2Int pos) => matrixPosition.x - Radius <= pos.x && matrixPosition.x + Radius >= pos.x && matrixPosition.y - Radius <= pos.y && matrixPosition.y + Radius >= pos.y;

@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 968601698012127589}
   - component: {fileID: 9079450448816183141}
   - component: {fileID: -1609560769411711040}
+  - component: {fileID: -7011947169004093123}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -280,6 +281,21 @@ MonoBehaviour:
   behaviour: {fileID: 5106596047426959489}
   matrixTransform: {fileID: 2103554306322706161}
   radius: 10
+--- !u!114 &-7011947169004093123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813841225085765988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c80a7e6798fb64fa78a94439670eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 1f43c89b40645a14d9aab1cf71140348, type: 2}
+  renderers:
+  - {fileID: 2165476238087226492}
 --- !u!1 &8031294945641591867
 GameObject:
   m_ObjectHideFlags: 0
