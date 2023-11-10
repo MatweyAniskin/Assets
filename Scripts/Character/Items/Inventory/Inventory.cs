@@ -11,9 +11,17 @@ public class Inventory : MonoBehaviour
     public static event ChangeItemsDelegate OnTakeItem;
     public static event ChangeItemsDelegate OnDropItem;
 
+    public delegate Item[] GetItemsDelegate();
+    public static GetItemsDelegate GetItems;
+
     private void Start()
     {
         curWeight = 0;
+    }
+    private void OnDestroy()
+    {
+        
+    
     }
     /// <summary>
     /// Add item with mass calculate
@@ -33,7 +41,6 @@ public class Inventory : MonoBehaviour
         OnDropItem?.Invoke(item);
         Remove(item);        
     }
-
     public void Add(Item item)
     {
         curWeight += item.Weight;
@@ -44,4 +51,5 @@ public class Inventory : MonoBehaviour
         curWeight -= item.Weight;
         items.Remove(item);
     }
+    public Item[] GetAllItems() => items.ToArray();
 }

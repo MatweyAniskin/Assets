@@ -64,4 +64,39 @@ public class MovementMatrix : MonoBehaviour
             }
         }       
     }   
+
+    /// <summary>
+    /// Check and return next position when matrix transform move
+    /// </summary>
+    /// <param name="curStepBlocks">current blocks count when matrix make step</param>
+    /// <param name="dir">step direction</param>
+    /// <param name="maxStepBlocks">maximum blocks per step</param>
+    /// <param name="matrixTransform">Stepping transform</param>
+    /// <returns></returns>
+    public static Vector2Int MoveMatrixToNextPosition(out int curStepBlocks, Vector2Int dir, int maxStepBlocks, MatrixTransform matrixTransform)
+    {
+        Vector2Int res = matrixTransform.Position;
+        Vector2Int cur;
+        for (curStepBlocks = 0; curStepBlocks <= maxStepBlocks; curStepBlocks++)
+        {
+            cur = matrixTransform.Position + dir * curStepBlocks;
+            if (MovementMatrix.CheckState(cur, matrixTransform.Radius))
+            {
+                res = cur;
+            }
+            else
+            {
+                break;
+            }
+        }
+        return res;
+    }
+    /// <summary>
+    /// Check and return next position when matrix transform move
+    /// </summary>
+    /// <param name="dir">step direction</param>
+    /// <param name="maxStepBlocks">maximum blocks per step</param>
+    /// <param name="matrixTransform"></param>
+    /// <returns></returns>
+    public static Vector2Int MoveMatrixToNextPosition(Vector2Int dir, int maxStepBlocks, MatrixTransform matrixTransform) => MoveMatrixToNextPosition(out int _, dir, maxStepBlocks, matrixTransform);
 }
