@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryWindow : Window
-{    
+{
+    [SerializeField] 
     protected override void OnClose()
     {
         

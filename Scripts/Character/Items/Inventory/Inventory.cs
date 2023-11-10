@@ -17,11 +17,11 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         curWeight = 0;
+        GetItems += GetAllItems;
     }
     private void OnDestroy()
     {
-        
-    
+        GetItems -= GetAllItems;
     }
     /// <summary>
     /// Add item with mass calculate
