@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IconWithText : IconWithShadow
+public class IconWithTitle : IconWithShadow
 {
-    [SerializeField] Text title;
-    [SerializeField] Text description;
+    [SerializeField] Text title;  
 
     public override void SetElement(IViewElement element)
     {
-        title.text = element.Title;
-        description.text = element.Description;
+        title.text = element.Title;       
         base.SetElement(element);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemViewBlock : IconWithText
+public class ItemViewBlock : IconWithTitle
 {
     
 }

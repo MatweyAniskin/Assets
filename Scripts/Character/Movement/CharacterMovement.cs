@@ -22,7 +22,7 @@ public class CharacterMovement : StepAction
     {       
         while (StepByStepSystem.IsMakeStep && gameObject.activeSelf)
         {
-            transform.position = Vector3.Lerp(startPosition, endPosition, animation.Evaluate(StepByStepSystem.StepAnimationIndex));           
+            matrixTransform.SmoothMoving(startPosition, endPosition, animation.Evaluate(StepByStepSystem.StepAnimationIndex));           
             yield return null;
         }
         matrixTransform.RecalculateMatrixPositionToUnitPosition();        
