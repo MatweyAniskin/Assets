@@ -10,7 +10,7 @@ public class BlockRepository : MonoBehaviour
     public static void Clear() => blocksDictionary.Clear();
     public static void Set(SimpleBlock value)
     {
-        blocksDictionary.Add(value.name, value);
+        blocksDictionary.Add(value.BlockName, value);
     }
     public static SimpleBlock Get(string name)
     {

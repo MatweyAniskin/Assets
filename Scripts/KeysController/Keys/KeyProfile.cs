@@ -7,7 +7,7 @@ public class KeyProfile : ScriptableObject
 {
     [SerializeField] string title;
     [SerializeField] KeyCode key;
-    [SerializeField] KeyCode altKey;
+    [SerializeField] KeyCode altKey;    
     protected delegate bool IsKeyDelegate(KeyCode keyCode);
     public bool CheckKeyDown() => IsKey(Input.GetKeyDown);
     public bool CheckKeyUp() => IsKey(Input.GetKeyUp);

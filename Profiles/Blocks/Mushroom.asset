@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab305a43ef474347aac6f74e80e7398, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
+  blockName: Mushroom
   textureCoordinate:
   - {x: 1, y: 0}
   - {x: 1, y: 1}
   - {x: 1, y: 2}
   material: {fileID: 0}
-  isSolid: 0
+  solidType: {fileID: 11400000, guid: 4334b07467008c34385d3f4a4342483a, type: 2}
   trianglesArray: 1

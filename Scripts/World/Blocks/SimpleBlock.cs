@@ -2,14 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class SimpleBlock : ScriptableObject
-{    
+{
+    [SerializeField] private string blockName;    
     [SerializeField] protected Vector2Int[] textureCoordinate;
     [SerializeField] protected BlockMaterial material;
-    [SerializeField] private bool isSolid;
+    [SerializeField] private SolidType solidType;
     [SerializeField] protected int trianglesArray = 0;
     float uvOffset = 0f;
-    public bool IsSolid => isSolid;
-    protected void GenerateUvMap(ref List<Vector2> uvs)
+    public bool IsSolid => solidType.IsNotMovement;
+    public string BlockName => blockName;
+    protected virtual void GenerateUvMap(ref List<Vector2> uvs)
     {
         Vector2Int textureCoordinate = this.textureCoordinate[Random.Range(0, this.textureCoordinate.Length)];
         uvs.Add(new Vector2(textureCoordinate.y - uvOffset, GenerateProperty.UvSideCountTextures.y - textureCoordinate.x - 1 + uvOffset) * GenerateProperty.UvScale);
@@ -29,7 +31,7 @@ public abstract class SimpleBlock : ScriptableObject
     {
         try
         {
-            return !(matrix[x,y,z].isSolid);            
+            return matrix[x,y,z].solidType != solidType; 
         }
         catch
         {

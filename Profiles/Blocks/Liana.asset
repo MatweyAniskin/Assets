@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d6a1271a9d69e4b9f8732a75843586, type: 3}
   m_Name: Liana
   m_EditorClassIdentifier: 
+  blockName: Liana
   textureCoordinate:
   - {x: 2, y: 0}
   - {x: 2, y: 1}
   - {x: 2, y: 2}
   material: {fileID: 0}
-  isSolid: 0
+  solidType: {fileID: 11400000, guid: f1b73d0a2befcca4ea8869ac5a927190, type: 2}
   trianglesArray: 1
   vertexOffset: 0.9
