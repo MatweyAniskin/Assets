@@ -9,7 +9,7 @@ public class CharacterMovement : StepAction
     [SerializeField] protected int stepBlocks = 2;    
     Vector2Int nextPosition;   
 
-    public override void Action(Vector2Int dir, Stats stats)
+    public override void Action(Vector2Int dir, Stats stats, object[] args = null)
     {
         nextPosition = MovementMatrix.MoveMatrixToNextPosition(dir,stepBlocks,matrixTransform);
         matrixTransform.LogicPosition = nextPosition;

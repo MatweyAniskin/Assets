@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5141602950182061045}
   - component: {fileID: 2961381809678199920}
   - component: {fileID: 7090647283457784489}
+  - component: {fileID: 2015141726709601329}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -116,7 +117,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   stepBlocks: 2
-  debugMode: 1
 --- !u!114 &3650955466042638172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +178,21 @@ MonoBehaviour:
   maxHelse: 0
   curHelse: 0
   types: []
+--- !u!114 &2015141726709601329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735464963878326567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf35b0fe8e51844d8de1c9ce7cd4552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionType: {fileID: 0}
+  matrixTransform: {fileID: 2116047233892433050}
+  skillProfiles: []
 --- !u!1 &7879623690453437145
 GameObject:
   m_ObjectHideFlags: 0
