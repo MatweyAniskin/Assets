@@ -8,10 +8,13 @@ public abstract class StepAction : MonoBehaviour
     [SerializeField] ActionType actionType;
     public delegate void StepActionDelegate(Vector2Int dir);
     public event StepActionDelegate OnAction;
-    public virtual void Action(Vector2Int dir, Stats stats, object[] args = null) 
+    public virtual void Action(Vector2Int dir, Stats stats, params object[] args) 
     {
         OnAction?.Invoke(dir);
     }
-    public virtual void Select(Vector2Int dir, Stats stats, object[] args = null) { }
+    public virtual void Select(Vector2Int dir, Stats stats, params object[] args) 
+    {
+        
+    }
     public ActionType ActionType => actionType;
 }
