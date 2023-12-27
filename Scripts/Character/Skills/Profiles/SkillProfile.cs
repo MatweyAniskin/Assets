@@ -8,7 +8,7 @@ public abstract class SkillProfile : ScriptableObject
     [SerializeField] protected int energyRequest;
     [SerializeField] protected int stepsCoolDown;
     [SerializeField] SkillType skillType;
-    public bool EnergyCheck(Stats stats) => true; // todo fix this shit
+    public bool IsMayUse(Stats stats) => true; // todo fix this shit
     public int CoolDown => stepsCoolDown;
 
     public abstract ViewModel[] ViewDistanceSkill(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args);
