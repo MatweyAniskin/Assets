@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class PlayerSkillController : SkillsController
 {
+    int skillCountIndex;
     public override void Select(Vector2Int dir, Stats stats, params object[] args)
     {
-        var temp = skillProfiles[(int)args[0]];
+        skillCountIndex = (int)args[0];
+        var temp = skillProfiles[skillCountIndex];        
         if (temp.IsMayUse(stats))
         {
-            CurSkill = temp;
+            CurSkill = temp.SkillProfile;
         }
+    }
+    public override void Action(Vector2Int dir, Stats stats, params object[] args)
+    {
+        if (CurSkill is null)
+            return;        
+        CurSkill.UseSkill(matrixTransform, stats, dir);
+        skillProfiles[skillCountIndex].SetCooldawn();
+        base.Action(dir, stats);
     }
 }

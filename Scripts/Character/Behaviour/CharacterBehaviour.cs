@@ -20,7 +20,7 @@ public abstract class CharacterBehaviour : StepListener
         this.args = args;
     }
     protected void SetAction(StepAction stepAction, Vector2Int dir, params object[] args)
-    {
+    {        
         stepAction.Select(dir,stats,args);
         SetAction(stepAction.Action, dir, args);
     }    

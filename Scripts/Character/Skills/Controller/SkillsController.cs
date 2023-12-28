@@ -1,3 +1,4 @@
+using Skills;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,10 @@ using UnityEngine;
 public class SkillsController : StepAction
 {
     [SerializeField] Stats stats;
-    [SerializeField] MatrixTransform matrixTransform;
-    [SerializeField] protected List<SkillProfile> skillProfiles;
+    [SerializeField] protected MatrixTransform matrixTransform;
+    [SerializeField] protected List<SkillCount> skillProfiles;
     protected SkillProfile curSkill;
-    protected Vector2Int dir;    
+    protected Vector2Int dir;        
     public delegate void ChangeSkills(IEnumerable<ViewModel> views);
     public event ChangeSkills OnSetSkill;
     public delegate void DisableSkills();
@@ -21,10 +22,11 @@ public class SkillsController : StepAction
             curSkill = value;
             if (value is null)
             {
-                OnDisableSkill();
+                OnDisableSkill?.Invoke();
             }else
             {
-                OnSetSkill(curSkill.ViewDistanceSkill(matrixTransform,stats,dir));
+                var select = curSkill.ViewDistanceSkill(matrixTransform, stats, dir);
+                OnSetSkill?.Invoke(select);
             }
         }
     }

@@ -5,22 +5,28 @@ using UnityEngine;
 public class PlayerBehaviour : CharacterBehaviour
 {
     [SerializeField] StepAction movement;
-    int horizontal, vertical;
+    [SerializeField] StepAction skills;
+    Vector2Int move;
+    Vector2Int lastMove;
     private void Update()//Unit
     {
         if (StepByStepSystem.IsMakeStep)
             return;
-
-        if (Input.GetKey(KeyCode.D)) horizontal = 1;
-        if (Input.GetKey(KeyCode.A)) horizontal = -1;        
-        if (Input.GetKey(KeyCode.W)) vertical = 1;
-        if (Input.GetKey(KeyCode.S)) vertical = -1;
-        if (horizontal != 0 || vertical != 0)
+        if (Input.GetKeyUp(KeyCode.Alpha1))
         {
-            SetAction(movement.Action, new Vector2Int(vertical, -horizontal));
-            StepByStepSystem.GoStep();
-            horizontal = 0;
-            vertical = 0;
+            SetAction(skills, move, 0);
         }
+        if (Input.GetKey(KeyCode.D)) move.x = 1;
+        if (Input.GetKey(KeyCode.A)) move.x = -1;        
+        if (Input.GetKey(KeyCode.W)) move.y = 1;
+        if (Input.GetKey(KeyCode.S)) move.y = -1;
+        if (move != Vector2Int.zero)
+        {
+            SetAction(movement.Action, new Vector2Int(move.y, -move.x));
+            StepByStepSystem.GoStep();
+            lastMove = move;
+            move = Vector2Int.zero;
+        }
+       
     }   
 }

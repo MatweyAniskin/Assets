@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 5141602950182061045}
   - component: {fileID: 2961381809678199920}
   - component: {fileID: 7090647283457784489}
-  - component: {fileID: 2015141726709601329}
+  - component: {fileID: -7981978854307338114}
+  - component: {fileID: 5804676436187242754}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -69,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 7090647283457784489}
   movement: {fileID: 1898333882492005542}
+  skills: {fileID: -7981978854307338114}
 --- !u!114 &1898333882492005542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,8 +179,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHelse: 0
   curHelse: 0
+  maxEnergy: 0
+  curEnergy: 0
+  reservedEnergy: 0
   types: []
---- !u!114 &2015141726709601329
+--- !u!114 &-7981978854307338114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,12 +192,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 5735464963878326567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf35b0fe8e51844d8de1c9ce7cd4552, type: 3}
+  m_Script: {fileID: 11500000, guid: 1745ebcc76d5455409f8daa7a69afc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionType: {fileID: 0}
+  stats: {fileID: 7090647283457784489}
   matrixTransform: {fileID: 2116047233892433050}
-  skillProfiles: []
+  skillProfiles:
+  - profile: {fileID: 11400000, guid: c49c6c49fed27064ba03207c77cf04d3, type: 2}
+--- !u!114 &5804676436187242754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735464963878326567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f54ab23acf016949be55936cd74b8fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: -7981978854307338114}
+  viewObjectPrefab: {fileID: 3134636059552868489, guid: 39dc14a73b8d188459364a8c01756bdf, type: 3}
+  viewMaterial: {fileID: 2100000, guid: a760feda7aae16747950addf84c07d71, type: 2}
+  yOffset: -2
+  blockOffsetMultiply: 0.201
 --- !u!1 &7879623690453437145
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +267,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -327,6 +353,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -411,6 +439,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
