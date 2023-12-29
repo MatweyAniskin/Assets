@@ -1,14 +1,18 @@
+using Repository;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Loader/TransformMatrix")]
-public class TransformMatrixLoader : Loader
+namespace Loader.Generator
 {
-    public override bool Next() => false;    
-
-    public override void StartWork(MonoBehaviour executor)
+    [CreateAssetMenu(menuName = "Loader/TransformMatrix")]
+    public class TransformMatrixLoader : Loader
     {
-        TransformRepository.SetTransforms(GenerateProperty.MapWidth, GenerateProperty.MapHeight,GenerateProperty.TileSideLength);
+        public override bool Next() => false;
+
+        public override void StartWork(MonoBehaviour executor)
+        {
+            TransformRepository.SetTransforms(GenerateProperty.MapWidth, GenerateProperty.MapHeight, GenerateProperty.TileSideLength);
+        }
     }
 }

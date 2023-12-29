@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WindowProfile", menuName = "Logic/Window/WindowsKeyMonitoringProfile")]
-public class WindowKeyMonitoringProfile : WindowProfile
+namespace WindowUi
 {
-    [SerializeField] KeyProfile keyProfileMonitoring;
-    public override void Init(WindowInstaller installer)
+    [CreateAssetMenu(fileName = "WindowProfile", menuName = "Logic/Window/WindowsKeyMonitoringProfile")]
+    public class WindowKeyMonitoringProfile : WindowProfile
     {
-        KeyController.OnKeyUp += KeyUpListener;
-    }
-    public override void End(WindowInstaller installer)
-    {
-        KeyController.OnKeyUp -= KeyUpListener;
-    }
-    void KeyUpListener(KeyProfile profile)
-    {
-        if (keyProfileMonitoring != profile) return;
-        InteractWithThisWindow();
+        [SerializeField] KeyProfile keyProfileMonitoring;
+        public override void Init(WindowInstaller installer)
+        {
+            KeyController.OnKeyUp += KeyUpListener;
+        }
+        public override void End(WindowInstaller installer)
+        {
+            KeyController.OnKeyUp -= KeyUpListener;
+        }
+        void KeyUpListener(KeyProfile profile)
+        {
+            if (keyProfileMonitoring != profile) return;
+            InteractWithThisWindow();
+        }
     }
 }

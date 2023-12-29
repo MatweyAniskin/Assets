@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Level", menuName = "Loader/Level")]
-public class Level : ScriptableObject
+namespace Loader
 {
-    [SerializeField] string title;
-    [SerializeField] Loader[] loaders;
-    public Loader[] Loaders => loaders;
-    public override string ToString() => title;    
+    [CreateAssetMenu(fileName = "Level", menuName = "Loader/Level")]
+    public class Level : ScriptableObject
+    {
+        [SerializeField] string title;
+        [SerializeField] Loader[] loaders;
+        public Loader[] Loaders => loaders;
+        public override string ToString() => title;
+    }
 }

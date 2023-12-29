@@ -1,3 +1,5 @@
+using Loader;
+using Repository;
 using UnityEngine;
 
 public class Occlusion : MonoBehaviour

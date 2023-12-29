@@ -6,7 +6,7 @@ public abstract class StepAction : MonoBehaviour
 {
 
     [SerializeField] ActionType actionType;
-    public delegate void StepActionDelegate(Vector2Int dir);
+    public delegate void StepActionDelegate(Vector2Int dir, params object[] args);
     public event StepActionDelegate OnAction;
     public virtual void Action(Vector2Int dir, Stats stats, params object[] args) 
     {

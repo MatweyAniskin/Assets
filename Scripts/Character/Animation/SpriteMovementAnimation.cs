@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteMovementAnimation : MonoBehaviour
+namespace Animation
 {
-    [SerializeField] AnimationAssembly[] animationAssemblies;
-    [SerializeField] Transform spriteTransform;
-    [SerializeField] SpriteRenderer spriteRenderer;
-    Vector3 spriteStartPosition;
-    Quaternion spriteStartRotation;
-    private void Start()
+    public class SpriteMovementAnimation : MonoBehaviour
     {
-        spriteStartPosition = spriteTransform.localPosition;
-        spriteStartRotation = spriteTransform.localRotation;
-        foreach (var assembly in animationAssemblies)
+        [SerializeField] AnimationAssembly[] animationAssemblies;
+        [SerializeField] Transform spriteTransform;
+        [SerializeField] SpriteRenderer spriteRenderer;
+        Vector3 spriteStartPosition;
+        Quaternion spriteStartRotation;
+        private void Start()
         {
-            assembly.AddActionEvent(StartAnimation);
+            spriteStartPosition = spriteTransform.localPosition;
+            spriteStartRotation = spriteTransform.localRotation;
+            foreach (var assembly in animationAssemblies)
+            {
+                assembly.AddActionEvent(StartAnimation);
+            }
+        }
+        private void OnDestroy()
+        {
+            foreach (var assembly in animationAssemblies)
+            {
+                assembly.RemoveActionEvent(StartAnimation);
+            }
+        }
+        void StartAnimation(Vector2Int dir, SpriteAnimationProfile animationProfile, params object[] args)
+        {
+            if (gameObject.activeSelf)
+                StartCoroutine(animationProfile.Animation(dir, spriteStartPosition, spriteStartRotation, spriteTransform, spriteRenderer));
         }
     }
-    private void OnDestroy()
-    {
-        foreach (var assembly in animationAssemblies)
-        {
-            assembly.RemoveActionEvent(StartAnimation);
-        }
-    }
-    void StartAnimation(Vector2Int dir, SpriteAnimationProfile animationProfile)
-    {       
-        if(gameObject.activeSelf)
-            StartCoroutine(animationProfile.Animation(dir,spriteStartPosition, spriteStartRotation,spriteTransform, spriteRenderer));
-    }    
 }
