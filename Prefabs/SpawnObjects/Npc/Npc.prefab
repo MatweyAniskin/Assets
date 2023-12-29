@@ -49,6 +49,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -188,7 +190,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   stepBlocks: 2
-  debugMode: 0
 --- !u!114 &-6346094072759651001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +266,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHelse: 10
   curHelse: 10
+  maxEnergy: 0
+  curEnergy: 0
+  reservedEnergy: 0
   types: []
 --- !u!114 &-1609560769411711040
 MonoBehaviour:
@@ -345,6 +349,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

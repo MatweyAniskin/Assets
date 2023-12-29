@@ -16,5 +16,5 @@ MonoBehaviour:
   energyRequest: 0
   stepsCoolDown: 0
   skillType: {fileID: 0}
-  offset: 0
-  radius: 3
+  offset: 2
+  radius: 1

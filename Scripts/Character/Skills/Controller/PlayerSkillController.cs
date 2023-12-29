@@ -8,11 +8,12 @@ public class PlayerSkillController : SkillsController
     public override void Select(Vector2Int dir, Stats stats, params object[] args)
     {
         skillCountIndex = (int)args[0];
-        var temp = skillProfiles[skillCountIndex];        
+        var temp = skillProfiles[skillCountIndex];
+        base.Select(dir, stats, args);
         if (temp.IsMayUse(stats))
         {
             CurSkill = temp.SkillProfile;
-        }
+        }        
     }
     public override void Action(Vector2Int dir, Stats stats, params object[] args)
     {
@@ -20,6 +21,7 @@ public class PlayerSkillController : SkillsController
             return;        
         CurSkill.UseSkill(matrixTransform, stats, dir);
         skillProfiles[skillCountIndex].SetCooldawn();
-        base.Action(dir, stats);
+        
     }
+    
 }

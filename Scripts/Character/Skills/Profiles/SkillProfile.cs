@@ -15,6 +15,23 @@ namespace Skills
 
         public abstract ViewModel[] ViewDistanceSkill(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args);
         public abstract void UseSkill(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args);
+        
+        protected IEnumerable<MatrixTransform> GetAffectMatrixTransform(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args)
+        {            
+            List<MatrixTransform> result = new List<MatrixTransform>();
+            MatrixTransform temp;
+            foreach (var model in ViewDistanceSkill(transform, stats, dir, args))
+            {
+                foreach (var block in model.GetViewBlocks())
+                {
+                    temp = TransformRepository.GetTransformInPosition(block);
+                    if (temp is null)
+                        continue;
+                    result.Add(temp);
+                }
+            }
+            return GetUniq(result);
+        }
         protected IEnumerable<MatrixTransform> GetUniq(List<MatrixTransform> matrixTransforms)
         {
             if (matrixTransforms.Count <= 1) return matrixTransforms;

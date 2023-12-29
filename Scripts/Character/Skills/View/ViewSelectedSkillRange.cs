@@ -16,11 +16,13 @@ namespace Skills
         public override void OnStart()
         {
             controller.OnSetSkill += SetSkill;
+            controller.OnDisableSkill += Clear;
             spawnY = (GenerateProperty.WalkebleLayer + yOffset) * GenerateProperty.BlockScale + GenerateProperty.BlockScale * blockOffsetMultiply;
         }
         public override void OnDelete()
         {
             controller.OnSetSkill -= SetSkill;
+            controller.OnDisableSkill -= Clear;
             Clear();
         }
         void SetSkill(IEnumerable<ViewModel> views)

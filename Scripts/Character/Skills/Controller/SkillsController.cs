@@ -38,8 +38,12 @@ public class SkillsController : StepAction
         base.Action(dir, stats);
     }
     public override void Select(Vector2Int dir, Stats stats, params object[] args)
-    {                        
+    {        
         this.dir = dir;
-        base.Select(dir, stats, args);
+        
+    }
+    public override void DeSelect()
+    {
+        CurSkill = null;
     }
 }

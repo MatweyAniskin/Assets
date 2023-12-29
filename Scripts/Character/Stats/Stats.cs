@@ -12,7 +12,19 @@ public class Stats : MonoBehaviour
     [SerializeField] DefenceType[] types;
     public void Damage(float value, DamageType damageType)
     {
-
+        Helse -= value;
+    }
+    public float Helse
+    {
+        get => curHelse;
+        protected set
+        {
+            curHelse = Mathf.Clamp(value,0,maxHelse);
+            if(curHelse == 0)
+            {
+                Dead();
+            }
+        }
     }
     public int MaxEnergy => maxEnergy;
     public int Energy
@@ -32,5 +44,9 @@ public class Stats : MonoBehaviour
             reservedEnergy = value;
         }
     }
-
+    protected virtual void Dead()
+    {
+        Debug.Log($"{name} is DEAD");
+        Destroy(gameObject);
+    }
 }

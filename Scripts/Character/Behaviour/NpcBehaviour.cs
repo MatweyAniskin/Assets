@@ -28,7 +28,7 @@ public class NpcBehaviour : CharacterBehaviour
             return matrixTransform.Position + new Vector2Int(Random.Range(-1, 2), Random.Range(-1, 2));
         return attackTarget.Position;
     }
-    StepActionDelegate GetNextStep()
+    StepAction GetNextStep()
     {
         ActionType type = stateMachine.NextAction();
         StepAction[] tempActions = stepActions.Where(i => i.ActionType == type).ToArray();
@@ -36,5 +36,5 @@ public class NpcBehaviour : CharacterBehaviour
             return GetActionInArray(tempActions);
         return GetActionInArray(stepActions);
     }
-    StepActionDelegate GetActionInArray(StepAction[] tempActions) => tempActions[Random.Range(0, tempActions.Length)].Action;
+    StepAction GetActionInArray(StepAction[] tempActions) => tempActions[Random.Range(0, tempActions.Length)];
 }

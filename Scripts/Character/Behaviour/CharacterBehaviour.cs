@@ -4,29 +4,26 @@ using UnityEngine;
 
 public abstract class CharacterBehaviour : StepListener
 {
-    [SerializeField] protected Stats stats;
-    protected delegate void StepActionDelegate(Vector2Int dir, Stats stats, params object[] args);
-    StepActionDelegate CurAction;
+    [SerializeField] protected Stats stats;    
+    StepAction curStepAction;    
     public delegate void BehaviourActionDelegate();
-    public event BehaviourActionDelegate OnBehaviourAction;    
+    public event BehaviourActionDelegate OnBehaviourAction;
     protected Vector2Int dir;
     
     private object[] args = null;
-
-    protected void SetAction(StepActionDelegate stepAction, Vector2Int dir, object[] args = null)
+    
+    protected void SetAction(StepAction stepAction, Vector2Int dir, params object[] args)
     {
-        CurAction = stepAction;
+        curStepAction?.DeSelect();
+        
+        curStepAction = stepAction;
         this.dir = dir;
         this.args = args;
-    }
-    protected void SetAction(StepAction stepAction, Vector2Int dir, params object[] args)
-    {        
-        stepAction.Select(dir,stats,args);
-        SetAction(stepAction.Action, dir, args);
+        curStepAction?.Select(dir,stats,args);        
     }    
     public override void StepAction()
-    {                
-        CurAction?.Invoke(dir, stats, args);
+    {
+        curStepAction?.Action(dir, stats, args);
         OnBehaviourAction?.Invoke();
     }    
 }

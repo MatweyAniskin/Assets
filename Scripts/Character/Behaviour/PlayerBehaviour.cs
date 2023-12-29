@@ -7,26 +7,89 @@ public class PlayerBehaviour : CharacterBehaviour
     [SerializeField] StepAction movement;
     [SerializeField] StepAction skills;
     Vector2Int move;
-    Vector2Int lastMove;
+    Vector2Int lastMove = Vector2Int.up;
+    int skillButton = -1;
+    int lastSkillButton = -1;
+    enum Type { IsMove = 0, IsSkills = 1 }
+    Type curActionType = 0;
+
+    delegate void ActionDelegate();
+    ActionDelegate[] actionDelegates;
+    private void Start()
+    {
+        actionDelegates = new ActionDelegate[] { Move, Skills};
+    }
     private void Update()//Unit
     {
         if (StepByStepSystem.IsMakeStep)
             return;
-        if (Input.GetKeyUp(KeyCode.Alpha1))
+        actionDelegates[(int)curActionType].Invoke();
+        SetType();
+    }
+    void SetType()
+    {
+        skillButton = SkillIndex();       
+        switch(curActionType)
         {
-            SetAction(skills, move, 0);
+            case Type.IsMove:
+                if(skillButton != -1)
+                {
+                    curActionType = Type.IsSkills;
+                    SetAction(skills, lastMove, skillButton);
+                    lastSkillButton = skillButton;
+                }
+                return;
+            case Type.IsSkills:
+                if (skillButton == lastSkillButton)
+                {
+                    StepByStepSystem.GoStep();
+                    SetAction(movement, move);
+                    curActionType = Type.IsMove;
+                    return;
+                }
+                if (skillButton != -1)
+                    lastSkillButton = skillButton;
+                if (Input.GetKeyUp(KeyCode.Escape))
+                {
+                    SetAction(movement, move);
+                    curActionType = Type.IsMove;
+                }
+                return;
         }
-        if (Input.GetKey(KeyCode.D)) move.x = 1;
-        if (Input.GetKey(KeyCode.A)) move.x = -1;        
-        if (Input.GetKey(KeyCode.W)) move.y = 1;
-        if (Input.GetKey(KeyCode.S)) move.y = -1;
+    }
+    void Move()
+    {
+        move = MoveDir();
         if (move != Vector2Int.zero)
         {
-            SetAction(movement.Action, new Vector2Int(move.y, -move.x));
-            StepByStepSystem.GoStep();
+            SetAction(movement, move);            
             lastMove = move;
             move = Vector2Int.zero;
+            StepByStepSystem.GoStep();
         }
-       
-    }   
+    }
+    void Skills()
+    {
+        var temp = MoveDir();
+        if (temp != Vector2Int.zero && move != temp)
+        {            
+            move = temp;
+            SetAction(skills, move, lastSkillButton);
+        }        
+    }
+    Vector2Int MoveDir()
+    {
+        Vector2Int move = Vector2Int.zero;
+        if (Input.GetKey(KeyCode.D)) move.y = -1;
+        if (Input.GetKey(KeyCode.A)) move.y = 1;
+        if (Input.GetKey(KeyCode.W)) move.x = 1;
+        if (Input.GetKey(KeyCode.S)) move.x = -1;
+        return move;
+    }
+    int SkillIndex()
+    {
+        int index = -1;
+        if (Input.GetKeyUp(KeyCode.Alpha1)) index = 0;
+        return index;
+    }
 }

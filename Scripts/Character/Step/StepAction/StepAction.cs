@@ -16,5 +16,9 @@ public abstract class StepAction : MonoBehaviour
     {
         
     }
+    public virtual void DeSelect()
+    {
+
+    }
     public ActionType ActionType => actionType;
 }
