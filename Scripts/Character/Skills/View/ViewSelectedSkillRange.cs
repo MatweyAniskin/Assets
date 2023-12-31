@@ -66,7 +66,7 @@ namespace Skills
         Vector3 CalculateVertex(Vector2Int pos, int x, int z) => (new Vector3(pos.x + x, 0, pos.y + z) * GenerateProperty.BlockScale + Vector3.up * spawnY);
         public override void StepAction()
         {
-            Clear();
+           // Clear();
         }
         void Clear()
         {

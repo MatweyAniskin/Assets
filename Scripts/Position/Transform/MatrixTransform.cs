@@ -92,6 +92,8 @@ public class MatrixTransform : MonoBehaviour
     /// <param name="to"></param>
     /// <param name="index"></param>
     public void SmoothMoving(Vector3 from, Vector3 to, float index) => transform.position = Vector3.Lerp(from, to, index);
+    public Vector2Int Direction(MatrixTransform to) => Direction(to.Position);
+    public Vector2Int Direction(Vector2Int to) => CalculateDirection(to, LogicPosition);
     public static Vector2Int PositionToMatrix(Vector3 globalPosition) => PositionToMatrix(globalPosition, GenerateProperty.BlockScale);
     public static Vector2Int PositionToMatrix(Vector3 globalPosition, float blockScale) => new Vector2Int(Mathf.CeilToInt(globalPosition.x / blockScale), Mathf.CeilToInt(globalPosition.z / blockScale));
     public Vector3 MatrixToPosition() => MatrixToPosition(Position, transform.position);

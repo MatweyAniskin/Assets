@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e05d73dd0efd489ff5a24eb3073f5, type: 3}
   m_Name: StandartAttack
   m_EditorClassIdentifier: 
-  name: 
+  name: Standart attack
   energyRequest: 0
   stepsCoolDown: 0
+  arguments: []
   skillType: {fileID: 0}
+  damage: 1
   offset: 2
   radius: 1

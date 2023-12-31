@@ -7,8 +7,9 @@ namespace Animation
     [System.Serializable]
     public class AnimationAssembly
     {
-        [SerializeField] StepAction action;
-        [SerializeField] SpriteAnimationProfile profile;
+        [SerializeField] private string name;
+        [SerializeField] StepActionCallBack action;
+        [SerializeField] SpriteAnimationProfile[] profiles;
         [SerializeField] AnimationArgument[] arguments;
         public delegate void AssemblyDelegate(Vector2Int dir, SpriteAnimationProfile animationProfile, params object[] args);
         AssemblyDelegate Assembly;
@@ -21,8 +22,7 @@ namespace Animation
         {
             Assembly -= assembly;
             action.OnAction -= StepAnimationStart;
-        }
-        public SpriteAnimationProfile AnimationProfile => profile;
+        }       
 
         void StepAnimationStart(Vector2Int dir, params object[] args)
         {
@@ -33,7 +33,9 @@ namespace Animation
                 if (arguments[i] != (string)args[i])
                     return;
             }
-            Assembly?.Invoke(dir, AnimationProfile, args);
+            foreach(var i in profiles)
+                Assembly?.Invoke(dir, i, args);
         }
+        public override string ToString() => name;        
     }
 }

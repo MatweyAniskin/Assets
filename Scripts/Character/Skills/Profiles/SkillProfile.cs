@@ -1,3 +1,4 @@
+using Animation;
 using Repository;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,9 +11,12 @@ namespace Skills
         [SerializeField] protected string name;
         [SerializeField] protected int energyRequest;
         [SerializeField] protected int stepsCoolDown;
-        [SerializeField] SkillType skillType;
+        [SerializeField] protected AnimationArgument[] arguments;
+        [SerializeField] SkillType skillType;        
         public bool IsMayUse(Stats stats) => true; // todo fix this shit
         public int CoolDown => stepsCoolDown;
+
+        public AnimationArgument[] Arguments => arguments;
 
         public abstract ViewModel[] ViewDistanceSkill(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args);
         public abstract void UseSkill(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args);
@@ -46,6 +50,7 @@ namespace Skills
             }
             return matrixTransforms;
         }
+        public override string ToString() => name;  
         public static bool operator ==(SkillProfile lhs, SkillType rhs) => lhs.skillType == rhs;
         public static bool operator !=(SkillProfile lhs, SkillType rhs) => !(lhs == rhs);
         public static bool operator ==(SkillProfile lhs, SkillProfile rhs) => lhs.name == rhs.name;

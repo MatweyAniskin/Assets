@@ -72,8 +72,8 @@ public class PlayerBehaviour : CharacterBehaviour
     {
         var temp = MoveDir();
         if (temp != Vector2Int.zero && move != temp)
-        {            
-            move = temp;
+        {
+            lastMove = move = temp;
             SetAction(skills, move, lastSkillButton);
         }        
     }

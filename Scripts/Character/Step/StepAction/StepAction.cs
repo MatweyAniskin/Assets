@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StepAction : MonoBehaviour
+public abstract class StepAction : StepActionCallBack
 {
 
     [SerializeField] ActionType actionType;
-    public delegate void StepActionDelegate(Vector2Int dir, params object[] args);
-    public event StepActionDelegate OnAction;
+   
     public virtual void Action(Vector2Int dir, Stats stats, params object[] args) 
     {
-        OnAction?.Invoke(dir);
+        Callback(dir);
     }
     public virtual void Select(Vector2Int dir, Stats stats, params object[] args) 
     {

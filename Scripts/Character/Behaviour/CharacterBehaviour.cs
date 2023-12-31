@@ -14,13 +14,13 @@ public abstract class CharacterBehaviour : StepListener
     
     protected void SetAction(StepAction stepAction, Vector2Int dir, params object[] args)
     {
-        curStepAction?.DeSelect();
-        
+        curStepAction?.DeSelect();        
         curStepAction = stepAction;
         this.dir = dir;
         this.args = args;
         curStepAction?.Select(dir,stats,args);        
-    }    
+    }
+    public void DeSetAction() => SetAction(null, Vector2Int.zero);
     public override void StepAction()
     {
         curStepAction?.Action(dir, stats, args);

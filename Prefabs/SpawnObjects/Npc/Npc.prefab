@@ -49,8 +49,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -98,12 +96,15 @@ GameObject:
   - component: {fileID: 2103554306322706161}
   - component: {fileID: -457038429096957813}
   - component: {fileID: -6346094072759651001}
-  - component: {fileID: 39285877247662334}
   - component: {fileID: 5106596047426959489}
   - component: {fileID: 968601698012127589}
   - component: {fileID: 9079450448816183141}
   - component: {fileID: -1609560769411711040}
   - component: {fileID: -7011947169004093123}
+  - component: {fileID: 39285877247662334}
+  - component: {fileID: 8857879070253823193}
+  - component: {fileID: -6579793966254551736}
+  - component: {fileID: 8368701065093593716}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -203,23 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionType: {fileID: 11400000, guid: c5336a345ac07cd47bc2482a880b4da0, type: 2}
---- !u!114 &39285877247662334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813841225085765988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2393ab6be768f684dabee80ff2e1a5f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationAssemblies:
-  - action: {fileID: -457038429096957813}
-    profile: {fileID: 11400000, guid: 1279a230555650c45b2aa1e5dde95187, type: 2}
-  spriteTransform: {fileID: 6389834349072642727}
-  spriteRenderer: {fileID: 2165476238087226492}
 --- !u!114 &5106596047426959489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +253,25 @@ MonoBehaviour:
   maxEnergy: 0
   curEnergy: 0
   reservedEnergy: 0
-  types: []
+  defenceTypes: []
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5106596047426959489}
+        m_TargetAssemblyTypeName: CharacterBehaviour, Assembly-CSharp
+        m_MethodName: DeSetAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-1609560769411711040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +302,85 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: 1f43c89b40645a14d9aab1cf71140348, type: 2}
   renderers:
   - {fileID: 2165476238087226492}
+--- !u!114 &39285877247662334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813841225085765988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2393ab6be768f684dabee80ff2e1a5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationAssemblies:
+  - name: Move
+    action: {fileID: -457038429096957813}
+    profiles:
+    - {fileID: 11400000, guid: 1279a230555650c45b2aa1e5dde95187, type: 2}
+    arguments: []
+  - name: Damage
+    action: {fileID: 8857879070253823193}
+    profiles:
+    - {fileID: 11400000, guid: faca718ca30a00b40b0876a0e48c5fcd, type: 2}
+    arguments: []
+  - name: Attack
+    action: {fileID: -6579793966254551736}
+    profiles:
+    - {fileID: 11400000, guid: a4f60f0754e9d73418ecea5abf7c1dbe, type: 2}
+    arguments: []
+  spriteTransform: {fileID: 6389834349072642727}
+  spriteRenderer: {fileID: 2165476238087226492}
+--- !u!114 &8857879070253823193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813841225085765988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd94b216ecb177d4295b28e8b50a5605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 9079450448816183141}
+  damageArguments: []
+  deadArguments: []
+--- !u!114 &-6579793966254551736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813841225085765988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fb2933e2811334eb64519701766638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionType: {fileID: 11400000, guid: 27531cb31a7dd5249b6d71b823667510, type: 2}
+  stats: {fileID: 9079450448816183141}
+  matrixTransform: {fileID: 2103554306322706161}
+  skillProfiles:
+  - profile: {fileID: 11400000, guid: c49c6c49fed27064ba03207c77cf04d3, type: 2}
+--- !u!114 &8368701065093593716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813841225085765988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f54ab23acf016949be55936cd74b8fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: -6579793966254551736}
+  viewObjectPrefab: {fileID: 3134636059552868489, guid: 39dc14a73b8d188459364a8c01756bdf, type: 3}
+  viewMaterial: {fileID: 2100000, guid: a760feda7aae16747950addf84c07d71, type: 2}
+  yOffset: -2
+  blockOffsetMultiply: 0.201
 --- !u!1 &8031294945641591867
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,8 +430,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

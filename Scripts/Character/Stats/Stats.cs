@@ -1,6 +1,8 @@
+using Animation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Stats : MonoBehaviour
 {
@@ -9,20 +11,28 @@ public class Stats : MonoBehaviour
     [SerializeField] int maxEnergy;
     [SerializeField] int curEnergy;
     [SerializeField] int reservedEnergy;
-    [SerializeField] DefenceType[] types;
-    public void Damage(float value, DamageType damageType)
+    [SerializeField] DefenceType[] defenceTypes;
+    public UnityEvent OnDamaged;
+    public UnityEvent OnDead;
+    public delegate void ChangeStatsDelegate(Vector2Int dir, float percent, DamageType damage);
+    public event ChangeStatsDelegate OnDamage;    
+    public void Damage(Vector2Int dir ,float value, DamageType damageType)
     {
+        OnDamage?.Invoke(dir,value,damageType);
+        OnDamaged?.Invoke();        
         Helse -= value;
     }
+    public void Damage(float value, DamageType damageType) => Damage(Vector2Int.zero,value,damageType);
     public float Helse
     {
         get => curHelse;
         protected set
         {
-            curHelse = Mathf.Clamp(value,0,maxHelse);
-            if(curHelse == 0)
+            curHelse = Mathf.Clamp(value,0,maxHelse);              
+            if (curHelse == 0)
             {
                 Dead();
+                OnDead?.Invoke();
             }
         }
     }

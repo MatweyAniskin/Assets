@@ -1,22 +1,33 @@
-using Skills;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CharacterSkillController : SkillsController
+ namespace Skills
 {
-    public override void Select(Vector2Int dir, Stats stats, params object[] args)
-    {        
-        if (args.Length == 0)
+    public class CharacterSkillController : SkillsController
+    {
+        public override void Action(Vector2Int dir, Stats stats, params object[] args)
         {
-            CurSkill = RandomProfile().SkillProfile;
+            if (CurSkill is null)
+                return;
+            CurSkill.UseSkill(matrixTransform, stats, this.skillDirection);
+            Callback(this.skillDirection, CurSkill.Arguments);
         }
-        else
+        public override void Select(Vector2Int pos, Stats stats, params object[] args)
         {
-            CurSkill = (skillProfiles.FirstOrDefault(i => i == (SkillType)args[0]) ?? RandomProfile()).SkillProfile;
+            this.skillDirection = matrixTransform.Direction(pos);
+            if (args.Length == 0)
+            {
+                CurSkill = RandomProfile().SkillProfile;
+            }
+            else
+            {
+                CurSkill = (skillProfiles.FirstOrDefault(i => i == (SkillType)args[0]) ?? RandomProfile()).SkillProfile;
+            }
+           
+                     
         }
-        base.Select(dir, stats, args);
+        SkillCount RandomProfile() => skillProfiles[Random.Range(0, skillProfiles.Count)];
     }
-    SkillCount RandomProfile() => skillProfiles[Random.Range(0, skillProfiles.Count)];
 }
