@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 206e05d73dd0efd489ff5a24eb3073f5, type: 3}
-  m_Name: StandartAttack
+  m_Name: StandartNpcAttack
   m_EditorClassIdentifier: 
   name: Standart attack
   energyRequest: 0
   stepsCoolDown: 0
   arguments: []
   skillType: {fileID: 0}
+  effects:
+  - {fileID: 7399184746127592806, guid: a7a088b7838d1e041a02ac64f0058d52, type: 3}
+  effectPositionOffset: {x: 0, y: 0, z: 0}
   damage: 1
   offset: 2
   radius: 1

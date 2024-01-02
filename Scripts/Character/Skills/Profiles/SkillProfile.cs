@@ -1,4 +1,5 @@
 using Animation;
+using Effects;
 using Repository;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ namespace Skills
         [SerializeField] protected int energyRequest;
         [SerializeField] protected int stepsCoolDown;
         [SerializeField] protected AnimationArgument[] arguments;
-        [SerializeField] SkillType skillType;        
+        [SerializeField] private SkillType skillType;
+        [SerializeField] protected EffectAnimation[] effects;
+        [SerializeField] protected Vector3 effectPositionOffset;
         public bool IsMayUse(Stats stats) => true; // todo fix this shit
         public int CoolDown => stepsCoolDown;
 
@@ -20,7 +23,16 @@ namespace Skills
 
         public abstract ViewModel[] ViewDistanceSkill(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args);
         public abstract void UseSkill(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args);
-        
+        public virtual void InstantiateEffects(Vector2Int position, Vector2Int dir)
+        {
+            bool flip = dir.y > 0;
+            Vector3 unitPosition = GenerateProperty.BlockScale * new Vector3(position.x, 0, position.y) + new Vector3(0, GenerateProperty.WalkebleGlobalHeight, 0) + effectPositionOffset;
+            foreach (var effect in effects)
+            {
+                var temp = Instantiate(effect, unitPosition, effect.transform.rotation) as EffectAnimation;
+                temp.SetFlip(flip);
+            }
+        }
         protected IEnumerable<MatrixTransform> GetAffectMatrixTransform(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args)
         {            
             List<MatrixTransform> result = new List<MatrixTransform>();

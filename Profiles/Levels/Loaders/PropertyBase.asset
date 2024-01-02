@@ -20,3 +20,5 @@ MonoBehaviour:
   mapWidth: 10
   mapHeight: 10
   walkebleLayer: 4
+  characterHeight: 4
+  tagForInstantiateTiles: TileSpawn

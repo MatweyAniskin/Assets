@@ -8,8 +8,7 @@ namespace Skills
     {
         [SerializeField] SkillsController controller;
         [SerializeField] ViewObject viewObjectPrefab;
-        [SerializeField] Material viewMaterial;
-        [SerializeField] int yOffset = -2;
+        [SerializeField] Material viewMaterial;        
         [SerializeField][Range(0.00000001f, 1)] float blockOffsetMultiply = 0.2f;
         float spawnY;
         ViewObject curViewObject;
@@ -17,7 +16,7 @@ namespace Skills
         {
             controller.OnSetSkill += SetSkill;
             controller.OnDisableSkill += Clear;
-            spawnY = (GenerateProperty.WalkebleLayer + yOffset) * GenerateProperty.BlockScale + GenerateProperty.BlockScale * blockOffsetMultiply;
+            spawnY = GenerateProperty.WalkebleGlobalHeight + GenerateProperty.BlockScale * blockOffsetMultiply;
         }
         public override void OnDelete()
         {

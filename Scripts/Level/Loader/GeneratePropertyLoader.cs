@@ -14,6 +14,7 @@ namespace Loader
         [SerializeField] int mapHeight = 10;
         [SerializeField] int walkebleLayer = 3;
         [SerializeField] int characterHeight = 4;
+        [SerializeField] string tagForInstantiateTiles;
         public override bool Next() => false;
 
         public override void StartWork(MonoBehaviour executor)
@@ -25,6 +26,7 @@ namespace Loader
             GenerateProperty.MapWidth = mapWidth;
             GenerateProperty.WalkebleLayer = walkebleLayer;
             GenerateProperty.CharactersHeight = characterHeight;
+            GenerateProperty.SpawnTilesObject = GameObject.FindWithTag(tagForInstantiateTiles).transform;
         }
     }
 }

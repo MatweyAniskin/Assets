@@ -64,7 +64,15 @@ public class GenerateProperty : MonoBehaviour
     /// </summary>
     public static int CharactersHeight { get; set; }
     /// <summary>
-    /// Character height (y) in unit transform
+    /// Character height (y) in unit transform Local position
     /// </summary>
-    public static float WalkebleHeight => WalkebleLayer * BlockScale;
+    public static float WalkebleLocaleHeight => WalkebleLayer * BlockScale;
+    /// <summary>
+    /// Character height (y) in unit transform Global position
+    /// </summary>
+    public static float WalkebleGlobalHeight => WalkebleLayer * BlockScale + SpawnTilesObject.position.y;
+    /// <summary>
+    /// Game Object for tiles parent
+    /// </summary>
+    public static Transform SpawnTilesObject { get; set; }
 }

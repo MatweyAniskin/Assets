@@ -21,7 +21,7 @@ public class MatrixTransform : MonoBehaviour
     /// <param name="globalposition">matrix global position</param>
     public virtual void SetStartPosition(Vector2Int globalposition)
     {
-        transform.localPosition = Vector3.up * GenerateProperty.WalkebleHeight;
+        transform.localPosition = Vector3.up * GenerateProperty.WalkebleLocaleHeight;
         matrixPosition = globalposition;
         RecalculateMatrixPositionToUnitPosition();
         squarePosition = TransformRepository.GetSquarePosition(matrixPosition);      

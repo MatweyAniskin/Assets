@@ -11,7 +11,7 @@ namespace Loader
     {
         [SerializeField] Tile tilePrefab;
         [SerializeField] bool isSetActiveTile = true;
-        [SerializeField] string tagForInstantiateTiles;
+        
         int width, height, curX, curY;
         Transform spawnTilePoint;
         public override void StartWork(MonoBehaviour executor)
@@ -20,7 +20,7 @@ namespace Loader
             height = GenerateProperty.MapHeight;
             MatrixViewRepository.InitMatrix(width, height);
             curY = curX = 0;
-            spawnTilePoint = GameObject.FindWithTag(tagForInstantiateTiles).transform;
+            
         }
 
         public override bool Next()

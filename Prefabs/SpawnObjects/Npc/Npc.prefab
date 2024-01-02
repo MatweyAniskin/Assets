@@ -363,7 +363,7 @@ MonoBehaviour:
   stats: {fileID: 9079450448816183141}
   matrixTransform: {fileID: 2103554306322706161}
   skillProfiles:
-  - profile: {fileID: 11400000, guid: c49c6c49fed27064ba03207c77cf04d3, type: 2}
+  - profile: {fileID: 11400000, guid: ca00a67434fb2cb4ab6c7fc12c0e897b, type: 2}
 --- !u!114 &8368701065093593716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +379,6 @@ MonoBehaviour:
   controller: {fileID: -6579793966254551736}
   viewObjectPrefab: {fileID: 3134636059552868489, guid: 39dc14a73b8d188459364a8c01756bdf, type: 3}
   viewMaterial: {fileID: 2100000, guid: a760feda7aae16747950addf84c07d71, type: 2}
-  yOffset: -2
   blockOffsetMultiply: 0.201
 --- !u!1 &8031294945641591867
 GameObject:
