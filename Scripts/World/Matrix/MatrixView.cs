@@ -20,7 +20,7 @@ namespace Loader
             height = GenerateProperty.MapHeight;
             MatrixViewRepository.InitMatrix(width, height);
             curY = curX = 0;
-            
+            spawnTilePoint = GenerateProperty.SpawnTilesObject;
         }
 
         public override bool Next()

@@ -18,7 +18,7 @@ MonoBehaviour:
   arguments: []
   skillType: {fileID: 0}
   effects:
-  - {fileID: 7399184746127592806, guid: a7a088b7838d1e041a02ac64f0058d52, type: 3}
+  - {fileID: 7399184746127592806, guid: 2bb8ff40e031bda42b8499100fa07f60, type: 3}
   effectPositionOffset: {x: 0, y: 0, z: 0}
   damage: 1
   offset: 2

@@ -20,6 +20,6 @@ MonoBehaviour:
   effects:
   - {fileID: 7399184746127592806, guid: a7a088b7838d1e041a02ac64f0058d52, type: 3}
   effectPositionOffset: {x: 0, y: 0, z: 0}
-  damage: 1
+  damage: 4
   offset: 2
   radius: 1

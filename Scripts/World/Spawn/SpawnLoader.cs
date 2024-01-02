@@ -7,8 +7,7 @@ namespace Loader
     [CreateAssetMenu(menuName = "Loader/SpawnLoader")]
     public class SpawnLoader : Loader
     {
-        [SerializeField] SpawnObject[] spawnObjects;
-        [SerializeField] string spawnFieldTag;
+        [SerializeField] SpawnObject[] spawnObjects;        
         List<SpawnObject> curSpawn;
         List<Vector2Int> matrixCells;
         Transform spawnField;
@@ -42,7 +41,7 @@ namespace Loader
                 curSpawn.Add(new SpawnObject(i));
             }
             matrixCells = new List<Vector2Int>();
-            spawnField = GameObject.FindWithTag(spawnFieldTag).transform;
+            spawnField = GenerateProperty.SpawnTilesObject;
             width = GenerateProperty.MapWidth;
             height = GenerateProperty.MapHeight;
             scale = GenerateProperty.TileSideLength;
