@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TileCacheBase
   m_EditorClassIdentifier: 
   order: 2
-  loaderName: 
+  loaderName: Cache
   xmlFile: {fileID: 4900000, guid: 9942cbd7486a55b47a8f04099528f73e, type: 3}

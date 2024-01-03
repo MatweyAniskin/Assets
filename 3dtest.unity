@@ -477,8 +477,8 @@ GameObject:
   m_Component:
   - component: {fileID: 433550623}
   - component: {fileID: 433550625}
-  - component: {fileID: 433550627}
   - component: {fileID: 433550626}
+  - component: {fileID: 433550627}
   m_Layer: 5
   m_Name: LoadScreen
   m_TagString: Untagged
@@ -577,9 +577,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 433550622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 491246f7cc1294541aef3dc59c537a68, type: 3}
+  m_Script: {fileID: 11500000, guid: f8e486b96b773bc47aaddbbd2bd92854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainFrame: {fileID: 764190775}
+  iconPrefab: {fileID: 495509577798436033, guid: ccc0f55c73a6b1845a82efba4a23b21e, type: 3}
+  offset: {x: 300, y: 0}
+  triggerNames:
+  - Generator
+  - View
+  - Cache
 --- !u!1 &434003858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,6 +1501,7 @@ GameObject:
   - component: {fileID: 2013606768}
   - component: {fileID: 2013606770}
   - component: {fileID: 2013606771}
+  - component: {fileID: 2013606772}
   m_Layer: 0
   m_Name: Repository
   m_TagString: Untagged
@@ -1586,6 +1594,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4aac99a407051194aa629a31e7405026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2013606772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013606764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656fc7d798579334ea9bbb0edfdc1655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

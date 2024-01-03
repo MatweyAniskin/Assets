@@ -12,13 +12,17 @@ public class LoadScreen : MonoBehaviour
     {
         LoadQueue.OnLoadStackStart += StartLoad;
         LoadQueue.OnLoadStackEnd += EndLoad;
+        OnStart();
     }
 
     private void OnDestroy()
     {
         LoadQueue.OnLoadStackStart -= StartLoad;
         LoadQueue.OnLoadStackEnd -= EndLoad;
+        OnDelete();
     }
+    protected virtual void OnStart() { }
+    protected virtual void OnDelete() { }
     public virtual void StartLoad() => OnStartLoadScreen?.Invoke();    
     public virtual void EndLoad() => OnEndLoadScreen?.Invoke();
 }

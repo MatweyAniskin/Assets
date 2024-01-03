@@ -18,7 +18,7 @@ public class Icon : MonoBehaviour
     /// Set anchored position for this rect
     /// </summary>
     /// <param name="position">Position coordinate</param>
-    public void SetPosition(Vector2 position) => rect.anchoredPosition = position;
+    public void SetPosition(Vector2 position) => Position = position;
     /// <summary>
     /// Set rect size
     /// </summary>
@@ -42,6 +42,16 @@ public class Icon : MonoBehaviour
     /// Rect position
     /// </summary>
     public Vector2 GlobalPosition => rect.position;
+    public Vector2 Position
+    {
+        get => rect.anchoredPosition;
+        set => rect.anchoredPosition = value;
+    }
+    public Color IconColor
+    {
+        get => icon.color;
+        set => icon.color = value;
+    }
     public virtual void SetActiveIcon(bool value) => icon.gameObject.SetActive(value);
     public virtual void SetIcon(Sprite icon) => this.icon.sprite = icon;
     public void SetRotateSprite(int rotate) => icon.transform.rotation = Quaternion.Euler(0, 0, rotate);

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: MatrixView
   m_EditorClassIdentifier: 
   order: 5
-  loaderName: 
+  loaderName: View
   tilePrefab: {fileID: 5123481963307340713, guid: 959f69f77d07e0346a3f36663ae415b4, type: 3}
   isSetActiveTile: 1
-  tagForInstantiateTiles: TileSpawn
