@@ -205,7 +205,6 @@ MonoBehaviour:
   controller: {fileID: -7981978854307338114}
   viewObjectPrefab: {fileID: 3134636059552868489, guid: 39dc14a73b8d188459364a8c01756bdf, type: 3}
   viewMaterial: {fileID: 2100000, guid: de157037890e06643a9f7da52036339f, type: 2}
-  yOffset: -2
   blockOffsetMultiply: 0.201
 --- !u!114 &3650955466042638172
 MonoBehaviour:
@@ -229,6 +228,7 @@ MonoBehaviour:
     action: {fileID: -3480353516767201608}
     profiles:
     - {fileID: 11400000, guid: faca718ca30a00b40b0876a0e48c5fcd, type: 2}
+    - {fileID: 11400000, guid: a2fba3b0c2a4aed46aae9b965726e03b, type: 2}
     arguments: []
   - name: Attack
     action: {fileID: -7981978854307338114}
@@ -305,7 +305,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d714db949faf7324f88f61a8e553083f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

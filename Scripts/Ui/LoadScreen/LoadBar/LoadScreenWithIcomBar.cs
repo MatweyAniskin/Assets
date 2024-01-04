@@ -13,7 +13,7 @@ public class LoadScreenWithIcomBar : LoadScreen
     List<BarLoadIcon> instantiateIcons = new List<BarLoadIcon>();
     int halfCountIndex;
     protected override void OnStart()
-    {
+    {       
         halfCountIndex = triggerNames.Count / 2;
         LoadQueue.OnStartLoadService += SetNewIcon;
     }
