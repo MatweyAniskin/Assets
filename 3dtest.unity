@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 1
   m_FogColor: {r: 0.53333336, g: 0.5185403, b: 0.49411765, a: 1}
   m_FogMode: 3
@@ -44,7 +44,6 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -155,6 +154,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -303,7 +304,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 264
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -877,9 +878,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787546034}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 0.90800005, g: 0.8363903, b: 0.77270806, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -1339,7 +1339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1765055648}
   - component: {fileID: 1765055650}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PostProcessingLayer
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}

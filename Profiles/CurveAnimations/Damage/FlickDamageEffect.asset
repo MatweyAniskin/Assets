@@ -14,8 +14,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.006823957
+      inSlope: 9.9317
+      outSlope: 9.9317
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.999994
+      inSlope: 0.17661376
+      outSlope: 0.17661376
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.10956259
+    - serializedVersion: 3
+      time: 0.3
+      value: -0.00044625998
+      inSlope: -0.04305985
+      outSlope: -0.04305985
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.91019386
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 1.0000014
+      inSlope: -0.00045813023
+      outSlope: -0.00045813023
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.55
+      value: 0.026025534
+      inSlope: -0.23717237
+      outSlope: -0.23717237
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.24866198
+    - serializedVersion: 3
+      time: 1
+      value: 0.006823957
+      inSlope: -0.04267017
+      outSlope: -0.04267017
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  materials: []
+  materials:
+  - {fileID: 2100000, guid: d714db949faf7324f88f61a8e553083f, type: 2}
+  - {fileID: 2100000, guid: a3b38c8b64c339b42a6a8301c28295cc, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: d714db949faf7324f88f61a8e553083f, type: 2}
