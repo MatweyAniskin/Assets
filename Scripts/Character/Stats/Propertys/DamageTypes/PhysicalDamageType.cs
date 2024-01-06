@@ -7,6 +7,6 @@ public class PhysicalDamageType : DamageType
 {   
     public override void UsingType(float value, Stats stats)
     {
-        stats.Damage(value, this);
+       // stats.Damage(value, this);
     }
 }

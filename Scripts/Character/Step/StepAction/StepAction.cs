@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StepAction : StepActionCallBack
+public abstract class StepAction : StepCallBack
 {
 
     [SerializeField] ActionType actionType;

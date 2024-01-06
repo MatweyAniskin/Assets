@@ -49,6 +49,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -102,7 +104,6 @@ GameObject:
   - component: {fileID: -1609560769411711040}
   - component: {fileID: -7011947169004093123}
   - component: {fileID: 39285877247662334}
-  - component: {fileID: 8857879070253823193}
   - component: {fileID: -6579793966254551736}
   - component: {fileID: 8368701065093593716}
   m_Layer: 0
@@ -270,18 +271,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2827035625213060043}
-        m_TargetAssemblyTypeName: Effects.RandomEffectSpawn, Assembly-CSharp
-        m_MethodName: InstantiateEffect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -334,11 +323,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1279a230555650c45b2aa1e5dde95187, type: 2}
     arguments: []
   - name: Damage
-    action: {fileID: 8857879070253823193}
+    action: {fileID: 9079450448816183141}
     profiles:
     - {fileID: 11400000, guid: faca718ca30a00b40b0876a0e48c5fcd, type: 2}
     - {fileID: 11400000, guid: a2fba3b0c2a4aed46aae9b965726e03b, type: 2}
-    arguments: []
+    arguments:
+    - {fileID: 11400000, guid: 5b1836d575095d14289d65cd04775a75, type: 2}
   - name: Attack
     action: {fileID: -6579793966254551736}
     profiles:
@@ -346,21 +336,6 @@ MonoBehaviour:
     arguments: []
   spriteTransform: {fileID: 6389834349072642727}
   spriteRenderer: {fileID: 2165476238087226492}
---- !u!114 &8857879070253823193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813841225085765988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd94b216ecb177d4295b28e8b50a5605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 9079450448816183141}
-  damageArguments: []
-  deadArguments: []
 --- !u!114 &-6579793966254551736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,8 +413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c34311cb6f68c943bde72fe4aa49dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 9079450448816183141}
   effects:
-  - {fileID: 6183428043075877212, guid: d4d93956ceb345947b2f55edd615dce9, type: 3}
+  - argument: {fileID: 11400000, guid: 5b1836d575095d14289d65cd04775a75, type: 2}
+    effects:
+    - {fileID: 6183428043075877212, guid: d4d93956ceb345947b2f55edd615dce9, type: 3}
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &8031294945641591867
 GameObject:
@@ -490,6 +468,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

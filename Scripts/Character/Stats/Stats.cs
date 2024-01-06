@@ -1,10 +1,11 @@
 using Animation;
+using Skills;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Stats : MonoBehaviour
+public class Stats : StepCallBack
 {
     [SerializeField] float maxHelse;
     [SerializeField] float curHelse;
@@ -14,15 +15,14 @@ public class Stats : MonoBehaviour
     [SerializeField] DefenceType[] defenceTypes;
     public UnityEvent OnDamaged;
     public UnityEvent OnDead;
-    public delegate void ChangeStatsDelegate(Vector2Int dir, float percent, DamageType damage);
-    public event ChangeStatsDelegate OnDamage;    
-    public void Damage(Vector2Int dir ,float value, DamageType damageType)
+    
+    public void Damage(Vector2Int dir ,float value, SkillType skillType)
     {
-        OnDamage?.Invoke(dir,value,damageType);
-        OnDamaged?.Invoke();        
+        Callback(dir,skillType?.AnimationArgument);
+        OnDamaged?.Invoke();
         Helse -= value;
     }
-    public void Damage(float value, DamageType damageType) => Damage(Vector2Int.zero,value,damageType);
+    public void Damage(float value, SkillType skillType) => Damage(Vector2Int.zero,value,skillType);
     public float Helse
     {
         get => curHelse;

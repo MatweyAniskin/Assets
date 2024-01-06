@@ -18,7 +18,7 @@ namespace Skills
             foreach (var character in characters)
             {
                 if(character == transform) continue;
-                character.GetComponent<Stats>()?.Damage(damage, null);
+                character.GetComponent<Stats>()?.Damage(damage, SkillType);
             }
             InstantiateEffects(Center(transform.Position, dir), dir);
         }

@@ -18,7 +18,7 @@ namespace Skills
         [SerializeField] protected Vector3 effectPositionOffset;
         public bool IsMayUse(Stats stats) => true; // todo fix this shit
         public int CoolDown => stepsCoolDown;
-
+        public SkillType SkillType => skillType;        
         public AnimationArgument[] Arguments => arguments;
 
         public abstract ViewModel[] ViewDistanceSkill(MatrixTransform transform, Stats stats, Vector2Int dir, params object[] args);

@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: -7981978854307338114}
   - component: {fileID: 5804676436187242754}
   - component: {fileID: 3650955466042638172}
-  - component: {fileID: -3480353516767201608}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -225,11 +224,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1279a230555650c45b2aa1e5dde95187, type: 2}
     arguments: []
   - name: Damage
-    action: {fileID: -3480353516767201608}
+    action: {fileID: 7090647283457784489}
     profiles:
     - {fileID: 11400000, guid: faca718ca30a00b40b0876a0e48c5fcd, type: 2}
     - {fileID: 11400000, guid: a2fba3b0c2a4aed46aae9b965726e03b, type: 2}
-    arguments: []
+    arguments:
+    - {fileID: 11400000, guid: 5b1836d575095d14289d65cd04775a75, type: 2}
   - name: Attack
     action: {fileID: -7981978854307338114}
     profiles:
@@ -237,21 +237,6 @@ MonoBehaviour:
     arguments: []
   spriteTransform: {fileID: 3436047112652539799}
   spriteRenderer: {fileID: 6958530083329067255}
---- !u!114 &-3480353516767201608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5735464963878326567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd94b216ecb177d4295b28e8b50a5605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 7090647283457784489}
-  damageArguments: []
-  deadArguments: []
 --- !u!1 &7879623690453437145
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +287,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -386,6 +373,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -470,6 +459,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

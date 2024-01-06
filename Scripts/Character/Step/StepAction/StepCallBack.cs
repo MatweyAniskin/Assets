@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StepActionCallBack : MonoBehaviour
+public class StepCallBack : MonoBehaviour
 {
     public delegate void StepActionDelegate(Vector2Int dir, params object[] args);
     public event StepActionDelegate OnAction;

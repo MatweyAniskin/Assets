@@ -8,7 +8,7 @@ namespace Animation
     public class AnimationAssembly
     {
         [SerializeField] private string name;
-        [SerializeField] StepActionCallBack action;
+        [SerializeField] StepCallBack action;
         [SerializeField] SpriteAnimationProfile[] profiles;
         [SerializeField] AnimationArgument[] arguments;
         public delegate void AssemblyDelegate(Vector2Int dir, SpriteAnimationProfile animationProfile, params object[] args);
@@ -30,7 +30,7 @@ namespace Animation
                 return;
             for (int i = 0; i < arguments.Length; i++)
             {
-                if (arguments[i] != (string)args[i])
+                if (arguments[i] != (AnimationArgument)args[i])
                     return;
             }
             foreach(var i in profiles)
