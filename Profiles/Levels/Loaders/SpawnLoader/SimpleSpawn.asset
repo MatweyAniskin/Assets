@@ -21,7 +21,6 @@ MonoBehaviour:
   - matrixTransformObject: {fileID: 470166796402019638, guid: cfb547c8303f91e4f9c291d9039d9419, type: 3}
     spawnPercent: 50
     spawnCount: 50
-  - matrixTransformObject: {fileID: 2103554306322706161, guid: 4b123849158ca58468797eb6a2d3ccd0, type: 3}
+  - matrixTransformObject: {fileID: 2104201242684564703, guid: 4b123849158ca58468797eb6a2d3ccd0, type: 3}
     spawnPercent: 50
     spawnCount: 50
-  spawnFieldTag: TileSpawn
