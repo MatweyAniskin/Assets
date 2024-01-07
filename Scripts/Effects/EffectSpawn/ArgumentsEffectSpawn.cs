@@ -10,9 +10,10 @@ namespace Effects
     {        
         public override void InstantiateEffect(Vector2Int dir, params object[] args)
         {
-            var argument = (AnimationArgument)args[0];
+            var argument = args.Cast<AnimationArgument>();
+           
             EffectAssembly assembly = effects.FirstOrDefault(i => i == argument) ?? null;
-            if (assembly != null)
+            if (!(assembly is null))
             {
                 Instantiate(assembly);
             }

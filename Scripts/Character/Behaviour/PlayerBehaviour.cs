@@ -15,11 +15,12 @@ public class PlayerBehaviour : CharacterBehaviour
 
     delegate void ActionDelegate();
     ActionDelegate[] actionDelegates;
+    delegate bool KeyDelegate(KeyCode keyCode);
     private void Start()
     {
         actionDelegates = new ActionDelegate[] { Move, Skills};
     }
-    private void Update()//Unit
+    private void Update()//Unit test REWRITE ALL THIS SHIT
     {
         if (StepByStepSystem.IsMakeStep)
             return;
@@ -59,7 +60,7 @@ public class PlayerBehaviour : CharacterBehaviour
     }
     void Move()
     {
-        move = MoveDir();
+        move = MoveAxis();
         if (move != Vector2Int.zero)
         {
             SetAction(movement, move);            
@@ -70,20 +71,24 @@ public class PlayerBehaviour : CharacterBehaviour
     }
     void Skills()
     {
-        var temp = MoveDir();
-        if (temp != Vector2Int.zero && move != temp)
+        var temp = MoveDirection();
+        if (temp != Vector2Int.zero)
         {
-            lastMove = move = temp;
+            move = new Vector2Int(Mathf.Clamp(move.x + temp.x,-1,1), Mathf.Clamp(move.y + temp.y,-1,1));
+            if (move == Vector2Int.zero) move = temp;
+            lastMove = move;
             SetAction(skills, move, lastSkillButton);
         }        
     }
-    Vector2Int MoveDir()
+    Vector2Int MoveAxis() => MoveDir(Input.GetKey);
+    Vector2Int MoveDirection() => MoveDir(Input.GetKeyUp);
+    Vector2Int MoveDir(KeyDelegate keyDelegate)
     {
         Vector2Int move = Vector2Int.zero;
-        if (Input.GetKey(KeyCode.D)) move.y = -1;
-        if (Input.GetKey(KeyCode.A)) move.y = 1;
-        if (Input.GetKey(KeyCode.W)) move.x = 1;
-        if (Input.GetKey(KeyCode.S)) move.x = -1;
+        if (keyDelegate(KeyCode.D)) move.y = -1;
+        if (keyDelegate(KeyCode.A)) move.y = 1;
+        if (keyDelegate(KeyCode.W)) move.x = 1;
+        if (keyDelegate(KeyCode.S)) move.x = -1;
         return move;
     }
     int SkillIndex()

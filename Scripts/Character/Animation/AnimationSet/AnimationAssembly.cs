@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Animation
@@ -26,13 +27,9 @@ namespace Animation
 
         void StepAnimationStart(Vector2Int dir, params object[] args)
         {
-            if (arguments.Length != args.Length)
+            if (arguments.Length != args.Length && !Enumerable.SequenceEqual(arguments, args.Cast<AnimationArgument>()))
                 return;
-            for (int i = 0; i < arguments.Length; i++)
-            {
-                if (arguments[i] != (AnimationArgument)args[i])
-                    return;
-            }
+            
             foreach(var i in profiles)
                 Assembly?.Invoke(dir, i, args);
         }

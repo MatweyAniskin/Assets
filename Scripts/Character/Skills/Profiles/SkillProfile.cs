@@ -3,6 +3,7 @@ using Effects;
 using Repository;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Skills
@@ -52,15 +53,8 @@ namespace Skills
         protected IEnumerable<MatrixTransform> GetUniq(List<MatrixTransform> matrixTransforms)
         {
             if (matrixTransforms.Count <= 1) return matrixTransforms;
-            for (int i = 0; i < matrixTransforms.Count - 1; i++)
-            {
-                for (int j = 1; j < matrixTransforms.Count; j++)
-                {
-                    if (matrixTransforms[i] == matrixTransforms[j])
-                        matrixTransforms.Remove(matrixTransforms[j]);
-                }
-            }
-            return matrixTransforms;
+            return matrixTransforms.Distinct();
+          
         }
         public override string ToString() => name;  
         public static bool operator ==(SkillProfile lhs, SkillType rhs) => lhs.skillType == rhs;

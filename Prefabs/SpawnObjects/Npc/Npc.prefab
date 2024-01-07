@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3154636559612356205}
-  - component: {fileID: 2103554306322706161}
+  - component: {fileID: 2104201242684564703}
   - component: {fileID: -457038429096957813}
   - component: {fileID: -6346094072759651001}
   - component: {fileID: 5106596047426959489}
@@ -131,7 +131,7 @@ Transform:
   - {fileID: 4602112509637398665}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2103554306322706161
+--- !u!114 &2104201242684564703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5813841225085765988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cb36aee13357f4f80e9401f465b406, type: 3}
+  m_Script: {fileID: 11500000, guid: a129a928e006d6f4bb526f454f2c351d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   matrixPosition: {x: 0, y: 0}
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionType: {fileID: 11400000, guid: 16be1c97c6a9e214abcf7a9fc65bfbfa, type: 2}
-  matrixTransform: {fileID: 2103554306322706161}
+  matrixTransform: {fileID: 2104201242684564703}
   animation:
     serializedVersion: 2
     m_Curve:
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 9079450448816183141}
   stateMachine: {fileID: 968601698012127589}
-  matrixTransform: {fileID: 2103554306322706161}
+  matrixTransform: {fileID: 2104201242684564703}
 --- !u!114 &968601698012127589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +256,8 @@ MonoBehaviour:
   curEnergy: 0
   reservedEnergy: 0
   defenceTypes: []
+  deadArguments:
+  - {fileID: 11400000, guid: 214a1159e2c91d94bbfedad673e3ed8a, type: 2}
   OnDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -271,9 +273,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDead:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &-1609560769411711040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviour: {fileID: 5106596047426959489}
-  matrixTransform: {fileID: 2103554306322706161}
+  matrixTransform: {fileID: 2104201242684564703}
   radius: 10
 --- !u!114 &-7011947169004093123
 MonoBehaviour:
@@ -350,7 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionType: {fileID: 11400000, guid: 27531cb31a7dd5249b6d71b823667510, type: 2}
   stats: {fileID: 9079450448816183141}
-  matrixTransform: {fileID: 2103554306322706161}
+  matrixTransform: {fileID: 2104201242684564703}
   skillProfiles:
   - profile: {fileID: 11400000, guid: ca00a67434fb2cb4ab6c7fc12c0e897b, type: 2}
 --- !u!114 &8368701065093593716
@@ -415,10 +414,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 9079450448816183141}
   effects:
-  - argument: {fileID: 11400000, guid: 5b1836d575095d14289d65cd04775a75, type: 2}
+  - arguments:
+    - {fileID: 11400000, guid: 5b1836d575095d14289d65cd04775a75, type: 2}
     effects:
     - {fileID: 6183428043075877212, guid: d4d93956ceb345947b2f55edd615dce9, type: 3}
-  offset: {x: 0, y: 0, z: 0}
+    - {fileID: 6174564522328413600, guid: 64fd3a4c6749aea4ba8d32a3a5047a32, type: 3}
+    offset: {x: 0, y: 0, z: 0}
+  - arguments:
+    - {fileID: 11400000, guid: 5b1836d575095d14289d65cd04775a75, type: 2}
+    - {fileID: 11400000, guid: 214a1159e2c91d94bbfedad673e3ed8a, type: 2}
+    effects:
+    - {fileID: 9167637102235343602, guid: 5dc488494301fd945a801b58769fa6f1, type: 3}
+    - {fileID: 9167637102235343602, guid: 143d2edb823a07542b44769c7428cd99, type: 3}
+    - {fileID: 9167637102235343602, guid: 11a81f001547b254383e4140780b32ba, type: 3}
+    offset: {x: 0, y: -0.3, z: 0}
 --- !u!1 &8031294945641591867
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +503,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2d3d2ea18ca1f614cbac663e5d311889, type: 3}
+  m_Sprite: {fileID: 870736068, guid: 0cac7adce7e364047ac3acda9f20727b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

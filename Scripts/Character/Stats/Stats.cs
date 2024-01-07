@@ -2,6 +2,7 @@ using Animation;
 using Skills;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,14 +14,26 @@ public class Stats : StepCallBack
     [SerializeField] int curEnergy;
     [SerializeField] int reservedEnergy;
     [SerializeField] DefenceType[] defenceTypes;
+    [SerializeField] [Tooltip("Additational dead argument for callback")] AnimationArgument[] deadArguments;
     public UnityEvent OnDamaged;
-    public UnityEvent OnDead;
-    
+
+    protected AnimationArgument lastArgument;
     public void Damage(Vector2Int dir ,float value, SkillType skillType)
     {
-        Callback(dir,skillType?.AnimationArgument);
+        List<AnimationArgument> args = new List<AnimationArgument>
+        {
+            skillType?.AnimationArgument ?? null
+        };
+        
         OnDamaged?.Invoke();
         Helse -= value;
+        if (curHelse == 0)
+        {
+            args.AddRange(deadArguments);
+            Dead();
+        }
+        
+        Callback(dir, args.Cast<object>().ToArray());
     }
     public void Damage(float value, SkillType skillType) => Damage(Vector2Int.zero,value,skillType);
     public float Helse
@@ -29,11 +42,7 @@ public class Stats : StepCallBack
         protected set
         {
             curHelse = Mathf.Clamp(value,0,maxHelse);              
-            if (curHelse == 0)
-            {
-                Dead();
-                OnDead?.Invoke();
-            }
+            
         }
     }
     public int MaxEnergy => maxEnergy;

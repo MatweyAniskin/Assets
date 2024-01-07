@@ -11,7 +11,6 @@ namespace Repository
         {
             matrix = new bool[width, height];
         }
-        public static void SetBlock(int x, int y, bool value) => matrix[x, y] = value;
         public static bool GetBlock(int x, int y) => matrix[x, y];
         /// <summary>
         /// Return blocked voxel or not
@@ -55,8 +54,10 @@ namespace Repository
 
             return true;
         }
+        public static void SetBlock(int x, int y, bool value) => matrix[x, y] = value;
         public static void SetBlock(Vector2Int min, Vector2Int max, bool value) => SetBlock(min.x, min.y, max.x, max.y, value);
-
+        public static void SetBlock(MatrixTransform transform, bool value) => SetBlock(transform.LogicPosition, transform.Radius, value);
+        public static void SetBlock(Vector2Int position,int radius, bool value) => SetBlock(position.x-radius, position.y-radius, position.x+radius,position.y+radius,value);
         public static void SetBlock(int xMin, int yMin, int xMax, int yMax, bool value)
         {
             for (int x = xMin; x < xMax; x++)
@@ -80,7 +81,7 @@ namespace Repository
         {
             Vector2Int res = matrixTransform.Position;
             Vector2Int cur;
-            for (curStepBlocks = 0; curStepBlocks <= maxStepBlocks; curStepBlocks++)
+            for (curStepBlocks = matrixTransform.Radius+1; curStepBlocks <= maxStepBlocks; curStepBlocks++)
             {
                 cur = matrixTransform.Position + dir * curStepBlocks;
                 if (MovementMatrix.CheckState(cur, matrixTransform.Radius))

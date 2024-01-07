@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMatrixTransform : MatrixTransform
+public class PlayerMatrixTransform : CharacterMatrixTransform
 {
     public delegate void UpdateTransform(MatrixTransform transform);
     public static event UpdateTransform OnSetStartPosition;

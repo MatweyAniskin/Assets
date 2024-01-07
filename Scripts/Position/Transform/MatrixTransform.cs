@@ -13,8 +13,10 @@ public class MatrixTransform : MonoBehaviour
     public event DelegateTransformChange OnSquareChange;
     private void OnDestroy()
     {
+        OnDelete();
         TransformRepository.Remove(this);
     }
+    protected virtual void OnDelete() { }
     /// <summary>
     /// Set matrix start position, use once 
     /// </summary>
@@ -41,7 +43,7 @@ public class MatrixTransform : MonoBehaviour
             RecalculateMatrixPositionToUnitPosition();
         }
     }
-    public Vector2Int LogicPosition
+    public virtual Vector2Int LogicPosition
     {
         get => matrixPosition;
         set

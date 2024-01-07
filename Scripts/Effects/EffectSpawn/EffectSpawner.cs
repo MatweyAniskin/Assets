@@ -7,8 +7,7 @@ namespace Effects
     public abstract class EffectSpawner : MonoBehaviour
     {
         [SerializeField] protected Stats stats;
-        [SerializeField] protected EffectAssembly[] effects;
-        [SerializeField] protected Vector3 offset;
+        [SerializeField] protected EffectAssembly[] effects;        
         private void Start()
         {
             stats.OnAction += InstantiateEffect;
@@ -21,7 +20,7 @@ namespace Effects
         protected virtual GameObject Instantiate(EffectAssembly assembly)
         {
             var effect = assembly.Effect;
-            return Instantiate(effect, transform.position + offset, effect.transform.rotation,GenerateProperty.SpawnTilesObject);
+            return Instantiate(effect, transform.position + assembly.Offset, effect.transform.rotation,GenerateProperty.SpawnTilesObject);
         }
     }
 }
