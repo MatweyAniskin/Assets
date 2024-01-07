@@ -10,6 +10,7 @@ namespace Menu.Logo
     {
         [SerializeField] Text[] texts;
         [SerializeField] Font[] fonts;
+        [SerializeField] Color[] resultTextColors;
         [SerializeField] Font resultFont;
         [SerializeField] int iterations = 5;
         [SerializeField] float waitSecondsForSwap = 0.5f;
@@ -32,6 +33,7 @@ namespace Menu.Logo
             for (int t = 0; t < texts.Length; t++)
             {
                 texts[t].font = resultFont;
+                texts[t].color = resultTextColors[t];
                 yield return new WaitForSeconds(resultWaitSecondsForSwap);
             }
             OnLogoEnd?.Invoke();

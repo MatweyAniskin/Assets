@@ -10,12 +10,22 @@ public class PlayerBehaviour : CharacterBehaviour
     Vector2Int lastMove = Vector2Int.up;
     int skillButton = -1;
     int lastSkillButton = -1;
-    enum Type { IsMove = 0, IsSkills = 1 }
-    Type curActionType = 0;
-
-    delegate void ActionDelegate();
+    public enum Type { IsMove = 0, IsSkills = 1 }
+    Type CurActionType 
+    {
+        get => curActionType;
+        set
+        {
+            curActionType = value;
+            OnChangeActionType?.Invoke(curActionType);
+        }
+    }
+    Type curActionType;
+    delegate void ActionDelegate();    
     ActionDelegate[] actionDelegates;
     delegate bool KeyDelegate(KeyCode keyCode);
+    public delegate void TypeDelegate(Type type);
+    public static event TypeDelegate OnChangeActionType;
     private void Start()
     {
         actionDelegates = new ActionDelegate[] { Move, Skills};
@@ -24,18 +34,18 @@ public class PlayerBehaviour : CharacterBehaviour
     {
         if (StepByStepSystem.IsMakeStep)
             return;
-        actionDelegates[(int)curActionType].Invoke();
+        actionDelegates[(int)CurActionType].Invoke();
         SetType();
     }
     void SetType()
     {
         skillButton = SkillIndex();       
-        switch(curActionType)
+        switch(CurActionType)
         {
             case Type.IsMove:
                 if(skillButton != -1)
                 {
-                    curActionType = Type.IsSkills;
+                    CurActionType = Type.IsSkills;
                     SetAction(skills, lastMove, skillButton);
                     lastSkillButton = skillButton;
                 }
@@ -45,7 +55,7 @@ public class PlayerBehaviour : CharacterBehaviour
                 {
                     StepByStepSystem.GoStep();
                     SetAction(movement, move);
-                    curActionType = Type.IsMove;
+                    CurActionType = Type.IsMove;
                     return;
                 }
                 if (skillButton != -1)
@@ -53,7 +63,7 @@ public class PlayerBehaviour : CharacterBehaviour
                 if (Input.GetKeyUp(KeyCode.Escape))
                 {
                     SetAction(movement, move);
-                    curActionType = Type.IsMove;
+                    CurActionType = Type.IsMove;
                 }
                 return;
         }
