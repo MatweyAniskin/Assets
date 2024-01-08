@@ -118,7 +118,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  stepBlocks: 2
+  stepBlocks: 3
 --- !u!114 &5141602950182061045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,10 +166,8 @@ MonoBehaviour:
   curEnergy: 0
   reservedEnergy: 0
   defenceTypes: []
+  deadArguments: []
   OnDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDead:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &-7981978854307338114

@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 1456776425}
   defaultFov: 60
-  fovSpeedMultiplyer: 2
+  fovSpeedMultiplyer: 5
 --- !u!114 &1456776428
 MonoBehaviour:
   m_ObjectHideFlags: 0

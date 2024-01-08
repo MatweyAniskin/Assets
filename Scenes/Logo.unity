@@ -617,7 +617,7 @@ MonoBehaviour:
   - {fileID: 12800000, guid: a73fb072eefbe204ba1c98f70c174660, type: 3}
   resultTextColors:
   - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.7056604, g: 0, b: 0, a: 1}
   resultFont: {fileID: 12800000, guid: 2c9d0ae7aa3033b40bf56e24bf7f74f8, type: 3}
   iterations: 8
   waitSecondsForSwap: 0.3

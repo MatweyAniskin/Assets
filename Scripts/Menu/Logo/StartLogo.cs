@@ -22,11 +22,16 @@ namespace Menu.Logo
         }
         IEnumerator Animation()
         {
+            Font randomFont;
             for (int i = 0; i < iterations; i++)
             {
                 for (int t = 0; t < texts.Length; t++)
                 {
-                    texts[t].font = fonts[Random.Range(0, fonts.Length)];
+                    do
+                    {
+                        randomFont = fonts[Random.Range(0, fonts.Length)];
+                    } while (randomFont == texts[t].font);
+                    texts[t].font = randomFont;
                     yield return new WaitForSeconds(waitSecondsForSwap);
                 }
             }

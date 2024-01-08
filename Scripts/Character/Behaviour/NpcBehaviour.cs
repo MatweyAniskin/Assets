@@ -9,9 +9,16 @@ public class NpcBehaviour : CharacterBehaviour
 
     MatrixTransform attackTarget;
 
+    public delegate void BehaviourTargetDelegate(MatrixTransform transform);
+    public event BehaviourTargetDelegate OnTargeted;
     public MatrixTransform AttackTarget => attackTarget;
     public bool IsTargeting => !(attackTarget is null);
-    public void SetTarget(MatrixTransform target) => attackTarget = target;
+    public void SetTarget(MatrixTransform target)
+    {
+        if(attackTarget is null)
+            OnTargeted?.Invoke(target);
+        attackTarget = target;
+    }
     public override void OnStart()
     {
         stepActions = GetComponents<StepAction>();
